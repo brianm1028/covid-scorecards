@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<HTML lang="en">
+<HEAD>
+    <META charset="UTF-8">
+    <TITLE>COVID READINESS DASHBOARD - DISTRICT {{ snap.district_id }}</TITLE>
+</HEAD>
+<BODY>
+
+<H1>COVID READINESS DASHBOARD - DISTRICT {{ snap.district_id }}</H1>
+
+<TABLE>
+    <TR>
+        <TH>Overall Status</TH><TD>{{ snap.overall.status }}</TD>
+    </TR>
+    <TR>
+        <TD colspan="2">
+            <TABLE>
+                <TR>
+                    <TH>PPE Supply Status</TH><TD>{{ snap.ppe.status }}</TD>
+                </TR>
+                <TR>
+                    <TH>Staffing Status</TH><TD>{{ snap.staff.status }}</TD>
+                </TR>
+                <TR>
+                    <TH>Transportation Status</TH><TD>{{ snap.trans.status }}</TD>
+                </TR>
+                <TR>
+                    <TH>Regional Conditions Status</TH><TD>{{ snap.geo.status }}</TD>
+                </TR>
+            </TABLE>
+        </TD>
+    </TR>
+</TABLE>
+
+</BODY>
+</HTML>
