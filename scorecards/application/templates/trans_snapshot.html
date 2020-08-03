@@ -1,0 +1,80 @@
+{#TODO create template for trans_snapshot#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transportation Metrics</title>
+    <link rel="stylesheet" media="all" href="http://lakeforestschools.org/uploaded/themes/default_16/css/main.css?1541690790">
+</head>
+<body>
+
+<H1>Transportation Metrics</H1>
+
+<TABLE>
+    <TR>
+        <TH>Overall Transportation Status</TH><TD>{{ snap.status }}</TD>
+    </TR>
+    <TR>
+        <TH>&nbsp;&nbsp;Bus Capacity</TH><TD>{{ snap.buses.status }}</TD>
+    </TR>
+    <TR>
+        <TH>&nbsp;&nbsp;Driver Availability</TH><TD>{{ snap.drivers.status }}</TD>
+    </TR>
+</TABLE>
+
+
+<TABLE>
+    <TR>
+        <TH colspan="2">Bus Capacity</TH>
+    </TR>
+    <TR>
+        <TH>Description</TH><TD>A sufficient number of buses and seats on buses must be available to support the demand for transportation while maintaining safety standards and protections.</TD>
+    </TR>
+    <TR>
+        <TH>Updates</TH><TD>Updated weekly, last update on {{ snap.buses.update_date }}</TD>
+    </TR>
+    <TR>
+        <TD colspan="2">
+            <TABLE>
+                <TR>
+                    <TH>Bus Group</TH><TH>Available Seats</TH><TH>Required Seats</TH><TH>Percent Available</TH><TH>Status</TH>
+                </TR>
+                {% for r in snap.buses.bus_groups %}
+                <TR>
+                    <TD>{{ r.bus_group }}</TD><TD>{{ r.available }}</TD><TD>{{ r.required }}</TD><TD>{{ r.pct_avail }}</TD><TD>{{ r.status }}</TD>
+                </TR>
+                {% endfor %}
+            </TABLE>
+        </TD>
+    </TR>
+</TABLE>
+
+
+<TABLE>
+    <TR>
+        <TH colspan="2">Driver Availability</TH>
+    </TR>
+    <TR>
+        <TH>Description</TH><TD>A sufficient number of licensed bus drivers must be available to execute the number of bus routes needed.</TD>
+    </TR>
+    <TR>
+        <TH>Updates</TH><TD>Updated weekly, last update on {{ snap.drivers.update_date }}</TD>
+    </TR>
+    <TR>
+        <TD colspan="2">
+            <TABLE>
+                <TR>
+                    <TH>Bus Group</TH><TH>Available Drivers</TH><TH>Required Drivers</TH><TH>Percent Available</TH><TH>Status</TH>
+                </TR>
+                {% for r in snap.drivers.bus_groups %}
+                <TR>
+                    <TD>{{ r.bus_group }}</TD><TD>{{ r.available }}</TD><TD>{{ r.required }}</TD><TD>{{ r.pct_avail }}</TD><TD>{{ r.status }}</TD>
+                </TR>
+                {% endfor %}
+            </TABLE>
+        </TD>
+    </TR>
+</TABLE>
+
+</body>
+</html>

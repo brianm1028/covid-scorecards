@@ -1,0 +1,53 @@
+{#TODO create template for staff_snapshot#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facility Staffing Metrics</title>
+    <link rel="stylesheet" media="all" href="http://lakeforestschools.org/uploaded/themes/default_16/css/main.css?1541690790">
+</head>
+<body>
+
+<H1>Facility Staffing Metrics</H1>
+
+<TABLE>
+    <TR>
+        <TH>Overall Facility Staffing Status</TH><TD>{{ snap.status }}</TD>
+    </TR>
+    {% for r in snap.facilities %}
+    <TR>
+        <TH>&nbsp;&nbsp;{{ r.facility }} Staffing Status</TH><TD>{{ r.status }}</TD>
+    </TR>
+    {% endfor %}
+</TABLE>
+
+{% for r in snap.facilities %}
+<TABLE>
+    <TR>
+        <TH colspan="2">{{ r.facility }} Staffing Status</TH>
+    </TR>
+    <TR>
+        <TH>Description</TH><TD>For the facility, the number of available resources for each role type must be equal to or greater than the number of required resources of that type.</TD>
+    </TR>
+    <TR>
+        <TH>Updates</TH><TD>Updated daily, last update on {{ r.update_date }}</TD>
+    </TR>
+    <TR>
+        <TD colspan="2">
+            <TABLE>
+                <TR>
+                    <TH>Role Type</TH><TH>Required Staff</TH><TH>Available Staff</TH><TH>Available Substitutes</TH><TH>Status</TH>
+                </TR>
+                {% for s in r.roles %}
+                <TR>
+                    <TD>{{ s.role_type }}</TD><TD>{{ s.required }}</TD><TD>{{ s.available }}</TD><TD>{{ s.substitutes }}</TD><TD>{{ s.status }}</TD>
+                </TR>
+                {% endfor %}
+            </TABLE>
+        </TD>
+    </TR>
+</TABLE>
+{% endfor %}
+
+</body>
+</html>

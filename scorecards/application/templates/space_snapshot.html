@@ -1,0 +1,53 @@
+{#TODO create template for space_snapshot#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facility Space Metrics</title>
+    <link rel="stylesheet" media="all" href="http://lakeforestschools.org/uploaded/themes/default_16/css/main.css?1541690790">
+</head>
+<body>
+
+<H1>Facility Space Metrics</H1>
+
+<TABLE>
+    <TR>
+        <TH>Overall Facility Space Status</TH><TD>{{ snap.status }}</TD>
+    </TR>
+    {% for r in snap.facilities %}
+    <TR>
+        <TH>&nbsp;&nbsp;{{ r.facility }} Space Status</TH><TD>{{ r.status }}</TD>
+    </TR>
+    {% endfor %}
+</TABLE>
+
+{% for r in snap.facilities %}
+<TABLE>
+    <TR>
+        <TH colspan="2">{{ r.facility }} Space Status</TH>
+    </TR>
+    <TR>
+        <TH>Description</TH><TD>For the facility, the number of students requesting in-person learning must be less than the number of student spaces available in classrooms.</TD>
+    </TR>
+    <TR>
+        <TH>Updates</TH><TD>Updated as necessary, last update on {{ r.update_date }}</TD>
+    </TR>
+    <TR>
+        <TD colspan="2">
+            <TABLE>
+                <TR>
+                    <TH>Room Type</TH><TH>Total Capacity</TH><TH>Total Demand</TH><TH>Fill Percentage</TH><TH>Status</TH>
+                </TR>
+                {% for s in r.rooms %}
+                <TR>
+                    <TD>{{ s.room_type }}</TD><TD>{{ s.capacity }}</TD><TD>{{ s.demand }}</TD><TD>{{ s.fill_pct }}</TD><TD>{{ s.status }}</TD>
+                </TR>
+                {% endfor %}
+            </TABLE>
+        </TD>
+    </TR>
+</TABLE>
+{% endfor %}
+
+</body>
+</html>
