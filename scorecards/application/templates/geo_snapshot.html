@@ -5,26 +5,29 @@
     <meta charset="UTF-8">
     <title>Geographic Area Metrics</title>
     <link rel="stylesheet" media="all" href="http://lakeforestschools.org/uploaded/themes/default_16/css/main.css?1541690790">
+    <link rel="stylesheet" href="http://127.0.0.1:5000/static/scorecards.css">
 </head>
 <body>
 
-<H1>Geographic Area Metrics</H1>
+<H1><A HREF="/snapshot/{{ snap.district_id }}">&lt;</A>  Regional Condition Metrics</H1>
 
 <TABLE>
     <TR>
-        <TH>Overall Geographic Area Status</TH><TD>{{ snap.status }}</TD>
+        <TH>Regional Condition Status</TH><TD class="{{ snap.status }}">{{ snap.status }}</TD>
     </TR>
     <TR>
-        <TH>&nbsp;&nbsp;Zip Code Status</TH><TD>{{ snap.zip_data.status }}</TD>
+        <TH>&nbsp;&nbsp;Zip Code Status</TH><TD class="{{ snap.zip_data.status }}">{{ snap.zip_data.status }}</TD>
     </TR>
     <TR>
-        <TH>&nbsp;&nbsp;County Status</TH><TD>{{ snap.county_data.status }}</TD>
+        <TH>&nbsp;&nbsp;County Status</TH><TD class="{{ snap.county_data.status }}">{{ snap.county_data.status }}</TD>
     </TR>
     <TR>
-        <TH>&nbsp;&nbsp;Region Status</TH><TD>{{ snap.region_data.status }}</TD>
+        <TH>&nbsp;&nbsp;Region Status</TH><TD class="{{ snap.region_data.status }}">{{ snap.region_data.status }}</TD>
     </TR>
 </TABLE>
 
+<BR>
+<HR>
 
 <TABLE>
     <TR>
@@ -44,7 +47,7 @@
                 </TR>
                 {% for r in snap.zip_data.zip_codes %}
                 <TR>
-                    <TD>{{ r.zip_code }}</TD><TD>{{ r.population }}</TD><TD>{{ r.new_cases }}</TD><TD>{{ r.cases_per_10k }}</TD><TD>{{ r.status }}</TD>
+                    <TD>{{ r.zip_code }}</TD><TD>{{ r.population }}</TD><TD>{{ r.new_cases }}</TD><TD>{{ '%0.2f'| format(r.cases_per_10k) }}</TD><TD class="{{ r.status }}">{{ r.status }}</TD>
                 </TR>
                 {% endfor %}
             </TABLE>
@@ -52,10 +55,12 @@
     </TR>
 </TABLE>
 
+<BR>
+<HR>
 
 <TABLE>
     <TR>
-        <TH colspan="2">Positivity rate in County</TH>
+        <TH colspan="2">Positivity Rate in County</TH>
     </TR>
     <TR>
         <TH>Description</TH><TD>For counties, the positivity testing rate should be less than or equal to 8% according to data provided by <A HREF="https://www.dph.illinois.gov/countymetrics">IDPH</A>.</TD>
@@ -71,7 +76,7 @@
                 </TR>
                 {% for r in snap.county_data.counties %}
                 <TR>
-                    <TD>{{ r.county }}</TD><TD>{{ r.total_tests }}</TD><TD>{{ r.positive_tests }}</TD><TD>{{ r.positivity_rate }}</TD><TD>{{ r.status }}</TD>
+                    <TD>{{ r.county }}</TD><TD>{{ r.total_tests }}</TD><TD>{{ r.positive_tests }}</TD><TD>{{ '%0.2f'| format(r.positivity_rate*100) }}%</TD><TD class="{{ r.status }}">{{ r.status }}</TD>
                 </TR>
                 {% endfor %}
             </TABLE>
@@ -79,10 +84,12 @@
     </TR>
 </TABLE>
 
+<BR>
+<HR>
 
 <TABLE>
     <TR>
-        <TH colspan="2">Positivity rate in Region</TH>
+        <TH colspan="2">Positivity Rate in Region</TH>
     </TR>
     <TR>
         <TH>Description</TH><TD>For COVID regions, the positivity testing rate should be less than or equal to 8% for three days according to data provided by <A HREF="https://www.dph.illinois.gov/regionmetrics?regionID=9">IDPH</A>.</TD>
@@ -98,7 +105,7 @@
                 </TR>
                 {% for r in snap.region_data.regions %}
                 <TR>
-                    <TD>{{ r.region }}</TD><TD>{{ r.total_tests }}</TD><TD>{{ r.positive_tests }}</TD><TD>{{ r.positivity_rate }}</TD><TD>{{ r.status }}</TD>
+                    <TD>{{ r.region }}</TD><TD>{{ r.total_tests }}</TD><TD>{{ r.positive_tests }}</TD><TD>{{ '%0.2f'| format(r.positivity_rate*100) }}%</TD><TD class="{{ r.status }}">{{ r.status }}</TD>
                 </TR>
                 {% endfor %}
             </TABLE>

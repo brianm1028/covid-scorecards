@@ -45,7 +45,7 @@ class Snapshot:
     def status(self):
         data = {
             'update_date': datetime.today(),
-            'status': 0,
+            'status': False,
         }
         return data
 
@@ -57,13 +57,14 @@ class PPESnapshot(Snapshot):
 
     def status(self):
         data = {
+            'district_id': self.district.id,
             'update_date': datetime.today(),
-            'status': 0,
+            'status': False,
             'facilities': [
                 {
                     'facility': 'Cherokee',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': True,
                     'ppe_types': [
                         {
                             'ppe_type': 'Cloth Masks',
@@ -84,7 +85,7 @@ class PPESnapshot(Snapshot):
                 {
                     'facility': 'Everett',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': False,
                     'ppe_types': [
                         {
                             'ppe_type': 'Cloth Masks',
@@ -105,7 +106,7 @@ class PPESnapshot(Snapshot):
                 {
                     'facility': 'Sheridan',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': True,
                     'ppe_types': [
                         {
                             'ppe_type': 'Cloth Masks',
@@ -126,7 +127,7 @@ class PPESnapshot(Snapshot):
                 {
                     'facility': 'Deerpath',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': False,
                     'ppe_types': [
                         {
                             'ppe_type': 'Cloth Masks',
@@ -147,7 +148,7 @@ class PPESnapshot(Snapshot):
                 {
                     'facility': 'LFHS',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': True,
                     'ppe_types': [
                         {
                             'ppe_type': 'Cloth Masks',
@@ -178,13 +179,14 @@ class StaffSnapshot(Snapshot):
 
     def status(self):
         data = {
+            'district_id': self.district.id,
             'update_date': datetime.today(),
-            'status': 0,
+            'status': False,
             'facilities': [
                 {
                     'facility': 'Cherokee',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': True,
                     'roles': [
                         {
                             'role_type': 'Certified Educator',
@@ -205,7 +207,7 @@ class StaffSnapshot(Snapshot):
                 {
                     'facility': 'Everett',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': False,
                     'roles': [
                         {
                             'role_type': 'Certified Educator',
@@ -226,7 +228,7 @@ class StaffSnapshot(Snapshot):
                 {
                     'facility': 'Sheridan',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': True,
                     'roles': [
                         {
                             'role_type': 'Certified Educator',
@@ -247,7 +249,7 @@ class StaffSnapshot(Snapshot):
                 {
                     'facility': 'Deerpath',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': False,
                     'roles': [
                         {
                             'role_type': 'Certified Educator',
@@ -268,7 +270,7 @@ class StaffSnapshot(Snapshot):
                 {
                     'facility': 'LFHS',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': True,
                     'roles': [
                         {
                             'role_type': 'Certified Educator',
@@ -299,13 +301,14 @@ class SpaceSnapshot(Snapshot):
 
     def status(self):
         data = {
+            'district_id': self.district.id,
             'update_date': datetime.today(),
-            'status': 0,
+            'status': False,
             'facilities': [
                 {
                     'facility': 'Cherokee',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': True,
                     'rooms': [
                         {
                             'room_type': 'General Classroom',
@@ -313,7 +316,7 @@ class SpaceSnapshot(Snapshot):
                             'avg_room_capacity': 10,
                             'capacity': 300,
                             'demand': 275,
-                            'fill_pct': 300/275,
+                            'fill_pct': 275/300,
                             'avg_class': 275/10,
                             'status': (275 < 300)
                         },
@@ -323,7 +326,7 @@ class SpaceSnapshot(Snapshot):
                             'avg_room_capacity': 10,
                             'capacity': 30,
                             'demand': 40,
-                            'fill_pct': 30 / 40,
+                            'fill_pct': 40 / 30,
                             'avg_class': 40 / 3,
                             'status': (40 < 30)
                         }
@@ -333,7 +336,7 @@ class SpaceSnapshot(Snapshot):
                 {
                     'facility': 'Everett',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': False,
                     'rooms': [
                         {
                             'room_type': 'General Classroom',
@@ -341,7 +344,7 @@ class SpaceSnapshot(Snapshot):
                             'avg_room_capacity': 10,
                             'capacity': 300,
                             'demand': 275,
-                            'fill_pct': 300 / 275,
+                            'fill_pct': 275/300,
                             'avg_class': 275 / 10,
                             'status': (275 < 300)
                         },
@@ -351,7 +354,7 @@ class SpaceSnapshot(Snapshot):
                             'avg_room_capacity': 10,
                             'capacity': 30,
                             'demand': 40,
-                            'fill_pct': 30 / 40,
+                            'fill_pct': 40 / 30,
                             'avg_class': 40 / 3,
                             'status': (40 < 30)
                         }
@@ -361,7 +364,7 @@ class SpaceSnapshot(Snapshot):
                 {
                     'facility': 'Sheridan',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': True,
                     'rooms': [
                         {
                             'room_type': 'General Classroom',
@@ -369,7 +372,7 @@ class SpaceSnapshot(Snapshot):
                             'avg_room_capacity': 10,
                             'capacity': 300,
                             'demand': 275,
-                            'fill_pct': 300 / 275,
+                            'fill_pct': 275 / 300,
                             'avg_class': 275 / 10,
                             'status': (275 < 300)
                         },
@@ -379,7 +382,7 @@ class SpaceSnapshot(Snapshot):
                             'avg_room_capacity': 10,
                             'capacity': 30,
                             'demand': 40,
-                            'fill_pct': 30 / 40,
+                            'fill_pct': 40 / 30,
                             'avg_class': 40 / 3,
                             'status': (40 < 30)
                         }
@@ -389,7 +392,7 @@ class SpaceSnapshot(Snapshot):
                 {
                     'facility': 'Deerpath',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': False,
                     'rooms': [
                         {
                             'room_type': 'General Classroom',
@@ -397,7 +400,7 @@ class SpaceSnapshot(Snapshot):
                             'avg_room_capacity': 10,
                             'capacity': 300,
                             'demand': 275,
-                            'fill_pct': 300 / 275,
+                            'fill_pct': 275 / 300,
                             'avg_class': 275 / 10,
                             'status': (275 < 300)
                         },
@@ -407,7 +410,7 @@ class SpaceSnapshot(Snapshot):
                             'avg_room_capacity': 10,
                             'capacity': 30,
                             'demand': 40,
-                            'fill_pct': 30 / 40,
+                            'fill_pct': 40 / 30,
                             'avg_class': 40 / 3,
                             'status': (40 < 30)
                         }
@@ -417,7 +420,7 @@ class SpaceSnapshot(Snapshot):
                 {
                     'facility': 'LFHS',
                     'update_date': datetime.today(),
-                    'status': 0,
+                    'status': True,
                     'rooms': [
                         {
                             'room_type': 'General Classroom',
@@ -425,7 +428,7 @@ class SpaceSnapshot(Snapshot):
                             'avg_room_capacity': 10,
                             'capacity': 300,
                             'demand': 275,
-                            'fill_pct': 300 / 275,
+                            'fill_pct': 275 / 300,
                             'avg_class': 275 / 10,
                             'status': (275 < 300)
                         },
@@ -435,7 +438,7 @@ class SpaceSnapshot(Snapshot):
                             'avg_room_capacity': 10,
                             'capacity': 30,
                             'demand': 40,
-                            'fill_pct': 30 / 40,
+                            'fill_pct': 40 / 30,
                             'avg_class': 40 / 3,
                             'status': (40 < 30)
                         }
@@ -455,11 +458,12 @@ class TransSnapshot(Snapshot):
 
     def status(self):
         data = {
+            'district_id': self.district.id,
             'update_date': datetime.today(),
-            'status': 0,
+            'status': False,
             'buses': {
                 'update_date': datetime.today(),
-                'status': 0,
+                'status': True,
                 'bus_groups': [
                     {
                         'bus_group': 'AM Elementary',
@@ -479,7 +483,7 @@ class TransSnapshot(Snapshot):
             },
             'drivers': {
                 'update_date': datetime.today(),
-                'status': 0,
+                'status': False,
                 'bus_groups': [
                     {
                         'bus_group': 'AM Elementary',
@@ -510,31 +514,32 @@ class GeoSnapshot(Snapshot):
 
     def status(self):
         data = {
+            'district_id': self.district.id,
             'update_date': datetime.today(),
-            'status': 0,
+            'status': True,
             'zip_data': {
                 'update_date': datetime.today(),
-                'status': 0,
+                'status': False,
                 'zip_codes': [
                     {
                         'zip_code': '60044',
                         'population': 12345,
                         'new_cases': 20,
-                        'cases_per_10k': 10*10000/12345,
-                        'status': (10*10000/12345 < 8)
+                        'cases_per_10k': 20*10000/12345,
+                        'status': (20*10000/12345 < 8)
                     },
                     {
                         'zip_code': '60045',
                         'population': 12345,
                         'new_cases': 2,
-                        'cases_per_10k': 10 * 10000 / 12345,
-                        'status': (10 * 10000 / 12345 < 8)
+                        'cases_per_10k': 2 * 10000 / 12345,
+                        'status': (2 * 10000 / 12345 < 8)
                     }
                 ]
             },
             'county_data': {
                 'update_date': datetime.today(),
-                'status': 0,
+                'status': True,
                 'counties': [
                     {
                         'county': 'Lake',
@@ -548,13 +553,13 @@ class GeoSnapshot(Snapshot):
                         'total_tests': 234,
                         'positive_tests': 40,
                         'positivity_rate': 40 / 234,
-                        'status': (20 / 12345 < .08)
+                        'status': (40 / 234 < .08)
                     }
                 ]
             },
             'region_data': {
                 'update_date': datetime.today(),
-                'status': 0,
+                'status': False,
                 'regions': [
                     {
                         'region': 9,

@@ -5,23 +5,26 @@
     <meta charset="UTF-8">
     <title>Facility Staffing Metrics</title>
     <link rel="stylesheet" media="all" href="http://lakeforestschools.org/uploaded/themes/default_16/css/main.css?1541690790">
+    <link rel="stylesheet" href="http://127.0.0.1:5000/static/scorecards.css">
 </head>
 <body>
 
-<H1>Facility Staffing Metrics</H1>
+<H1><A HREF="/snapshot/{{ snap.district_id }}">&lt;</A>  Facility Staffing Metrics</H1>
 
 <TABLE>
     <TR>
-        <TH>Overall Facility Staffing Status</TH><TD>{{ snap.status }}</TD>
+        <TH>Facility Staffing Status</TH><TD class="{{ snap.status }}">{{ snap.status }}</TD>
     </TR>
     {% for r in snap.facilities %}
     <TR>
-        <TH>&nbsp;&nbsp;{{ r.facility }} Staffing Status</TH><TD>{{ r.status }}</TD>
+        <TH>&nbsp;&nbsp;{{ r.facility }} Staffing Status</TH><TD class="{{ r.status }}">{{ r.status }}</TD>
     </TR>
     {% endfor %}
 </TABLE>
 
 {% for r in snap.facilities %}
+<BR>
+<HR>
 <TABLE>
     <TR>
         <TH colspan="2">{{ r.facility }} Staffing Status</TH>
@@ -40,7 +43,7 @@
                 </TR>
                 {% for s in r.roles %}
                 <TR>
-                    <TD>{{ s.role_type }}</TD><TD>{{ s.required }}</TD><TD>{{ s.available }}</TD><TD>{{ s.substitutes }}</TD><TD>{{ s.status }}</TD>
+                    <TD>{{ s.role_type }}</TD><TD>{{ s.required }}</TD><TD>{{ s.available }}</TD><TD>{{ s.substitutes }}</TD><TD class="{{ s.status }}">{{ s.status }}</TD>
                 </TR>
                 {% endfor %}
             </TABLE>

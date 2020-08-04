@@ -1,0 +1,19 @@
+th, td {
+  padding: 10px;
+  text-align: left;
+  vertical-align:top;
+}
+
+td.True {
+  text-align: center;
+  color: black;
+  background: lightgreen;
+  border-radius: 5px;
+}
+
+td.False {
+  text-align: center;
+  color: black;
+  background: lightcoral;
+  border-radius: 5px;
+}
