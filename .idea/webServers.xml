@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="fe577462-3c54-4860-b09c-3ecf8238345a" name="3.93.247.43" url="http://lfschools.bsmartin.info/">
+        <fileTransfer rootFolder="/home/ec2-user" accessType="SFTP" host="3.93.247.43" port="22" sshConfigId="e8dfdba6-7884-4e0d-a8bb-43b8a34ef853" sshConfig="ec2-user@3.93.247.43:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

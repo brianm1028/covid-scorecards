@@ -10,30 +10,60 @@
 
 <H1>COVID READINESS DASHBOARD - DISTRICT {{ snap.district_id }}</H1>
 
-<TABLE>
+<TABLE width="800px">
     <TR>
-        <TH>Overall Status</TH><TD class="{{ snap.status }}">{{ snap.status }}</TD>
-    </TR>
-    <TR>
-        <TD colspan="2">
+        <TD width="300px">
             <TABLE>
                 <TR>
-                    <TH>PPE Supply Status</TH><TD class="{{ snap.snapshots.ppe.status }}"><A HREF="/snapshot/ppe/{{ snap.district_id }}">{{ snap.snapshots.ppe.status }}</A></TD>
+                    <TH>Overall Status</TH><TD class="{{ snap.status }}">{{ snap.status }}</TD>
                 </TR>
                 <TR>
-                    <TH>Facility Staffing Status</TH><TD class="{{ snap.snapshots.staff.status }}"><A HREF="/snapshot/staff/{{ snap.district_id }}">{{ snap.snapshots.staff.status }}</A></TD>
-                </TR>
-                <TR>
-                    <TH>Facility Space Status</TH><TD class="{{ snap.snapshots.space.status }}"><A HREF="/snapshot/space/{{ snap.district_id }}">{{ snap.snapshots.space.status }}</A></TD>
-                </TR>
-                <TR>
-                    <TH>Transportation Status</TH><TD class="{{ snap.snapshots.trans.status }}"><A HREF="/snapshot/trans/{{ snap.district_id }}">{{ snap.snapshots.trans.status }}</A></TD>
-                </TR>
-                <TR>
-                    <TH>Regional Conditions Status</TH><TD class="{{ snap.snapshots.geo.status }}"><A HREF="/snapshot/geo/{{ snap.district_id }}">{{ snap.snapshots.geo.status }}</A></TD>
+                    <TD colspan="2">
+                        <TABLE>
+                            <TR>
+                                <TH>PPE Supply Status</TH><TD class="{{ snap.snapshots.ppe.status }}"><A HREF="/snapshot/ppe/{{ snap.district_id }}">{{ snap.snapshots.ppe.status }}</A></TD>
+                            </TR>
+                            <TR>
+                                <TH>Facility Staffing Status</TH><TD class="{{ snap.snapshots.staff.status }}"><A HREF="/snapshot/staff/{{ snap.district_id }}">{{ snap.snapshots.staff.status }}</A></TD>
+                            </TR>
+                            <TR>
+                                <TH>Facility Space Status</TH><TD class="{{ snap.snapshots.space.status }}"><A HREF="/snapshot/space/{{ snap.district_id }}">{{ snap.snapshots.space.status }}</A></TD>
+                            </TR>
+                            <TR>
+                                <TH>Transportation Status</TH><TD class="{{ snap.snapshots.trans.status }}"><A HREF="/snapshot/trans/{{ snap.district_id }}">{{ snap.snapshots.trans.status }}</A></TD>
+                            </TR>
+                            <TR>
+                                <TH>Regional Conditions Status</TH><TD class="{{ snap.snapshots.geo.status }}"><A HREF="/snapshot/geo/{{ snap.district_id }}">{{ snap.snapshots.geo.status }}</A></TD>
+                            </TR>
+                        </TABLE>
+                    </TD>
                 </TR>
             </TABLE>
-        </TD>
+
+        </TD width="500px">
+        <TH>These dashboards provide an overview on the status of a set of metrics which District {{ snap.district_id }} Administrators will use in making the determination of whether it is necessary to move to a more restrictive position with respect to COVID-19 response and management.<BR><BR>
+            While the decision to open/close schools rests with the administration, these dashboards should not be considered an indicator of the status of schools being open/closed.<BR><BR>
+            The ultimate decision to open/close schools will be made:<BR>
+            <UL>
+                <LI>By reviewing these metrics with respect to prevailing conditions</LI>
+                <LI>With guidance from prevailing authorities:
+                    <UL>
+                        <LI>Centers for Disease Control</LI>
+                        <LI>Illinois State Board of Education</LI>
+                        <LI>ILlinois Department of Public Health</LI>
+                        <LI>Lake County Department of Public Health</LI>
+                    </UL>
+                </LI>
+                <LI>In consulatation with:
+                    <UL>
+                        <LI>School Administrators</LI>
+                        <LI>Local District Administrative Counterparts</LI>
+                        <LI>Educator Union Representatives</LI>
+                        <LI>Parent Representatives</LI>
+                        <LI>Individual Experts and Professionals</LI>
+                    </UL>
+                </LI>
+        </TH>
     </TR>
 </TABLE>
 

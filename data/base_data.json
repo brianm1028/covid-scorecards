@@ -1,0 +1,503 @@
+{
+  "115": {
+    "staff": {
+      "facilities": [
+        {
+          "facility": "LFHS",
+          "roles": [
+            {
+              "role_type": "Full Time Certified Educator",
+              "required": 50,
+              "available": 55,
+              "substitutes": 4
+            },
+            {
+              "role_type": "Maintenance Staff",
+              "required": 8,
+              "available": 10,
+              "substitutes": 2
+            }
+          ]
+        }
+      ]
+    },
+    "ppe": {
+      "facilities": [
+        {
+          "facility": "LFHS",
+          "ppe_types": [
+            {
+              "ppe_type": "Fabric Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Paper Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            }
+          ]
+        }
+      ]
+    },
+    "space": {
+      "facilities": [
+        {
+          "facility": "LFHS",
+          "rooms": [
+            {
+              "room_type": "General Education Classroom",
+              "room_count": 60,
+              "room_avg_capacity": 10,
+              "capacity": 600,
+              "demand": 0
+            }
+          ]
+        }
+      ]
+    },
+    "geo": {
+      "regions": [
+        {
+          "region": 9,
+          "population": 1009402,
+          "total_tests": 188459,
+          "positive_tests": 15214,
+          "threshold": 0.08
+        }
+      ],
+      "counties": [
+        {
+          "county": "Lake",
+          "COVIDRegion": 9,
+          "population": 700832,
+          "total_tests": 146349,
+          "positive_tests": 12223,
+          "threshold": 0.08
+        },
+        {
+          "county": "McHenry",
+          "COVIDRegion": 9,
+          "population": 308570,
+          "total_tests": 42110,
+          "positive_tests": 2991,
+          "threshold": 0.08
+        }
+      ],
+      "zip_codes": [
+        {
+          "zip_code": "60044",
+          "population": 2342,
+          "new_cases": 131,
+          "threshold": 8
+        },
+        {
+          "zip_code": "60045",
+          "population": 3890,
+          "new_cases": 154,
+          "threshold": 8
+        }
+      ]
+    },
+    "trans": {
+      "bus_groups": [
+        {
+          "group_name": "AM LFHS Inbound",
+          "bus_count": 12,
+          "seats_per_bus": 6
+        },
+        {
+          "group_name": "PM LFHS Outbound",
+          "bus_count": 12,
+          "seats_per_bus": 6
+        },
+        {
+          "group_name": "AM LFHS Inbound (Tech)",
+          "bus_count": 1,
+          "seats_per_bus": 6
+        },
+        {
+          "group_name": "PM LFHS Outbound (Tech)",
+          "bus_count": 1,
+          "seats_per_bus": 6
+        }
+      ]
+    }
+  },
+  "67": {
+    "staff": {
+      "facilities": [
+        {
+          "facility": "Cherokee",
+          "roles": [
+            {
+              "role_type": "Full Time Certified Educator",
+              "required": 50,
+              "available": 55,
+              "substitutes": 4
+            },
+            {
+              "role_type": "Maintenance Staff",
+              "required": 8,
+              "available": 10,
+              "substitutes": 2
+            }
+          ]
+        },
+        {
+          "facility": "Everett",
+          "roles": [
+            {
+              "role_type": "Full Time Certified Educator",
+              "required": 50,
+              "available": 55,
+              "substitutes": 4
+            },
+            {
+              "role_type": "Maintenance Staff",
+              "required": 8,
+              "available": 10,
+              "substitutes": 2
+            }
+          ]
+        },
+        {
+          "facility": "Sheridan",
+          "roles": [
+            {
+              "role_type": "Full Time Certified Educator",
+              "required": 50,
+              "available": 55,
+              "substitutes": 4
+            },
+            {
+              "role_type": "Maintenance Staff",
+              "required": 8,
+              "available": 10,
+              "substitutes": 2
+            }
+          ]
+        },
+        {
+          "facility": "Deerpath",
+          "roles": [
+            {
+              "role_type": "Full Time Certified Educator",
+              "required": 50,
+              "available": 55,
+              "substitutes": 4
+            },
+            {
+              "role_type": "Maintenance Staff",
+              "required": 8,
+              "available": 10,
+              "substitutes": 2
+            }
+          ]
+        }
+      ]
+    },
+    "ppe": {
+      "facilities": [
+        {
+          "facility": "Cherokee",
+          "ppe_types": [
+            {
+              "ppe_type": "Fabric Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Paper Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            }
+          ]
+        },
+        {
+          "facility": "Everett",
+          "ppe_types": [
+            {
+              "ppe_type": "Fabric Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Paper Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            }
+          ]
+        },
+        {
+          "facility": "Sheridan",
+          "ppe_types": [
+            {
+              "ppe_type": "Fabric Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Paper Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            }
+          ]
+        },
+        {
+          "facility": "Deerpath",
+          "ppe_types": [
+            {
+              "ppe_type": "Fabric Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Paper Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            }
+          ]
+        }
+      ]
+    },
+    "space": {
+      "facilities": [
+        {
+          "facility": "Cherokee",
+          "rooms": [
+            {
+              "room_type": "General Education Kindergarten Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 45
+            },
+            {
+              "room_type": "General Education Grade 1 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 47
+            },
+            {
+              "room_type": "General Education Grade 2 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 59
+            },
+            {
+              "room_type": "General Education Grade 3 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 52
+            },
+            {
+              "room_type": "General Education Grade 4 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 53
+            }
+          ]
+        },
+        {
+          "facility": "Everett",
+          "rooms": [
+            {
+              "room_type": "General Education Pre-K/Kindergarten Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 36
+            },
+            {
+              "room_type": "General Education Grade 1 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 52
+            },
+            {
+              "room_type": "General Education Grade 2 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 60
+            },
+            {
+              "room_type": "General Education Grade 3 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 39
+            },
+            {
+              "room_type": "General Education Grade 4 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 43
+            }
+          ]
+        },
+        {
+          "facility": "Sheridan",
+          "rooms": [
+            {
+              "room_type": "General Education Pre-K/Kindergarten Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 49
+            },
+            {
+              "room_type": "General Education Grade 1 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 26
+            },
+            {
+              "room_type": "General Education Grade 2 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 35
+            },
+            {
+              "room_type": "General Education Grade 3 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 44
+            },
+            {
+              "room_type": "General Education Grade 4 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 47
+            }
+          ]
+        },
+        {
+          "facility": "Deerpath",
+          "rooms": [
+            {
+              "room_type": "General Education Grade 5 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 179
+            },
+            {
+              "room_type": "General Education Grade 6 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 161
+            },
+            {
+              "room_type": "General Education Grade 7 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 161
+            },
+            {
+              "room_type": "General Education Grade 8 Classroom",
+              "room_count": 4,
+              "room_avg_capacity": 10,
+              "capacity": 40,
+              "demand": 166
+            }
+          ]
+        }
+      ]
+    },
+    "geo": {
+      "regions": [
+        {
+          "region": 9,
+          "population": 1009402,
+          "total_tests": 188459,
+          "positive_tests": 15214,
+          "threshold": 0.08
+        }
+      ],
+      "counties": [
+        {
+          "county": "Lake",
+          "COVIDRegion": 9,
+          "population": 700832,
+          "total_tests": 146349,
+          "positive_tests": 12223,
+          "threshold": 0.08
+        },
+        {
+          "county": "McHenry",
+          "COVIDRegion": 9,
+          "population": 308570,
+          "total_tests": 42110,
+          "positive_tests": 2991,
+          "threshold": 0.08
+        }
+      ],
+      "zip_codes": [
+        {
+          "zip_code": "60045",
+          "population": 3890,
+          "new_cases": 154,
+          "threshold": 8
+        }
+      ]
+    },
+    "trans": {
+      "bus_groups": [
+        {
+          "group_name": "AM Elementary Inbound",
+          "bus_count": 16,
+          "seats_per_bus": 6
+        },
+        {
+          "group_name": "AM Elementary Outbound",
+          "bus_count": 16,
+          "seats_per_bus": 6
+        },
+        {
+          "group_name": "AM Inspiration",
+          "bus_count": 2,
+          "seats_per_bus": 6
+        },
+        {
+          "group_name": "PM Inspiration",
+          "bus_count": 2,
+          "seats_per_bus": 6
+        },
+        {
+          "group_name": "AM DPMS Inbound",
+          "bus_count": 16,
+          "seats_per_bus": 6
+        },
+        {
+          "group_name": "AM DPMS Outbound",
+          "bus_count": 16,
+          "seats_per_bus": 6
+        }
+      ]
+    }
+  }
+}

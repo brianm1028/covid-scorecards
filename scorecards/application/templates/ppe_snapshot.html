@@ -1,4 +1,3 @@
-{#TODO create template for ppe_snapshot#}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,11 +38,11 @@
         <TD colspan="2">
             <TABLE>
                 <TR>
-                    <TH>PPE Type</TH><TH>Facility Inventory</TH><TH>7-Day Demand</TH><TH>14-Day Demand</TH><TH>Status</TH>
+                    <TH>PPE Type</TH><TH>Facility Inventory</TH><TH>7-Day Demand</TH><TH>14-Day Demand</TH><TH>Fully Stocked</TH><TH>Status</TH>
                 </TR>
                 {% for s in r.ppe_types %}
                 <TR>
-                    <TD>{{ s.ppe_type }}</TD><TD>{{ s.inventory }}</TD><TD>{{ s.demand7 }}</TD><TD>{{ s.demand14 }}</TD><TD class="{{ s.status }}">{{ s.status }}</TD>
+                    <TD>{{ s.ppe_type }}</TD><TD>{{ s.inventory }}</TD><TD>{{ s.demand7 }}</TD><TD>{{ s.demand14 }}</TD><TD class="{{ s.fullstock }}">{{ s.fullstock }}</TD><TD class="{{ s.status }}">{{ s.status }}</TD>
                 </TR>
                 {% endfor %}
             </TABLE>

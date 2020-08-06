@@ -1,4 +1,5 @@
 """Logged-in page routes."""
+import json
 from flask import Blueprint, render_template, redirect, url_for
 from flask_login import current_user, login_required, logout_user
 
@@ -8,6 +9,11 @@ main_bp = Blueprint(
     template_folder='templates',
     static_folder='static'
 )
+@main_bp.route('/')
+def index():
+    with open('data/base_data.json') as f:
+        return render_template('index.html', data=json.load(f))
+
 
 
 @main_bp.route('/status')

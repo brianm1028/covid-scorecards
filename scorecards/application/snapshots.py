@@ -1,8 +1,7 @@
 from flask import Blueprint, render_template
 from .scorecards import District
 from .scorecards import SnapshotSummary
-from .scorecards import PPESnapshot, StaffSnapshot, SpaceSnapshot, TransSnapshot, GeoSnapshot
-
+from .scorecards.Snapshots import PPESnapshot, StaffSnapshot, SpaceSnapshot, TransSnapshot, GeoSnapshot
 
 # Blueprint Configuration
 snap_bp = Blueprint(

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="3.93.247.43" id="e8dfdba6-7884-4e0d-a8bb-43b8a34ef853" keyPath="C:\Users\MARTIBS\Downloads\lfschools.pem" port="22" nameFormat="DESCRIPTIVE" username="ec2-user" />
+    </configs>
+  </component>
+</project>
