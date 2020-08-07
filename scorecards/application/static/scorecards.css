@@ -17,3 +17,24 @@ td.False {
   background: lightcoral;
   border-radius: 5px;
 }
+
+td.Clear {
+  text-align: center;
+  color: black;
+  background: lightgreen;
+  border-radius: 5px;
+}
+
+td.AtRisk {
+  text-align: center;
+  color: black;
+  background: lightsalmon;
+  border-radius: 5px;
+}
+
+td.OutOfLine {
+  text-align: center;
+  color: black;
+  background: lightcoral;
+  border-radius: 5px;
+}

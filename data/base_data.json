@@ -27,13 +27,43 @@
           "facility": "LFHS",
           "ppe_types": [
             {
-              "ppe_type": "Fabric Masks",
+              "ppe_type": "Cloth Masks",
               "inventory": 60,
               "demand7": 10,
               "demand14": 70
             },
             {
               "ppe_type": "Paper Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Communicator Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Wipes",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Gloves",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Cleaning Solution",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Face Shields",
               "inventory": 60,
               "demand7": 10,
               "demand14": 70
@@ -205,13 +235,43 @@
           "facility": "Cherokee",
           "ppe_types": [
             {
-              "ppe_type": "Fabric Masks",
+              "ppe_type": "Cloth Masks",
               "inventory": 60,
               "demand7": 10,
               "demand14": 70
             },
             {
               "ppe_type": "Paper Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Communicator Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Wipes",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Gloves",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Cleaning Solution",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Face Shields",
               "inventory": 60,
               "demand7": 10,
               "demand14": 70
@@ -222,13 +282,43 @@
           "facility": "Everett",
           "ppe_types": [
             {
-              "ppe_type": "Fabric Masks",
+              "ppe_type": "Cloth Masks",
               "inventory": 60,
               "demand7": 10,
               "demand14": 70
             },
             {
               "ppe_type": "Paper Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Communicator Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Wipes",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Gloves",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Cleaning Solution",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Face Shields",
               "inventory": 60,
               "demand7": 10,
               "demand14": 70
@@ -239,13 +329,43 @@
           "facility": "Sheridan",
           "ppe_types": [
             {
-              "ppe_type": "Fabric Masks",
+              "ppe_type": "Cloth Masks",
               "inventory": 60,
               "demand7": 10,
               "demand14": 70
             },
             {
               "ppe_type": "Paper Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Communicator Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Wipes",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Gloves",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Cleaning Solution",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Face Shields",
               "inventory": 60,
               "demand7": 10,
               "demand14": 70
@@ -256,13 +376,43 @@
           "facility": "Deerpath",
           "ppe_types": [
             {
-              "ppe_type": "Fabric Masks",
+              "ppe_type": "Cloth Masks",
               "inventory": 60,
               "demand7": 10,
               "demand14": 70
             },
             {
               "ppe_type": "Paper Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Communicator Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Wipes",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Gloves",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Cleaning Solution",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Face Shields",
               "inventory": 60,
               "demand7": 10,
               "demand14": 70
