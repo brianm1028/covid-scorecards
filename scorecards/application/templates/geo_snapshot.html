@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Geographic Area Metrics</title>
     <link rel="stylesheet" media="all" href="http://lakeforestschools.org/uploaded/themes/default_16/css/main.css?1541690790">
-    <link rel="stylesheet" href="http://127.0.0.1:5000/static/scorecards.css">
+    <link rel="stylesheet" href="/static/scorecards.css">
 </head>
 <body>
 
@@ -33,7 +33,7 @@
         <TH colspan="2">New Cases in Zip Code</TH>
     </TR>
     <TR>
-        <TH>Description</TH><TD>For a zip codes areas, the new case count should be less than 8 per 10,000 residents.</TD>
+        <TH>Description</TH><TD>For a zip codes areas, the new case count should be less than 8 per 10,000 residents each day for 3 consecutive days according to data provided by <A HREF="https://www.dph.illinois.gov/countymetrics">IDPH</A>.</TD>
     </TR>
     <TR>
         <TH>Updates</TH><TD>Updated daily, last update on {{ snap.zip_data.update_date }}</TD>
@@ -42,11 +42,11 @@
         <TD colspan="2">
             <TABLE>
                 <TR>
-                    <TH>Zip Code</TH><TH>Population</TH><TH>New Case Count</TH><TH>Count per 10,000 residents</TH><TH>Status</TH>
+                    <TH>Zip Code</TH><TH>Population</TH><TH>{{ snap.zip_data.day1date }}</TH><TH>{{ snap.zip_data.day2date }}</TH><TH>{{ snap.zip_data.day3date }}</TH><TH>Status</TH>
                 </TR>
                 {% for r in snap.zip_data.zip_codes %}
                 <TR>
-                    <TD>{{ r.zip_code }}</TD><TD>{{ r.population }}</TD><TD>{{ r.new_cases }}</TD><TD>{{ '%0.2f'| format(r.cases_per_10k) }}</TD><TD class="{{ r.status }}">{{ r.status }}</TD>
+                    <TD>{{ r.zip_code }}</TD><TD>{{ r.population }}</TD><TD>{{ '%0.2f'| format(r.day1) }}</TD><TD>{{ '%0.2f'| format(r.day2) }}</TD><TD>{{ '%0.2f'| format(r.day3) }}</TD><TD class="{{ r.status }}">{{ r.status }}</TD>
                 </TR>
                 {% endfor %}
             </TABLE>
@@ -62,7 +62,7 @@
         <TH colspan="2">Positivity Rate in County</TH>
     </TR>
     <TR>
-        <TH>Description</TH><TD>For counties, the positivity testing rate should be less than or equal to 8% according to data provided by <A HREF="https://www.dph.illinois.gov/countymetrics">IDPH</A>.</TD>
+        <TH>Description</TH><TD>For counties, the positivity testing rate should be less than or equal to 8% per day for 3 consecutive days according to data provided by <A HREF="https://www.dph.illinois.gov/countymetrics">IDPH</A>.</TD>
     </TR>
     <TR>
         <TH>Updates</TH><TD>Updated daily, last update on {{ snap.county_data.update_date }}</TD>
@@ -71,11 +71,11 @@
         <TD colspan="2">
             <TABLE>
                 <TR>
-                    <TH>County</TH><TH>Tests</TH><TH>Positive Tests</TH><TH>Positivity Rate</TH><TH>Status</TH>
+                    <TH>County</TH><TH>{{ snap.county_data.day1date }}</TH><TH>{{ snap.county_data.day2date }}</TH><TH>{{ snap.county_data.day3date }}</TH><TH>Status</TH>
                 </TR>
                 {% for r in snap.county_data.counties %}
                 <TR>
-                    <TD>{{ r.county }}</TD><TD>{{ r.total_tests }}</TD><TD>{{ r.positive_tests }}</TD><TD>{{ '%0.2f'| format(r.positivity_rate*100) }}%</TD><TD class="{{ r.status }}">{{ r.status }}</TD>
+                    <TD>{{ r.county }}</TD><TD>{{ '%0.2f'| format(r.day1*100) }}%</TD><TD>{{ '%0.2f'| format(r.day2*100) }}%</TD><TD>{{ '%0.2f'| format(r.day3*100) }}%</TD><TD class="{{ r.status }}">{{ r.status }}</TD>
                 </TR>
                 {% endfor %}
             </TABLE>
@@ -91,7 +91,7 @@
         <TH colspan="2">Positivity Rate in Region</TH>
     </TR>
     <TR>
-        <TH>Description</TH><TD>For COVID regions, the positivity testing rate should be less than or equal to 8% for three days according to data provided by <A HREF="https://www.dph.illinois.gov/regionmetrics?regionID=9">IDPH</A>.</TD>
+        <TH>Description</TH><TD>For COVID regions, the positivity testing rate should be less than or equal to 8% each day for three consecutive days according to data provided by <A HREF="https://www.dph.illinois.gov/regionmetrics?regionID=9">IDPH</A>.</TD>
     </TR>
     <TR>
         <TH>Updates</TH><TD>Updated daily, last update on {{ snap.region_data.update_date }}</TD>
@@ -100,11 +100,11 @@
         <TD colspan="2">
             <TABLE>
                 <TR>
-                    <TH>Region</TH><TH>Tests</TH><TH>Positive Tests</TH><TH>Positivity Rate</TH><TH>Status</TH>
+                    <TH>Region</TH><TH>{{ snap.region_data.day1date }}</TH><TH>{{ snap.region_data.day2date }}</TH><TH>{{ snap.region_data.day3date }}</TH><TH>Status</TH>
                 </TR>
                 {% for r in snap.region_data.regions %}
                 <TR>
-                    <TD>{{ r.region }}</TD><TD>{{ r.total_tests }}</TD><TD>{{ r.positive_tests }}</TD><TD>{{ '%0.2f'| format(r.positivity_rate*100) }}%</TD><TD class="{{ r.status }}">{{ r.status }}</TD>
+                    <TD>{{ r.region }}</TD><TD>{{ '%0.2f'| format(r.day1*100) }}%</TD><TD>{{ '%0.2f'| format(r.day2*100) }}%</TD><TD>{{ '%0.2f'| format(r.day3*100) }}%</TD><TD class="{{ r.status }}">{{ r.status }}</TD>
                 </TR>
                 {% endfor %}
             </TABLE>

@@ -10,6 +10,7 @@
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/.idea" />
             <excludedPath local="true" path="$PROJECT_DIR$/venv" />
+            <excludedPath path="/covid-scorecards/logs" />
           </excludedPaths>
         </serverdata>
       </paths>

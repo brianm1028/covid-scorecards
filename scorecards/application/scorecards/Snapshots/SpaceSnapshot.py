@@ -5,9 +5,8 @@ from ..Snapshot import Snapshot
 class SpaceSnapshot(Snapshot):
 
     def __init__(self, district):
-        self.district = district
-        with open('data/base_data.json') as f:
-            self.base_data = json.load(f)[self.district.id]['space']
+        super().__init__(district)
+        self.base_data=self.dc.base_data['space']
 
     def status(self):
         data = {

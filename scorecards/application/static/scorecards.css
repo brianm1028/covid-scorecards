@@ -8,6 +8,8 @@ td.True {
   text-align: center;
   color: black;
   background: lightgreen;
+  background-color: lightgreen;
+  bgcolor: lightgreen;
   border-radius: 5px;
 }
 
@@ -15,6 +17,8 @@ td.False {
   text-align: center;
   color: black;
   background: lightcoral;
+  background-color: lightcoral;
+  bgcolor: lightcoral;
   border-radius: 5px;
 }
 
@@ -22,6 +26,8 @@ td.Clear {
   text-align: center;
   color: black;
   background: lightgreen;
+  background-color: lightgreen;
+  bgcolor: lightgreen;
   border-radius: 5px;
 }
 
@@ -29,6 +35,8 @@ td.AtRisk {
   text-align: center;
   color: black;
   background: lightsalmon;
+  background-color: lightsalmon;
+  bgcolor: lightsalmon;
   border-radius: 5px;
 }
 
@@ -36,5 +44,7 @@ td.OutOfLine {
   text-align: center;
   color: black;
   background: lightcoral;
+  background-color: lightcoral;
+  bgcolor: lightcoral;
   border-radius: 5px;
 }

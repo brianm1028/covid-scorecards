@@ -3,50 +3,15 @@ import requests
 import json
 from ..Snapshot import Snapshot
 
-
-# TODO move to a utility function library
-def date_in_window(dv, td):
-    d = datetime.strptime(dv, '%m/%d/%Y')
-    return (d <= datetime.today()) and (d >= (datetime.today() - td))
-
-
-# TODO replace county_historical by moving into risk_metrics
-def county_historical(district):
-    r = requests.get('https://www.dph.illinois.gov/sitefiles/COVIDHistoricalTestResults.json?nocache=1')
-    county_history = r.json()['historical_county']
-
-    data = []
-    d = [r for r in county_history['values'] if date_in_window(r['testDate'], timedelta(days=7))]
-    for r in d:
-        data.append({
-            'testDate': r['testDate'],
-            'values': [s for s in r['values'] if s['County'] in district.counties]
-        })
-    print(data)
-
-
-# TODO move risk_metrics to static object methods
-def risk_metrics(district):
-    r = requests.get('https://www.dph.illinois.gov/sitefiles/COVIDCountyRiskMetrics.json?nocache=1')
-    tp = r.json()['testPositivity']
-
-    data = []
-    d = [r for r in tp if date_in_window(r['report_date'], timedelta(days=7))]
-    for r in d:
-        data.append({
-            'report_date': r['report_date'],
-            'values': [s for s in r['values'] if s['County'] in district.counties]
-        })
-    print(data)
-
+from ..DataCache import DataCache
 
 # TODO add GeoSnapshot classs documentation
 class GeoSnapshot(Snapshot):
 
     def __init__(self, district):
-        self.district = district
-        with open('data/base_data.json') as f:
-            self.base_data = json.load(f)[self.district.id]['geo']
+        super().__init__(district)
+        self.base_data=self.dc.base_data['geo']
+
 
     def status(self):
         data = {
@@ -64,12 +29,20 @@ class GeoSnapshot(Snapshot):
         for z in self.base_data['zip_codes']:
             r = {
                 'zip_code': z['zip_code'],
-                'population': z['population'],
-                'new_cases': z['new_cases'],
-                'cases_per_10k': z['new_cases'] * 10000 / z['population'],
-                'status': (z['new_cases'] * 10000 / z['population'] < z['threshold'])
+                'day1':self.dc.zip_positivity[0][z['zip_code']]['positivity_rate'],
+                'day1date':self.dc.zip_positivity[0][z['zip_code']]['testDate'],
+                'day2':self.dc.zip_positivity[1][z['zip_code']]['positivity_rate'],
+                'day2date':self.dc.zip_positivity[1][z['zip_code']]['testDate'],
+                'day3':self.dc.zip_positivity[2][z['zip_code']]['positivity_rate'],
+                'day3date': self.dc.zip_positivity[2][z['zip_code']]['testDate']
             }
+            r['status']= ((r['day1'] < z['threshold']) and
+                          (r['day2'] < z['threshold']) and
+                          (r['day3'] < z['threshold']))
             data['zip_data']['zip_codes'].append(r)
+            data['zip_data']['day1date'] = self.dc.zip_positivity[0]['testDate']
+            data['zip_data']['day2date'] = self.dc.zip_positivity[1]['testDate']
+            data['zip_data']['day3date'] = self.dc.zip_positivity[2]['testDate']
             if not r['status']:
                 data['zip_data']['status'] = False
 
@@ -86,12 +59,17 @@ class GeoSnapshot(Snapshot):
         for c in self.base_data['counties']:
             r = {
                 'county': c['county'],
-                'total_tests': c['total_tests'],
-                'positive_tests': c['positive_tests'],
-                'positivity_rate': c['positive_tests']/c['total_tests'],
-                'status': (c['positive_tests']/c['total_tests'] < c['threshold'])
-            }
+                'day1':self.dc.county_positivity[0][c['county']]['positivity_rate'],
+                'day2':self.dc.county_positivity[1][c['county']]['positivity_rate'],
+                'day3':self.dc.county_positivity[2][c['county']]['positivity_rate']
+                }
+            r['status']= ((r['day1'] < c['threshold']) and
+                           (r['day2'] < c['threshold']) and
+                           (r['day3'] < c['threshold']))
             data['county_data']['counties'].append(r)
+            data['county_data']['day1date'] = self.dc.county_positivity[0]['testDate']
+            data['county_data']['day2date'] = self.dc.county_positivity[1]['testDate']
+            data['county_data']['day3date'] = self.dc.county_positivity[2]['testDate']
             if not r['status']:
                 data['county_data']['status'] = False
 
@@ -109,12 +87,17 @@ class GeoSnapshot(Snapshot):
         for g in self.base_data['regions']:
             r = {
                 'region': g['region'],
-                'total_tests': g['total_tests'],
-                'positive_tests': g['positive_tests'],
-                'positivity_rate': g['positive_tests']/g['total_tests'],
-                'status': (g['positive_tests']/g['total_tests'] < g['threshold'])
-            }
+                'day1': self.dc.region_positivity[0][g['region']]['positivity_rate'],
+                'day2': self.dc.region_positivity[1][g['region']]['positivity_rate'],
+                'day3': self.dc.region_positivity[2][g['region']]['positivity_rate']
+                }
+            r['status'] =  ((r['day1'] < g['threshold']) and
+                           (r['day1'] < g['threshold']) and
+                           (r['day1'] < g['threshold']))
             data['region_data']['regions'].append(r)
+            data['region_data']['day1date'] = self.dc.region_positivity[0]['testDate']
+            data['region_data']['day2date'] = self.dc.region_positivity[1]['testDate']
+            data['region_data']['day3date'] = self.dc.region_positivity[2]['testDate']
             if not r['status']:
                 data['region_data']['status'] = False
 
@@ -122,15 +105,3 @@ class GeoSnapshot(Snapshot):
             data['status'] = False
 
         return data
-
-    def zip_positivity_rate(self):
-        # TODO implement zip_code positivity rate calculation
-        pass
-
-    def county_positivity_rate(self):
-        # TODO implement county positivity rate calculation
-        pass
-
-    def region_positivity_rate(self):
-        # TODO implement region positivity rate calculation
-        pass

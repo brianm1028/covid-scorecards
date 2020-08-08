@@ -5,10 +5,8 @@ from ..Snapshot import Snapshot
 class PPESnapshot(Snapshot):
 
     def __init__(self, district):
-        self.district = district
-        with open('data/base_data.json') as f:
-            self.base_data = json.load(f)[self.district.id]['ppe']
-        #TODO Pull data in from PPE tracking database
+        super().__init__(district)
+        self.base_data=self.dc.base_data['ppe']
 
     def status(self):
         data = {
