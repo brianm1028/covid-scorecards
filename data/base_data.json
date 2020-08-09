@@ -429,36 +429,36 @@
             {
               "room_type": "General Education Kindergarten Classroom",
               "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_avg_capacity": 12,
+              "capacity": 48,
               "demand": 45
             },
             {
               "room_type": "General Education Grade 1 Classroom",
               "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_avg_capacity": 12,
+              "capacity": 48,
               "demand": 47
             },
             {
               "room_type": "General Education Grade 2 Classroom",
               "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_avg_capacity": 16,
+              "capacity": 64,
               "demand": 59
             },
             {
               "room_type": "General Education Grade 3 Classroom",
               "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_avg_capacity": 14.25,
+              "capacity": 57,
               "demand": 52
             },
             {
               "room_type": "General Education Grade 4 Classroom",
               "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_avg_capacity": 16,
+              "capacity": 64,
               "demand": 53
             }
           ]
@@ -468,37 +468,37 @@
           "rooms": [
             {
               "room_type": "General Education Pre-K/Kindergarten Classroom",
-              "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_count": 2,
+              "room_avg_capacity": 12,
+              "capacity": 24,
               "demand": 36
             },
             {
               "room_type": "General Education Grade 1 Classroom",
-              "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_count": 7,
+              "room_avg_capacity": 8.43,
+              "capacity": 59,
               "demand": 52
             },
             {
               "room_type": "General Education Grade 2 Classroom",
               "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_avg_capacity": 11.5,
+              "capacity": 46,
               "demand": 60
             },
             {
               "room_type": "General Education Grade 3 Classroom",
               "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_avg_capacity": 15.5,
+              "capacity": 62,
               "demand": 39
             },
             {
               "room_type": "General Education Grade 4 Classroom",
               "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_avg_capacity": 12,
+              "capacity": 48,
               "demand": 43
             }
           ]
@@ -508,37 +508,37 @@
           "rooms": [
             {
               "room_type": "General Education Pre-K/Kindergarten Classroom",
-              "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_count": 3,
+              "room_avg_capacity": 7.33,
+              "capacity": 22,
               "demand": 49
             },
             {
               "room_type": "General Education Grade 1 Classroom",
-              "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_count": 3,
+              "room_avg_capacity": 9,
+              "capacity": 27,
               "demand": 26
             },
             {
               "room_type": "General Education Grade 2 Classroom",
-              "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
+              "room_count": 2,
+              "room_avg_capacity": 12,
+              "capacity": 24,
               "demand": 35
             },
             {
               "room_type": "General Education Grade 3 Classroom",
-              "room_count": 4,
+              "room_count": 3,
               "room_avg_capacity": 10,
-              "capacity": 40,
+              "capacity": 30,
               "demand": 44
             },
             {
               "room_type": "General Education Grade 4 Classroom",
-              "room_count": 4,
+              "room_count": 3,
               "room_avg_capacity": 10,
-              "capacity": 40,
+              "capacity": 30,
               "demand": 47
             }
           ]
@@ -547,33 +547,27 @@
           "facility": "Deerpath",
           "rooms": [
             {
-              "room_type": "General Education Grade 5 Classroom",
-              "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
-              "demand": 179
+              "room_type": "General Education Grade 5/6 Classroom",
+              "room_count": 30,
+              "room_avg_capacity": 18.33,
+              "capacity": 550,
+              "demand": 340
             },
             {
-              "room_type": "General Education Grade 6 Classroom",
-              "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
-              "demand": 161
+              "room_type": "General Education Grade 7/8 Classroom",
+              "room_count": 19,
+              "room_avg_capacity": 14.84,
+              "capacity": 282,
+              "demand": 327
             },
             {
-              "room_type": "General Education Grade 7 Classroom",
-              "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
-              "demand": 161
-            },
-            {
-              "room_type": "General Education Grade 8 Classroom",
-              "room_count": 4,
-              "room_avg_capacity": 10,
-              "capacity": 40,
-              "demand": 166
+              "room_type": "Designated Purpose Grade 7/8 Classroom",
+              "room_count": 5,
+              "room_avg_capacity": 16,
+              "capacity": 80,
+              "demand": 0
             }
+
           ]
         }
       ]

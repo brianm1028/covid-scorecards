@@ -8,8 +8,8 @@ from ..DataCache import DataCache
 # TODO add GeoSnapshot classs documentation
 class GeoSnapshot(Snapshot):
 
-    def __init__(self, district):
-        super().__init__(district)
+    def __init__(self, dc):
+        super().__init__(dc)
         self.base_data=self.dc.base_data['geo']
 
 
@@ -30,11 +30,8 @@ class GeoSnapshot(Snapshot):
             r = {
                 'zip_code': z['zip_code'],
                 'day1':self.dc.zip_positivity[0][z['zip_code']]['positivity_rate'],
-                'day1date':self.dc.zip_positivity[0][z['zip_code']]['testDate'],
                 'day2':self.dc.zip_positivity[1][z['zip_code']]['positivity_rate'],
-                'day2date':self.dc.zip_positivity[1][z['zip_code']]['testDate'],
-                'day3':self.dc.zip_positivity[2][z['zip_code']]['positivity_rate'],
-                'day3date': self.dc.zip_positivity[2][z['zip_code']]['testDate']
+                'day3':self.dc.zip_positivity[2][z['zip_code']]['positivity_rate']
             }
             r['status']= ((r['day1'] < z['threshold']) and
                           (r['day2'] < z['threshold']) and

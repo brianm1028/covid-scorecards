@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<H1><A HREF="/snapshot/{{ snap.district_id }}">&lt;</A>  Regional Condition Metrics</H1>
+<H1><A HREF="/snapshot/summary/{{ snap.district_id }}">&lt;</A>  Regional Condition Metrics</H1>
 
 <TABLE>
     <TR>
@@ -42,11 +42,11 @@
         <TD colspan="2">
             <TABLE>
                 <TR>
-                    <TH>Zip Code</TH><TH>Population</TH><TH>{{ snap.zip_data.day1date }}</TH><TH>{{ snap.zip_data.day2date }}</TH><TH>{{ snap.zip_data.day3date }}</TH><TH>Status</TH>
+                    <TH>Zip Code</TH><TH>{{ snap.zip_data.day1date }}</TH><TH>{{ snap.zip_data.day2date }}</TH><TH>{{ snap.zip_data.day3date }}</TH><TH>Status</TH>
                 </TR>
                 {% for r in snap.zip_data.zip_codes %}
                 <TR>
-                    <TD>{{ r.zip_code }}</TD><TD>{{ r.population }}</TD><TD>{{ '%0.2f'| format(r.day1) }}</TD><TD>{{ '%0.2f'| format(r.day2) }}</TD><TD>{{ '%0.2f'| format(r.day3) }}</TD><TD class="{{ r.status }}">{{ r.status }}</TD>
+                    <TD>{{ r.zip_code }}</TD><TD>{{ '%0.2f'| format(r.day1) }}</TD><TD>{{ '%0.2f'| format(r.day2) }}</TD><TD>{{ '%0.2f'| format(r.day3) }}</TD><TD class="{{ r.status }}">{{ r.status }}</TD>
                 </TR>
                 {% endfor %}
             </TABLE>

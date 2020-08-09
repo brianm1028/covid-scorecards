@@ -82,13 +82,11 @@ class DataCache:
                     data[d][zv['zip']]={
                         'confirmed_cases':zv['confirmed_cases'],
                         'total_tested':zv['total_tested'],
-                        'testDate':date_str(d)
+                        'testDate':dv['testDate']
                     }
         p={}
         for d in range(days):
-            p[d]={
-                'testDate':date_str(d)
-            }
+            p[d]={}
             for z in self.district.zip_codes:
                 p[d][z] = {
                     'confirmed_cases': (data[d][z]['confirmed_cases']-data[d+1][z]['confirmed_cases']),
@@ -99,6 +97,7 @@ class DataCache:
                     p[d][z]['positivity_rate']=p[d][z]['confirmed_cases']/p[d][z]['total_tested']
                 else:
                     p[d][z]['positivity_rate'] = 0
+                p[d]['testDate']=p[d][z]['testDate']
         print(p)
         return p
 
@@ -108,20 +107,17 @@ class DataCache:
         data = {}
         for d in range(days+1):
             data[d]={}
-            for dv in [r for r in self.covid_historical_test_results['historical_county']['values'] if r['testDate'] == date_str(d+2)]:
-                print(dv)
+            for dv in [r for r in self.covid_historical_test_results['historical_county']['values'] if r['testDate'] == date_str(d+3)]:
                 for cv in [c for c in dv['values'] if c['County'] in self.district.counties]:
                     data[d][cv['County']]={
                         'confirmed_cases':cv['confirmed_cases'],
                         'total_tested':cv['total_tested'],
-                        'testDate':date_str(d+2)
+                        'testDate':dv['testDate']
                     }
 
         p={}
         for d in range(days):
-            p[d]={
-                'testDate': date_str(d)
-            }
+            p[d]={}
             for c in self.district.counties:
                 p[d][c] = {
                     'confirmed_cases': (data[d][c]['confirmed_cases']-data[d+1][c]['confirmed_cases']),
@@ -129,15 +125,14 @@ class DataCache:
                     'testDate': data[d][c]['testDate']
                 }
                 p[d][c]['positivity_rate']=p[d][c]['confirmed_cases']/p[d][c]['total_tested']
+                p[d]['testDate']=p[d][c]['testDate']
         print(p)
         return p
 
     def calculate_region_positivity(self, days=3):
         p={}
         for d in range(days):
-            p[d]={
-                'testDate': date_str(d)
-            }
+            p[d]={}
             p[d][self.district.COVIDRegion]={
                 'confirmed_cases':0,
                 'total_tested':0,
@@ -148,5 +143,6 @@ class DataCache:
                 p[d][self.district.COVIDRegion]['total_tested'] += self.county_positivity[d][c]['total_tested']
                 p[d][self.district.COVIDRegion]['testDate'] = self.county_positivity[d][c]['testDate']
             p[d][self.district.COVIDRegion]['positivity_rate']=p[d][self.district.COVIDRegion]['confirmed_cases']/p[d][self.district.COVIDRegion]['total_tested']
+            p[d]['testDate']=p[d][self.district.COVIDRegion]['testDate']
         print(p)
         return p

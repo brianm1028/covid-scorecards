@@ -4,13 +4,14 @@ from .Snapshots import PPESnapshot, StaffSnapshot, SpaceSnapshot, TransSnapshot,
 # TODO add class documentation to SnapshotSummary class
 class SnapshotSummary:
 
-    def __init__(self, district):
-        self.district_id = district.id
-        self.ppe = PPESnapshot(district)
-        self.staff = StaffSnapshot(district)
-        self.space = SpaceSnapshot(district)
-        self.trans = TransSnapshot(district)
-        self.geo = GeoSnapshot(district)
+    def __init__(self, dc):
+        self.district=dc.district
+        self.district_id = self.district.id
+        self.ppe = PPESnapshot(dc)
+        self.staff = StaffSnapshot(dc)
+        self.space = SpaceSnapshot(dc)
+        self.trans = TransSnapshot(dc)
+        self.geo = GeoSnapshot(dc)
 
     def calc_status(self):
         status = self.ppe.status()['status'] and \

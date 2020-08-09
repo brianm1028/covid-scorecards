@@ -31,7 +31,7 @@ td.Clear {
   border-radius: 5px;
 }
 
-td.AtRisk {
+td.Warning {
   text-align: center;
   color: black;
   background: lightsalmon;
@@ -40,7 +40,7 @@ td.AtRisk {
   border-radius: 5px;
 }
 
-td.OutOfLine {
+td.Problem {
   text-align: center;
   color: black;
   background: lightcoral;

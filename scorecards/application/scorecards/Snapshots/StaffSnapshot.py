@@ -5,8 +5,8 @@ from ..Snapshot import Snapshot
 # TODO implement StaffSnapshot class
 class StaffSnapshot(Snapshot):
 
-    def __init__(self, district):
-        super().__init__(district)
+    def __init__(self, dc):
+        super().__init__(dc)
         self.base_data=self.dc.base_data['staff']
 
     def status(self):

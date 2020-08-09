@@ -15,3 +15,7 @@ class Config:
     #SQLALCHEMY_DATABASE_URI = environ.get("SQLALCHEMY_DATABASE_URI")
     #SQLALCHEMY_ECHO = False
     #SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    # Flask Caching
+    CACHE_TYPE = 'simple'
+    CACHE_DEFAULT_TIMEOUT = 300

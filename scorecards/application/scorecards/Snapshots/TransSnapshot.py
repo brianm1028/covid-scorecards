@@ -5,8 +5,8 @@ from ..Snapshot import Snapshot
 # TODO implement TransSnapshot class
 class TransSnapshot(Snapshot):
 
-    def __init__(self, district):
-        super().__init__(district)
+    def __init__(self, dc):
+        super().__init__(dc)
         self.base_data=self.dc.base_data['trans']
 
     def status(self):
