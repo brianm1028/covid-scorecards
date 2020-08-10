@@ -38,11 +38,11 @@
         <TD colspan="2">
             <TABLE>
                 <TR>
-                    <TH>Role Type</TH><TH>Required Staff</TH><TH>Available Staff</TH><TH>Available Substitutes</TH><TH>Status</TH>
+                    <TH>Role Type</TH><TH>Required Staff</TH><TH>Available Staff</TH><TH>Status</TH>
                 </TR>
                 {% for s in r.roles %}
                 <TR>
-                    <TD>{{ s.role_type }}</TD><TD>{{ s.required }}</TD><TD>{{ s.available }}</TD><TD>{{ s.substitutes }}</TD><TD class="{{ s.status }}">{{ s.status }}</TD>
+                    <TD>{{ s.role_type }}</TD><TD>{{ s.required }}</TD><TD>{{ s.available }}</TD><TD class="{{ s.status }}">{{ s.status }}</TD>
                 </TR>
                 {% endfor %}
             </TABLE>

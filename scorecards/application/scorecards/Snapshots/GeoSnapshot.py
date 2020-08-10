@@ -1,9 +1,5 @@
 from datetime import datetime, timedelta
-import requests
-import json
-from ..Snapshot import Snapshot
-
-from ..DataCache import DataCache
+from . import Snapshot
 
 # TODO add GeoSnapshot classs documentation
 class GeoSnapshot(Snapshot):

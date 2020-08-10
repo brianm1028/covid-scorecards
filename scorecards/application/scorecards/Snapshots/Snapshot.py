@@ -1,7 +1,6 @@
 from datetime import datetime
-from .DataCache import DataCache
 
-# TODO add class documentation to Snapshot class
+
 class Snapshot:
 
     def __init__(self, dc):

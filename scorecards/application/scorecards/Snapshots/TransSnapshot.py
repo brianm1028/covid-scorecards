@@ -1,6 +1,5 @@
-import json
 from datetime import datetime
-from ..Snapshot import Snapshot
+from .Snapshot import Snapshot
 
 # TODO implement TransSnapshot class
 class TransSnapshot(Snapshot):

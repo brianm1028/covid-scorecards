@@ -1,17 +1,22 @@
 from datetime import datetime
-from .Snapshots import PPESnapshot, StaffSnapshot, SpaceSnapshot, TransSnapshot, GeoSnapshot
+from .PPESnapshot import PPESnapshot
+from .StaffSnapshot import StaffSnapshot
+from .SpaceSnapshot import SpaceSnapshot
+from .TransSnapshot import TransSnapshot
+from .GeoSnapshot import GeoSnapshot
+
 
 # TODO add class documentation to SnapshotSummary class
-class SnapshotSummary:
+class SummarySnapshot:
 
     def __init__(self, dc):
         self.district=dc.district
         self.district_id = self.district.id
-        self.ppe = PPESnapshot(dc)
-        self.staff = StaffSnapshot(dc)
-        self.space = SpaceSnapshot(dc)
-        self.trans = TransSnapshot(dc)
-        self.geo = GeoSnapshot(dc)
+        self.ppe = PPESnapshot(dc.dcs['ppe'])
+        self.staff = StaffSnapshot(dc.dcs['staff'])
+        self.space = SpaceSnapshot(dc.dcs['space'])
+        self.trans = TransSnapshot(dc.dcs['trans'])
+        self.geo = GeoSnapshot(dc.dcs['geo'])
 
     def calc_status(self):
         status = self.ppe.status()['status'] and \

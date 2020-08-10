@@ -1,6 +1,5 @@
 from datetime import datetime
-import json
-from ..Snapshot import Snapshot
+from .Snapshot import Snapshot
 
 class SpaceSnapshot(Snapshot):
 

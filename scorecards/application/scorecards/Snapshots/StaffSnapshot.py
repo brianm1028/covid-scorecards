@@ -1,8 +1,6 @@
 from datetime import datetime
-import json
-from ..Snapshot import Snapshot
+from . import Snapshot
 
-# TODO implement StaffSnapshot class
 class StaffSnapshot(Snapshot):
 
     def __init__(self, dc):
@@ -24,14 +22,12 @@ class StaffSnapshot(Snapshot):
                 'status': True,
                 'roles': []
             }
-
-            for role in f['roles']:
+            for i in [i for i in self.dc.statusdata if i.facility_name == f['facility']]:
                 t = {
-                    'role_type': role['role_type'],
-                    'required': role['required'],
-                    'available': role['available'],
-                    'substitutes': role['substitutes'],
-                    'status': (role['available'] + role['substitutes'] - role['required'] > 0)
+                    'role_type': i.role_type,
+                    'required': i.required,
+                    'available': i.available,
+                    'status': (i.available >= i.required)
                 }
                 r['roles'].append(t)
                 if not t['status']:

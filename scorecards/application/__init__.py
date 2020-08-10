@@ -4,7 +4,7 @@ from flask_login import LoginManager
 from flask_caching import Cache
 
 #login_manager = LoginManager()
-#db = SQLAlchemy()
+db = SQLAlchemy()
 cache = Cache()
 
 
@@ -15,7 +15,7 @@ def create_app():
     app.config['TEMPLATES_AUTO_RELOAD'] = True
 
     # Initialize Plugins
-    #db.init_app(app)
+    db.init_app(app)
     #login_manager.init_app(app)
 
     cache.init_app(app)
@@ -31,8 +31,6 @@ def create_app():
         #app.register_blueprint(auth.auth_bp)
         app.register_blueprint(snapshots.snap_bp)
 
-        # Create Database Models
-        #db.create_all()
 
 
 
