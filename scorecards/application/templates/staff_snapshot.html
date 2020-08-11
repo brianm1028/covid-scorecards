@@ -10,13 +10,13 @@
 
 <H1><A HREF="/snapshot/summary/{{ snap.district_id }}">&lt;</A>  Facility Staffing Metrics</H1>
 
-<TABLE>
+<TABLE width="800px">
     <TR>
-        <TH>Facility Staffing Status</TH><TD class="{{ snap.status }}">{{ snap.status }}</TD>
+        <TH width="700px">Facility Staffing Status</TH><TD class="{{ snap.status }}">&nbsp;</TD>
     </TR>
     {% for r in snap.facilities %}
     <TR>
-        <TH>&nbsp;&nbsp;{{ r.facility }} Staffing Status</TH><TD class="{{ r.status }}">{{ r.status }}</TD>
+        <TH>&nbsp;&nbsp;{{ r.facility }} Staffing Status</TH><TD class="{{ r.status }}">&nbsp;</TD>
     </TR>
     {% endfor %}
 </TABLE>
@@ -24,7 +24,7 @@
 {% for r in snap.facilities %}
 <BR>
 <HR>
-<TABLE>
+<TABLE width="800px">
     <TR>
         <TH colspan="2">{{ r.facility }} Staffing Status</TH>
     </TR>
@@ -36,13 +36,13 @@
     </TR>
     <TR>
         <TD colspan="2">
-            <TABLE>
+            <TABLE width="800px">
                 <TR>
-                    <TH>Role Type</TH><TH>Required Staff</TH><TH>Available Staff</TH><TH>Status</TH>
+                    <TH width="350px">Role Type</TH><TH width="175px">Required Staff</TH><TH width="175px">Available Staff</TH><TH width="100px">Status</TH>
                 </TR>
                 {% for s in r.roles %}
                 <TR>
-                    <TD>{{ s.role_type }}</TD><TD>{{ s.required }}</TD><TD>{{ s.available }}</TD><TD class="{{ s.status }}">{{ s.status }}</TD>
+                    <TD>{{ s.role_type }}</TD><TD>{{ s.required }}</TD><TD>{{ s.available }}</TD><TD class="{{ s.status }}">&nbsp;</TD>
                 </TR>
                 {% endfor %}
             </TABLE>

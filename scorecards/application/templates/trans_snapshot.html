@@ -10,19 +10,19 @@
 
 <H1><A HREF="/snapshot/summary/{{ snap.district_id }}">&lt;</A>  Transportation Metrics</H1>
 
-<TABLE>
+<TABLE width="800px">
     <TR>
-        <TH>Overall Transportation Status</TH><TD class="{{ snap.status }}">{{ snap.status }}</TD>
+        <TH width="700px">Overall Transportation Status</TH><TD class="{{ snap.status }}">&nbsp;</TD>
     </TR>
     <TR>
-        <TH>&nbsp;&nbsp;Bus Capacity</TH><TD class="{{ snap.buses.status }}">{{ snap.buses.status }}</TD>
+        <TH>&nbsp;&nbsp;Bus Capacity</TH><TD class="{{ snap.buses.status }}">&nbsp;</TD>
     </TR>
 </TABLE>
 
 <BR>
 <HR>
 
-<TABLE>
+<TABLE width="800px">
     <TR>
         <TH colspan="2">Bus Capacity</TH>
     </TR>
@@ -34,13 +34,13 @@
     </TR>
     <TR>
         <TD colspan="2">
-            <TABLE>
+            <TABLE width="800px">
                 <TR>
-                    <TH>Bus Group</TH><TH>Available Seats</TH><TH>Required Seats</TH><TH>Percent Available</TH><TH>Status</TH>
+                    <TH width="400px">Bus Group</TH><TH width="100px">Available Seats</TH><TH width="100px">Required Seats</TH><TH width="100px">Percent Available</TH><TH>Status</TH>
                 </TR>
                 {% for r in snap.buses.bus_groups %}
                 <TR>
-                    <TD>{{ r.bus_group }}</TD><TD>{{ r.available }}</TD><TD>{{ r.required }}</TD><TD>{{ '%0.2f'| format(r.pct_avail*100.0) }}%</TD><TD class="{{ r.status }}">{{ r.status }}</TD>
+                    <TD>{{ r.bus_group }}</TD><TD>{{ r.available }}</TD><TD>{{ r.required }}</TD><TD>{{ '%0.2f'| format(r.pct_avail*100.0) }}%</TD><TD class="{{ r.status }}">&nbsp;</TD>
                 </TR>
                 {% endfor %}
             </TABLE>

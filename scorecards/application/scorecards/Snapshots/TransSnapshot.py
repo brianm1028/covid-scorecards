@@ -20,14 +20,13 @@ class TransSnapshot(Snapshot):
                 'status': True,
                 'bus_groups': []
             }
-
-        for g in self.base_data['bus_groups']:
+        for g in [bg for bg in self.dc.bus_groups if bg.district == int(self.district.id)]:
             r = {
-                'bus_group': g['group_name'],
-                'available': g['bus_count']*g['seats_per_bus'],
-                'required': 0,
-                'pct_avail': 1-(0/(g['bus_count']*g['seats_per_bus'])),
-                'status': (0 < (g['bus_count']*g['seats_per_bus']))
+                'bus_group': g.description,
+                'available': g.available,
+                'required': g.required,
+                'pct_avail': 1 - (g.required / g.available),
+                'status': (g.required < g.available)
             }
             data['buses']['bus_groups'].append(r)
             if not r['status']:

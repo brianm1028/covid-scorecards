@@ -11,6 +11,7 @@ td.True {
   background-color: lightgreen;
   bgcolor: lightgreen;
   border-radius: 5px;
+  width: 200px;
 }
 
 td.False {
@@ -20,6 +21,7 @@ td.False {
   background-color: lightcoral;
   bgcolor: lightcoral;
   border-radius: 5px;
+  width: 200px;
 }
 
 td.Clear {

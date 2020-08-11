@@ -95,7 +95,7 @@ class GeoDataCache(DataCache):
                     'testDate': data[d][z]['testDate']
                 }
                 if p[d][z]['total_tested'] > 0:
-                    p[d][z]['positivity_rate'] = p[d][z]['confirmed_cases'] / p[d][z]['total_tested']
+                    p[d][z]['positivity_rate'] = p[d][z]['confirmed_cases'] * 10000 / self.base_data['geo']['populations'][z]
                 else:
                     p[d][z]['positivity_rate'] = 0
                 p[d]['testDate'] = p[d][z]['testDate']

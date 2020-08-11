@@ -10,13 +10,13 @@
 
 <H1><A HREF="/snapshot/summary/{{ snap.district_id }}">&lt;</A>  PPE Supply Metrics</H1>
 
-<TABLE>
+<TABLE width="800px">
     <TR>
-        <TH>PPE Supply Status</TH><TD class="{{ snap.status }}">{{ snap.status }}</TD>
+        <TH width="700px">PPE Supply Status</TH><TD class="{{ snap.status }}">&nbsp;</TD>
     </TR>
     {% for r in snap.facilities %}
     <TR>
-        <TH>&nbsp;&nbsp;{{ r.facility }} Supply Status</TH><TD class="{{ r.status }}">{{ r.status }}</TD>
+        <TH>&nbsp;&nbsp;{{ r.facility }} Supply Status</TH><TD class="{{ r.status }}">&nbsp;</TD>
     </TR>
     {% endfor %}
 </TABLE>
@@ -24,7 +24,7 @@
 {% for r in snap.facilities %}
 <BR>
 <HR>
-<TABLE>
+<TABLE width="800px">
     <TR>
         <TH colspan="2">{{ r.facility }} Supply Status</TH>
     </TR>
@@ -36,13 +36,13 @@
     </TR>
     <TR>
         <TD colspan="2">
-            <TABLE>
+            <TABLE width="800px">
                 <TR>
-                    <TH>PPE Type</TH><TH>Facility Inventory</TH><TH>7-Day Demand</TH><TH>14-Day Demand</TH><TH>Fully Stocked</TH><TH>Status</TH>
+                    <TH width="300px">PPE Type</TH><TH width="100px">Facility Inventory</TH><TH width="100px">7-Day Demand</TH><TH width="100px">14-Day Demand</TH><TH width="100px">Fully Stocked</TH><TH width="100px">Status</TH>
                 </TR>
                 {% for s in r.ppe_types %}
                 <TR>
-                    <TD>{{ s.ppe_type }}</TD><TD>{{ s.inventory }}</TD><TD>{{ s.demand7 }}</TD><TD>{{ s.demand14 }}</TD><TD class="{{ s.fullstock }}">{{ s.fullstock }}</TD><TD class="{{ s.status }}">{{ s.status }}</TD>
+                    <TD>{{ s.ppe_type }}</TD><TD>{{ s.inventory }}</TD><TD>{{ s.demand7 }}</TD><TD>{{ s.demand14 }}</TD><TD class="{{ s.fullstock }}">&nbsp;</TD><TD class="{{ s.status }}">&nbsp;</TD>
                 </TR>
                 {% endfor %}
             </TABLE>

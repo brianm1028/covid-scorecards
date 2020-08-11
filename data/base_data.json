@@ -89,6 +89,13 @@
       ]
     },
     "geo": {
+      "populations": {
+        "60044": 10003,
+        "60045": 21131,
+        "Lake": 700832,
+        "McHenry": 308570,
+        "9": 1009402
+      },
       "regions": [
         {
           "region": 9,
@@ -119,13 +126,13 @@
       "zip_codes": [
         {
           "zip_code": "60044",
-          "population": 2342,
+          "population": 10003,
           "new_cases": 131,
           "threshold": 8
         },
         {
           "zip_code": "60045",
-          "population": 3890,
+          "population": 21131,
           "new_cases": 154,
           "threshold": 8
         }
@@ -573,6 +580,13 @@
       ]
     },
     "geo": {
+      "populations": {
+        "60044": 10003,
+        "60045": 21131,
+        "Lake": 700832,
+        "McHenry": 308570,
+        "9": 1009402
+      },
       "regions": [
         {
           "region": 9,
@@ -603,7 +617,7 @@
       "zip_codes": [
         {
           "zip_code": "60045",
-          "population": 3890,
+          "population": 21131,
           "new_cases": 154,
           "threshold": 8
         }

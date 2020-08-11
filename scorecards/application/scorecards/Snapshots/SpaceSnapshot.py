@@ -22,17 +22,13 @@ class SpaceSnapshot(Snapshot):
                 'status': True,
                 'rooms': []
             }
-
-            for room in f['rooms']:
+            for i in [i for i in self.dc.statusdata if i.facility_name == f['facility']]:
                 t = {
-                    'room_type': room['room_type'],
-                    'room_count': room['room_count'],
-                    'room_avg_capacity': room['capacity']/room['room_count'],
-                    'capacity': room['capacity'],
-                    'demand': room['demand'],
-                    'fill_pct': room['demand']/room['capacity'],
-                    'avg_class': room['demand']/room['room_count'],
-                    'status': (room['demand']<room['capacity'])
+                    'room_type': i.description,
+                    'capacity': i.available,
+                    'demand': i.required,
+                    'fill_pct': i.required / i.available,
+                    'status': (i.required < i.available)
                 }
                 r['rooms'].append(t)
                 if not t['status']:

@@ -10,13 +10,13 @@
 
 <H1><A HREF="/snapshot/summary/{{ snap.district_id }}">&lt;</A>  Facility Space Metrics</H1>
 
-<TABLE>
+<TABLE width="800px">
     <TR>
-        <TH>Overall Facility Space Status</TH><TD class="{{ snap.status }}">{{ snap.status }}</TD>
+        <TH width="700px">Overall Facility Space Status</TH><TD class="{{ snap.status }}">&nbsp;</TD>
     </TR>
     {% for r in snap.facilities %}
     <TR>
-        <TH>&nbsp;&nbsp;{{ r.facility }} Space Status</TH><TD class="{{ r.status }}">{{ r.status }}</TD>
+        <TH>&nbsp;&nbsp;{{ r.facility }} Space Status</TH><TD class="{{ r.status }}">&nbsp;</TD>
     </TR>
     {% endfor %}
 </TABLE>
@@ -24,7 +24,7 @@
 {% for r in snap.facilities %}
     <BR>
     <HR>
-    <TABLE>
+    <TABLE width="800px">
     <TR>
         <TH colspan="2">{{ r.facility }} Space Status</TH>
     </TR>
@@ -36,13 +36,13 @@
     </TR>
     <TR>
         <TD colspan="2">
-            <TABLE>
+            <TABLE width="800px">
                 <TR>
-                    <TH>Room Type</TH><TH>Total Capacity</TH><TH>Total Demand</TH><TH>Fill Percentage</TH><TH>Status</TH>
+                    <TH width="400px">Room Type</TH><TH width="100px">Projected Capacity</TH><TH width="100px">Projected Demand</TH><TH width="100px">Fill Percentage</TH><TH width="100px">Status</TH>
                 </TR>
                 {% for s in r.rooms %}
                 <TR>
-                    <TD>{{ s.room_type }}</TD><TD>{{ s.capacity }}</TD><TD>{{ s.demand }}</TD><TD>{{ '%0.2f'| format(s.fill_pct*100) }}%</TD><TD class="{{ s.status }}">{{ s.status }}</TD>
+                    <TD>{{ s.room_type }}</TD><TD>{{ s.capacity }}</TD><TD>{{ s.demand }}</TD><TD>{{ '%0.2f'| format(s.fill_pct*100) }}%</TD><TD class="{{ s.status }}">&nbsp;</TD>
                 </TR>
                 {% endfor %}
             </TABLE>
