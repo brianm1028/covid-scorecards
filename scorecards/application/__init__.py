@@ -22,16 +22,26 @@ def create_app():
 
     with app.app_context():
         # Include our Routes
-        from . import main
+        from .main import main_bp
+        from .admin import admin_bp
         #from . import auth
-        from . import snapshots
+        from .snapshots import snap_bp
+        from .geo import geo_bp
+        from .ppe import ppe_bp
+        from .space import space_bp
+        from .staff import staff_bp
+        from .trans import trans_bp
 
         # Register Blueprints
-        app.register_blueprint(main.main_bp)
+        app.register_blueprint(main_bp)
+        app.register_blueprint(admin_bp)
         #app.register_blueprint(auth.auth_bp)
-        app.register_blueprint(snapshots.snap_bp)
-
-
+        app.register_blueprint(snap_bp)
+        app.register_blueprint(geo_bp)
+        app.register_blueprint(ppe_bp)
+        app.register_blueprint(space_bp)
+        app.register_blueprint(staff_bp)
+        app.register_blueprint(trans_bp)
 
 
         return app

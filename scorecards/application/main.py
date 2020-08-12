@@ -9,17 +9,15 @@ main_bp = Blueprint(
     template_folder='templates',
     static_folder='static'
 )
+
 @main_bp.route('/')
 def index():
     with open('data/base_data.json') as f:
         return render_template('index.html', data=json.load(f))
 
-
-
 @main_bp.route('/status')
 def status():
     return 'Online'
-
 
 # @main_bp.route('/', methods=['GET'])
 # @login_required

@@ -1,8 +1,9 @@
+
 from flask import Blueprint, render_template
-from .scorecards import District
-from .scorecards.Snapshots import SummarySnapshot, PPESnapshot, StaffSnapshot, SpaceSnapshot, TransSnapshot, GeoSnapshot
-from .scorecards.DataCaches import SummaryDataCache, PPEDataCache, StaffDataCache, SpaceDataCache, TransDataCache, GeoDataCache
-from . import cache
+from .. import cache
+from ..District import District
+from .Snapshots import *
+from .DataCaches import *
 
 # Blueprint Configuration
 snap_bp = Blueprint(
@@ -14,32 +15,32 @@ snap_templates={
     'summary':{
         'class': SummarySnapshot,
         'dc': SummaryDataCache,
-        'template':'summary_snapshot.html'
+        'template':'summary.html'
     },
     'ppe': {
         'class': PPESnapshot,
         'dc': PPEDataCache,
-        'template': 'ppe_snapshot.html'
+        'template': 'ppe.html'
     },
     'space': {
         'class': SpaceSnapshot,
         'dc': SpaceDataCache,
-        'template': 'space_snapshot.html'
+        'template': 'space.html'
     },
     'staff': {
         'class': StaffSnapshot,
         'dc': StaffDataCache,
-        'template': 'staff_snapshot.html'
+        'template': 'staff.html'
     },
     'trans': {
         'class': TransSnapshot,
         'dc': TransDataCache,
-        'template': 'trans_snapshot.html'
+        'template': 'trans.html'
     },
     'geo': {
         'class': GeoSnapshot,
         'dc': GeoDataCache,
-        'template': 'geo_snapshot.html'
+        'template': 'geo.html'
     },
 
 }
