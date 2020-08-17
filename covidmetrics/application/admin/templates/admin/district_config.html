@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<HTML lang="en">
+<HEAD>
+    <META charset="UTF-8">
+    <TITLE>COVID READINESS DASHBOARD ADMIN - DISTRICT CONFIGURATION</TITLE>
+    <link rel="stylesheet" href="/static/scorecards.css">
+</HEAD>
+<BODY>
+
+<H1>COVID READINESS DASHBOARD ADMIN - DISTRICT CONFIGURATION</H1>
+
+<TABLE width="800px">
+    <TR>
+        <TD width="400px">
+            <TABLE>
+                <TR>
+                    <TD>
+                        <TABLE width="400px">
+                            <TR>
+                                <TH>District ID</TH><TD class="config">{{ ddc.district.id }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>District Name</TH><TD class="config">{{ ddc.district.name }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>County</TH><TD class="config">{{ ddc.district.county_name }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Base Zip Code</TH><TD class="config">{{ ddc.district.base_zip_code }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Enabled</TH><TD class="config">{{ ddc.district.enabled }}</TD>
+                            </TR>
+                        </TABLE>
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+        <TH width="400px">
+            <BR><BR>
+        </TH>
+    </TR>
+</TABLE>
+
+</BODY>
+</HTML>

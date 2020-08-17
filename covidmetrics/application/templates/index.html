@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<HTML lang="en">
+<HEAD>
+    <META charset="UTF-8">
+    <TITLE>COVID READINESS DASHBOARDS</TITLE>
+    <link rel="stylesheet" media="all" href="http://lakeforestschools.org/uploaded/themes/default_16/css/main.css?1541690790">
+    <link rel="stylesheet" href="/static/scorecards.css">
+</HEAD>
+<BODY>
+
+<H1>COVID READINESS DASHBOARDS</H1>
+
+            <TABLE>
+                <TR>
+                    <TH>Districts</TH><TD>
+                    <UL>
+                        {% for d in data %}
+                        <LI><A HREF="/snapshot/summary/{{ d.id }}">{{ d.name }}</A></LI>
+                        {%  endfor %}
+                    </UL>
+
+                    </TD>
+                </TR>
+            </TABLE>
+
+</BODY>
+</HTML>

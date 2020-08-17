@@ -1,4 +1,206 @@
 {
+  "207": {
+    "staff": {
+      "facilities": [
+        {
+          "facility": "Maine East HS",
+          "roles": [
+            {
+              "role_type": "Full Time Certified Educator",
+              "required": 50,
+              "available": 55,
+              "substitutes": 4
+            },
+            {
+              "role_type": "Maintenance Staff",
+              "required": 8,
+              "available": 10,
+              "substitutes": 2
+            }
+          ]
+        }
+      ]
+    },
+    "ppe": {
+      "facilities": [
+        {
+          "facility": "Maine East HS",
+          "ppe_types": [
+            {
+              "ppe_type": "Cloth Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Paper Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Communicator Masks",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Wipes",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Gloves",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Cleaning Solution",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            },
+            {
+              "ppe_type": "Face Shields",
+              "inventory": 60,
+              "demand7": 10,
+              "demand14": 70
+            }
+          ]
+        }
+      ]
+    },
+    "space": {
+      "facilities": [
+        {
+          "facility": "Maine East HS",
+          "rooms": [
+            {
+              "room_type": "General Education Classroom",
+              "room_count": 60,
+              "room_avg_capacity": 10,
+              "capacity": 600,
+              "demand": 0
+            }
+          ]
+        }
+      ]
+    },
+    "geo": {
+      "populations": {
+        "60016": 62880,
+        "60018": 30099,
+        "60068": 37475,
+        "60714": 29931,
+        "60025": 39105,
+        "60053": 23260,
+        "60656": 27840,
+        "60706": 23134,
+        "60044": 10003,
+        "60045": 21131,
+        "Lake": 700832,
+        "McHenry": 308570,
+        "Cook": 5150000,
+        "9": 1009402,
+        "10": 0
+      },
+      "regions": [
+        {
+          "region": 10,
+          "population": 5150000,
+          "total_tests": 188459,
+          "positive_tests": 15214,
+          "threshold": 0.08
+        }
+      ],
+      "counties": [
+        {
+          "county": "Cook",
+          "COVIDRegion": 10,
+          "population": 5150000,
+          "total_tests": 146349,
+          "positive_tests": 12223,
+          "threshold": 0.08
+        }
+      ],
+      "zip_codes": [
+        {
+          "zip_code": "60016",
+          "population": 10003,
+          "new_cases": 131,
+          "threshold": 8
+        },
+        {
+          "zip_code": "60018",
+          "population": 21131,
+          "new_cases": 154,
+          "threshold": 8
+        },
+        {
+          "zip_code": "60068",
+          "population": 21131,
+          "new_cases": 154,
+          "threshold": 8
+        },
+        {
+          "zip_code": "60714",
+          "population": 21131,
+          "new_cases": 154,
+          "threshold": 8
+        },
+        {
+          "zip_code": "60025",
+          "population": 21131,
+          "new_cases": 154,
+          "threshold": 8
+        },
+        {
+          "zip_code": "60053",
+          "population": 21131,
+          "new_cases": 154,
+          "threshold": 8
+        },
+        {
+          "zip_code": "60656",
+          "population": 21131,
+          "new_cases": 154,
+          "threshold": 8
+        },
+        {
+          "zip_code": "60706",
+          "population": 21131,
+          "new_cases": 154,
+          "threshold": 8
+        }
+      ]
+    },
+    "trans": {
+      "bus_groups": [
+        {
+          "group_name": "AM LFHS Inbound",
+          "bus_count": 12,
+          "seats_per_bus": 6
+        },
+        {
+          "group_name": "PM LFHS Outbound",
+          "bus_count": 12,
+          "seats_per_bus": 6
+        },
+        {
+          "group_name": "AM LFHS Inbound (Tech)",
+          "bus_count": 1,
+          "seats_per_bus": 6
+        },
+        {
+          "group_name": "PM LFHS Outbound (Tech)",
+          "bus_count": 1,
+          "seats_per_bus": 6
+        }
+      ]
+    }
+  },
   "115": {
     "staff": {
       "facilities": [
@@ -654,6 +856,105 @@
           "group_name": "AM DPMS Outbound",
           "bus_count": 16,
           "seats_per_bus": 6
+        }
+      ]
+    }
+  },
+  "All": {
+    "geo": {
+      "populations": {
+        "60044": 10003,
+        "60045": 21131,
+        "Lake": 700832,
+        "McHenry": 308570,
+        "9": 1009402
+      },
+      "regions": [
+        {
+          "region": 8,
+          "population": 1009402,
+          "total_tests": 188459,
+          "positive_tests": 15214,
+          "threshold": 0.08
+        },
+        {
+          "region": 9,
+          "population": 1009402,
+          "total_tests": 188459,
+          "positive_tests": 15214,
+          "threshold": 0.08
+        },
+        {
+          "region": 10,
+          "population": 1009402,
+          "total_tests": 188459,
+          "positive_tests": 15214,
+          "threshold": 0.08
+        },
+        {
+          "region": 11,
+          "population": 1009402,
+          "total_tests": 188459,
+          "positive_tests": 15214,
+          "threshold": 0.08
+        }
+      ],
+      "counties": [
+        {
+          "county": "Kane",
+          "COVIDRegion": 9,
+          "population": 700832,
+          "total_tests": 146349,
+          "positive_tests": 12223,
+          "threshold": 0.08
+        },
+        {
+          "county": "DuPage",
+          "COVIDRegion": 9,
+          "population": 308570,
+          "total_tests": 42110,
+          "positive_tests": 2991,
+          "threshold": 0.08
+        },
+        {
+          "county": "Cook",
+          "COVIDRegion": 9,
+          "population": 700832,
+          "total_tests": 146349,
+          "positive_tests": 12223,
+          "threshold": 0.08
+        },
+        {
+          "county": "Chicago",
+          "COVIDRegion": 9,
+          "population": 308570,
+          "total_tests": 42110,
+          "positive_tests": 2991,
+          "threshold": 0.08
+        },
+        {
+          "county": "Lake",
+          "COVIDRegion": 9,
+          "population": 700832,
+          "total_tests": 146349,
+          "positive_tests": 12223,
+          "threshold": 0.08
+        },
+        {
+          "county": "McHenry",
+          "COVIDRegion": 9,
+          "population": 308570,
+          "total_tests": 42110,
+          "positive_tests": 2991,
+          "threshold": 0.08
+        }
+      ],
+      "zip_codes": [
+        {
+          "zip_code": "60045",
+          "population": 21131,
+          "new_cases": 154,
+          "threshold": 8
         }
       ]
     }

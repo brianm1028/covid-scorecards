@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<HTML lang="en">
+<HEAD>
+    <META charset="UTF-8">
+    <TITLE>COVID READINESS DASHBOARD ADMIN - TRANSPORTATION CONFIGURATION</TITLE>
+    <link rel="stylesheet" href="/static/scorecards.css">
+</HEAD>
+<BODY>
+
+<H1>COVID READINESS DASHBOARD ADMIN - TRANSPORTATION CONFIGURATION</H1>
+
+<TABLE width="800px">
+    <TR>
+        <TD width="400px">
+            <TABLE>
+                <TR>
+                    <TD>
+                        <TABLE width="400px">
+                            <TR>
+                                <TH>District Name</TH><TD class="config">{{ ddc.district.name }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Transportation Snapshots Enabled</TH><TD class="config">{{ ddc.configuration.config()["trans"]["enabled"] }}</TD>
+                            </TR>
+                        </TABLE>
+
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+        <TH width="400px">
+            <BR><BR>
+        </TH>
+    </TR>
+</TABLE>
+
+</BODY>
+</HTML>

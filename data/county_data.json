@@ -1,0 +1,839 @@
+{
+  "LastUpdateDate": {
+    "year": 2020,
+    "month": 7,
+    "day": 17
+  },
+  "countyValues": [
+    {
+      "County": "Illinois",
+      "population": 12741080,
+      "region": 0,
+      "COVIDRegion": 0
+    },
+    {
+      "County": "Adams",
+      "population": 65691,
+      "region": 3,
+      "lat": 40.057800,
+      "lon": -91.135300,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Alexander",
+      "population": 6060,
+      "region": 5,
+      "lat": 37.167000,
+      "lon": -89.360600,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Bond",
+      "population": 16630,
+      "region": 4,
+      "lat": 38.903000,
+      "lon": -89.474200,
+      "COVIDRegion": 4
+    },
+    {
+      "County": "Boone",
+      "population": 53577,
+      "region": 1,
+      "lat": 42.348500,
+      "lon": -88.826300,
+      "COVIDRegion": 1
+    },
+    {
+      "County": "Brown",
+      "population": 6556,
+      "region": 3,
+      "lat": 39.938000,
+      "lon": -90.715300,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Bureau",
+      "population": 32993,
+      "region": 2,
+      "lat": 41.359900,
+      "lon": -89.474200,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Calhoun",
+      "population": 4802,
+      "region": 3,
+      "lat": 39.173300,
+      "lon": -90.658300,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Carroll",
+      "population": 14312,
+      "region": 1,
+      "lat": 42.038600,
+      "lon": -89.962700,
+      "COVIDRegion": 1
+    },
+    {
+      "County": "Cass",
+      "population": 12260,
+      "region": 3,
+      "lat": 39.939900,
+      "lon": -90.262000,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Champaign",
+      "population": 209983,
+      "region": 6,
+      "lat": 40.213900,
+      "lon": -88.246100,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Chicago",
+      "population": 2705994,
+      "region": 11,
+      "lat": 41.789896,
+      "lon": -87.627734,
+      "COVIDRegion": 11
+    },
+    {
+      "County": "Christian",
+      "population": 32661,
+      "region": 3,
+      "lat": 39.567200,
+      "lon": -89.322700,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Clark",
+      "population": 15596,
+      "region": 6,
+      "lat": 39.382400,
+      "lon": -87.776300,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Clay",
+      "population": 13253,
+      "region": 6,
+      "lat": 38.727900,
+      "lon": -88.556500,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Clinton",
+      "population": 37639,
+      "region": 4,
+      "lat": 38.568400,
+      "lon": -89.625200,
+      "COVIDRegion": 4
+    },
+    {
+      "County": "Coles",
+      "population": 50885,
+      "region": 6,
+      "lat": 39.556000,
+      "lon": -88.246100,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Cook",
+      "population": 2474499,
+      "region": 0,
+      "lat": 42.050784,
+      "lon": -87.963759,
+      "COVIDRegion": 10
+    },
+    {
+      "County": "Crawford",
+      "population": 18807,
+      "region": 6,
+      "lat": 39.0500,
+      "lon": -87.7763,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Cumberland",
+      "population": 10808,
+      "region": 6,
+      "lat": 39.265400,
+      "lon": -88.207200,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "De Witt",
+      "population": 15769,
+      "region": 6,
+      "lat": 40.181000,
+      "lon": -88.903100,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "DeKalb",
+      "population": 104143,
+      "region": 1,
+      "lat": 41.833000,
+      "lon": -88.710900,
+      "COVIDRegion": 1
+    },
+    {
+      "County": "Douglas",
+      "population": 19479,
+      "region": 6,
+      "lat": 39.761800,
+      "lon": -88.207200,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "DuPage",
+      "population": 928589,
+      "region": 0,
+      "lat": 41.824400,
+      "lon": -88.090100,
+      "COVIDRegion": 8
+    },
+    {
+      "County": "Edgar",
+      "population": 17360,
+      "region": 6,
+      "lat": 39.713100,
+      "lon": -87.776300,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Edwards",
+      "population": 6392,
+      "region": 5,
+      "lat": 38.426800,
+      "lon": -88.051000,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Effingham",
+      "population": 34208,
+      "region": 6,
+      "lat": 39.062200,
+      "lon": -88.556500,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Fayette",
+      "population": 21416,
+      "region": 6,
+      "lat": 39.067000,
+      "lon": -89.017900,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Ford",
+      "population": 13264,
+      "region": 6,
+      "lat": 40.498900,
+      "lon": -88.207200,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Franklin",
+      "population": 38701,
+      "region": 5,
+      "lat": 38.015700,
+      "lon": -88.903100,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Fulton",
+      "population": 34844,
+      "region": 2,
+      "lat": 40.553200,
+      "lon": -90.224500,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Gallatin",
+      "population": 5058,
+      "region": 5,
+      "lat": 37.710800,
+      "lon": -88.246100,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Greene",
+      "population": 13044,
+      "region": 3,
+      "lat": 39.403000,
+      "lon": -90.374800,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Grundy",
+      "population": 50972,
+      "region": 0,
+      "lat": 41.350100,
+      "lon": -88.401600,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Hamilton",
+      "population": 8163,
+      "region": 5,
+      "lat": 38.054300,
+      "lon": -88.556500,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Hancock",
+      "population": 17844,
+      "region": 3,
+      "lat": 40.384900,
+      "lon": -91.135300,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Hardin",
+      "population": 3910,
+      "region": 5,
+      "lat": 37.499500,
+      "lon": -88.362800,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Henderson",
+      "population": 6709,
+      "region": 2,
+      "lat": 40.833600,
+      "lon": -90.943800,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Henry",
+      "population": 49090,
+      "region": 2,
+      "lat": 41.361100,
+      "lon": -90.074700,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Iroquois",
+      "population": 27604,
+      "region": 6,
+      "lat": 40.774000,
+      "lon": -87.697600,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Jackson",
+      "population": 57419,
+      "region": 5,
+      "lat": 37.721800,
+      "lon": -89.322700,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Jasper",
+      "population": 9611,
+      "region": 6,
+      "lat": 39.055500,
+      "lon": -88.090100,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Jefferson",
+      "population": 37820,
+      "region": 5,
+      "lat": 38.226700,
+      "lon": -88.864700,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Jersey",
+      "population": 21847,
+      "region": 3,
+      "lat": 39.070500,
+      "lon": -90.374800,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Jo Daviess",
+      "population": 21366,
+      "region": 1,
+      "lat": 42.314900,
+      "lon": -90.224500,
+      "COVIDRegion": 1
+    },
+    {
+      "County": "Johnson",
+      "population": 12456,
+      "region": 5,
+      "lat": 37.420400,
+      "lon": -88.903100,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Kane",
+      "population": 534216,
+      "region": 0,
+      "lat": 41.987900,
+      "lon": -88.401600,
+      "COVIDRegion": 8
+    },
+    {
+      "County": "Kankakee",
+      "population": 110024,
+      "region": 0,
+      "lat": 41.179100,
+      "lon": -87.776300,
+      "COVIDRegion": 7
+    },
+    {
+      "County": "Kendall",
+      "population": 127915,
+      "region": 0,
+      "lat": 41.550700,
+      "lon": -88.440400,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Knox",
+      "population": 50112,
+      "region": 2,
+      "lat": 40.877600,
+      "lon": -90.224500,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Lake",
+      "population": 700832,
+      "region": 0,
+      "lat": 42.368900,
+      "lon": -87.827200,
+      "COVIDRegion": 9
+    },
+    {
+      "County": "LaSalle",
+      "population": 109430,
+      "region": 2,
+      "lat": 41.436400,
+      "lon": -88.941400,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Lawrence",
+      "population": 15765,
+      "region": 6,
+      "lat": 38.715800,
+      "lon": -87.776300,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Lee",
+      "population": 34223,
+      "region": 1,
+      "lat": 41.679000,
+      "lon": -89.322700,
+      "COVIDRegion": 1
+    },
+    {
+      "County": "Livingston",
+      "population": 35761,
+      "region": 2,
+      "lat": 40.868900,
+      "lon": -88.556500,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Logan",
+      "population": 28925,
+      "region": 3,
+      "lat": 40.061300,
+      "lon": -89.322700,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Macon",
+      "population": 104712,
+      "region": 6,
+      "lat": 39.894900,
+      "lon": -89.017900,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Macoupin",
+      "population": 45313,
+      "region": 3,
+      "lat": 39.237500,
+      "lon": -89.925300,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Madison",
+      "population": 264461,
+      "region": 4,
+      "lat": 38.904100,
+      "lon": -89.925300,
+      "COVIDRegion": 4
+    },
+    {
+      "County": "Marion",
+      "population": 37620,
+      "region": 5,
+      "lat": 38.731300,
+      "lon": -88.864700,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Marshall",
+      "population": 11534,
+      "region": 2,
+      "lat": 40.997300,
+      "lon": -89.360600,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Mason",
+      "population": 13565,
+      "region": 3,
+      "lat": 40.227100,
+      "lon": -89.925300,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Massac",
+      "population": 14080,
+      "region": 5,
+      "lat": 37.247800,
+      "lon": -88.749400,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "McDonough",
+      "population": 29955,
+      "region": 2,
+      "lat": 40.388500,
+      "lon": -90.677300,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "McHenry",
+      "population": 308570,
+      "region": 0,
+      "lat": 42.304000,
+      "lon": -88.401600,
+      "COVIDRegion": 9
+    },
+    {
+      "County": "McLean",
+      "population": 172828,
+      "region": 2,
+      "lat": 40.547800,
+      "lon": -88.864700,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Menard",
+      "population": 12288,
+      "region": 3,
+      "lat": 40.022100,
+      "lon": -89.813000,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Mercer",
+      "population": 15601,
+      "region": 2,
+      "lat": 41.198500,
+      "lon": -90.677300,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Monroe",
+      "population": 34335,
+      "region": 4,
+      "lat": 38.274300,
+      "lon": -90.187000,
+      "COVIDRegion": 4
+    },
+    {
+      "County": "Montgomery",
+      "population": 28601,
+      "region": 3,
+      "lat": 39.236400,
+      "lon": -89.474200,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Morgan",
+      "population": 33976,
+      "region": 3,
+      "lat": 39.734100,
+      "lon": -90.224500,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Moultrie",
+      "population": 14717,
+      "region": 6,
+      "lat": 39.602100,
+      "lon": -88.595200,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Ogle",
+      "population": 50923,
+      "region": 1,
+      "lat": 41.997000,
+      "lon": -89.322700,
+      "COVIDRegion": 1
+    },
+    {
+      "County": "Peoria",
+      "population": 180621,
+      "region": 2,
+      "lat": 40.715600,
+      "lon": -89.775500,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Perry",
+      "population": 21174,
+      "region": 5,
+      "lat": 38.061200,
+      "lon": -89.322700,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Piatt",
+      "population": 16396,
+      "region": 6,
+      "lat": 40.054400,
+      "lon": -88.855650,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Pike",
+      "population": 15611,
+      "region": 3,
+      "lat": 39.566200,
+      "lon": -90.829400,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Pope",
+      "population": 4212,
+      "region": 5,
+      "lat": 37.417100,
+      "lon": -88.595200,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Pulaski",
+      "population": 5463,
+      "region": 5,
+      "lat": 37.251200,
+      "lon": -89.132500,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Putnam",
+      "population": 5740,
+      "region": 2,
+      "lat": 41.238500,
+      "lon": -89.284700,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Randolph",
+      "population": 32106,
+      "region": 4,
+      "lat": 38.062900,
+      "lon": -89.775500,
+      "COVIDRegion": 4
+    },
+    {
+      "County": "Richland",
+      "population": 15763,
+      "region": 6,
+      "lat": 38.721300,
+      "lon": -88.090100,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Rock Island",
+      "population": 143477,
+      "region": 2,
+      "lat": 41.509500,
+      "lon": -90.578700,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Saline",
+      "population": 23906,
+      "region": 5,
+      "lat": 37.715000,
+      "lon": -88.556500,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Sangamon",
+      "population": 195348,
+      "region": 3,
+      "lat": 39.733700,
+      "lon": -89.625200,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Schuyler",
+      "population": 6907,
+      "region": 3,
+      "lat": 40.184500,
+      "lon": -90.639400,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Scott",
+      "population": 4926,
+      "region": 3,
+      "lat": 39.609500,
+      "lon": -90.488000,
+      "COVIDRegion": 3
+    },
+    {
+      "County": "Shelby",
+      "population": 21741,
+      "region": 6,
+      "lat": 39.398100,
+      "lon": -88.864700,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "St. Clair",
+      "population": 261059,
+      "region": 4,
+      "lat": 38.400800,
+      "lon": -89.925300,
+      "COVIDRegion": 4
+    },
+    {
+      "County": "Stark",
+      "population": 5427,
+      "region": 2,
+      "lat": 41.079600,
+      "lon": -89.813000,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Stephenson",
+      "population": 44753,
+      "region": 1,
+      "lat": 42.314500,
+      "lon": -89.625200,
+      "COVIDRegion": 1
+    },
+    {
+      "County": "Tazewell",
+      "population": 132328,
+      "region": 2,
+      "lat": 40.552200,
+      "lon": -89.474200,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Union",
+      "population": 16841,
+      "region": 5,
+      "lat": 37.508700,
+      "lon": -89.284700,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Vermilion",
+      "population": 76806,
+      "region": 6,
+      "lat": 40.122500,
+      "lon": -87.697600,
+      "COVIDRegion": 6
+    },
+    {
+      "County": "Wabash",
+      "population": 11549,
+      "region": 5,
+      "lat": 38.422600,
+      "lon": -87.815700,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Warren",
+      "population": 17032,
+      "region": 2,
+      "lat": 40.875900,
+      "lon": -90.677300,
+      "COVIDRegion": 2
+    },
+    {
+      "County": "Washington",
+      "population": 13995,
+      "region": 4,
+      "lat": 38.398900,
+      "lon": -89.322700,
+      "COVIDRegion": 4
+    },
+    {
+      "County": "Wayne",
+      "population": 16332,
+      "region": 5,
+      "lat": 38.390000,
+      "lon": -88.401600,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "White",
+      "population": 13665,
+      "region": 5,
+      "lat": 38.050100,
+      "lon": -88.246100,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Whiteside",
+      "population": 55626,
+      "region": 1,
+      "lat": 41.760600,
+      "lon": -89.850500,
+      "COVIDRegion": 1
+    },
+    {
+      "County": "Will",
+      "population": 692310,
+      "region": 0,
+      "lat": 41.505500,
+      "lon": -88.090100,
+      "COVIDRegion": 7
+    },
+    {
+      "County": "Williamson",
+      "population": 67056,
+      "region": 5,
+      "lat": 37.718300,
+      "lon": -88.864700,
+      "COVIDRegion": 5
+    },
+    {
+      "County": "Winnebago",
+      "population": 284081,
+      "region": 1,
+      "lat": 42.312100,
+      "lon": -89.170600,
+      "COVIDRegion": 1
+    },
+    {
+      "County": "Woodford",
+      "population": 38463,
+      "region": 2,
+      "lat": 40.712900,
+      "lon": -89.170600,
+      "COVIDRegion": 2
+    }
+  ]
+}

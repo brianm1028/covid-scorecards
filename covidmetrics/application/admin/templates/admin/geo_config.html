@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<HTML lang="en">
+<HEAD>
+    <META charset="UTF-8">
+    <TITLE>COVID READINESS DASHBOARD ADMIN - GEOGRAPHIC CONFIGURATION</TITLE>
+    <link rel="stylesheet" href="/static/scorecards.css">
+</HEAD>
+<BODY>
+
+<H1>COVID READINESS DASHBOARD ADMIN - GEOGRAPHIC CONFIGURATION</H1>
+
+<TABLE width="800px">
+    <TR>
+        <TD width="400px">
+            <TABLE>
+                <TR>
+                    <TD>
+                        <TABLE width="400px">
+                            <TR>
+                                <TH>District Name</TH><TD class="config">{{ ddc.district.name }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Geographic Snapshots Enabled</TH><TD class="config">{{ ddc.configuration.config()["geo"]["enabled"] }}</TD>
+                            </TR>
+                        </TABLE>
+
+                        <TABLE width="400px">
+                            <TR>
+                                <TH colspan="2">COVID Region Configuration</TH>
+                            </TR>
+                            <TR>
+                                <TH>COVID Region ID</TH><TD class="config">{{ ddc.COVIDRegion.id }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Days to Display</TH><TD class="config">{{ ddc.configuration.config()["geo"]["region_duration"] }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Threshold Value</TH><TD class="config">{{ ddc.configuration.config()["geo"]["region_threshold"] }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Display Region?</TH><TD class="config">{{ ddc.configuration.config()["geo"]["disp_region"] }}</TD>
+                            </TR>
+                        </TABLE>
+
+                        <TABLE width="400px">
+                            <TR>
+                                <TH colspan="2">County Configuration</TH>
+                            </TR>
+                            <TR>
+                                <TH>Counties</TH><TD class="config">
+                                {%  for c in ddc.counties.values() %}
+                                    {{ c.name }}<BR>
+                                {% endfor %}
+                            </TD>
+                            </TR>
+                            <TR>
+                                <TH>Days to Display</TH><TD class="config">{{ ddc.configuration.config()["geo"]["county_duration"] }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Threshold Value</TH><TD class="config">{{ ddc.configuration.config()["geo"]["county_threshold"] }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Display Counties?</TH><TD class="config">{{ ddc.configuration.config()["geo"]["disp_county"] }}</TD>
+                            </TR>
+                        </TABLE>
+
+                        <TABLE width="400px">
+                            <TR>
+                                <TH colspan="2">Zip Code Configuration</TH>
+                            </TR>
+                            <TR>
+                                <TH>Zip Codes</TH><TD class="config">
+                                {%  for z in ddc.zip_codes.values() %}
+                                    {{ z.zip_code }}<BR>
+                                {% endfor %}
+                            </TD>
+                            </TR>
+                            <TR>
+                                <TH>Days to Display</TH><TD class="config">{{ ddc.configuration.config()["geo"]["zip_duration"] }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Threshold Value</TH><TD class="config">{{ ddc.configuration.config()["geo"]["zip_threshold"] }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Display Zip Codes?</TH><TD class="config">{{ ddc.configuration.config()["geo"]["disp_zip"] }}</TD>
+                            </TR>
+                        </TABLE>
+
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+        <TH width="400px">
+            <BR><BR>
+        </TH>
+    </TR>
+</TABLE>
+
+</BODY>
+</HTML>

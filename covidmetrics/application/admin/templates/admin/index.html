@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<HTML lang="en">
+<HEAD>
+    <META charset="UTF-8">
+    <TITLE>COVID READINESS DASHBOARD ADMIN - {{ ddc.district.name }}</TITLE>
+    <link rel="stylesheet" href="/static/scorecards.css">
+</HEAD>
+<BODY>
+
+<H1>COVID READINESS DASHBOARD ADMIN - {{ ddc.district.name }}</H1>
+
+<TABLE width="800px">
+    <TR>
+        <TD width="400px">
+            <TABLE>
+                <TR>
+                    <TD>
+                        <TABLE width="400px">
+                            <TR>
+                                <TH>District Configuration</TH><TD class="config"><A HREF="/admin/district/{{ ddc.district.id }}">CONFIGURE</A></TD>
+                            </TR>
+                            <TR>
+                                <TH>Regional Conditions Configuration</TH><TD class="config"><A HREF="/admin/geo/{{ ddc.district.id }}">CONFIGURE</A></TD>
+                            </TR>
+                            <TR>
+                                <TH>PPE Supply Status</TH><TD class="config"><A HREF="/admin/ppe/{{ ddc.district.id }}">CONFIGURE</A></TD>
+                            </TR>
+                            <TR>
+                                <TH>Facility Staffing Status</TH><TD class="config"><A HREF="/admin/staff/{{ ddc.district.id }}">CONFIGURE</A></TD>
+                            </TR>
+                            <TR>
+                                <TH>Facility Space Status</TH><TD class="config"><A HREF="/admin/space/{{ ddc.district.id }}">CONFIGURE</A></TD>
+                            </TR>
+                            <TR>
+                                <TH>Transportation Status</TH><TD class="config"><A HREF="/admin/trans/{{ ddc.district.id }}">CONFIGURE</A></TD>
+                            </TR>
+                        </TABLE>
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+        <TH width="400px">
+            <BR><BR>
+        </TH>
+    </TR>
+</TABLE>
+
+</BODY>
+</HTML>
