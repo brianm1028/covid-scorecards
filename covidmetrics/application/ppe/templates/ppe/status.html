@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="title">PPE Inventory</h1>
+    <TABLE class="table">
+        <THEAD>
+            <TR>
+                <TH>Facility</TH>
+                <TH>Item</TH>
+                <TH>Quantity</TH>
+                <TH>Last Updated</TH>
+            </TR>
+        </THEAD>
+        <TBODY>
+            {% for i in ppe_inventory %}
+            <TR>
+                <TD>{{ i.facility_name }}</TD>
+                <TD>{{ i.description }}</TD>
+                <TD>{{ i.quantity }}</TD>
+                <TD>{{ i.update_date }}</TD>
+            </TR>
+            {% endfor %}
+        </TBODY>
+    </TABLE>
+
+{% endblock %}

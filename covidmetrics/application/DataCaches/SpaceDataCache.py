@@ -10,3 +10,4 @@ class SpaceDataCache(DistrictDataCache):
             super().__init__(district_id=district_id)
 
         self.statusdata = SpaceStatusView.query.all()
+        print(self.statusdata)

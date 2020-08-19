@@ -10,8 +10,10 @@ class TransSnapshot(Snapshot):
     def status(self):
         data = {
             'district_id': self.dc.district.id,
+            'district_name': self.dc.district.name,
             'update_date': datetime.today(),
-            'status': True
+            'status': True,
+            'configuration': self.dc.configuration
         }
 
         data['buses'] = {

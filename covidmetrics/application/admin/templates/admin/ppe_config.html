@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<HTML lang="en">
-<HEAD>
-    <META charset="UTF-8">
-    <TITLE>COVID READINESS DASHBOARD ADMIN - PPE CONFIGURATION</TITLE>
-    <link rel="stylesheet" href="/static/scorecards.css">
-</HEAD>
-<BODY>
+{% extends "base.html" %}
 
-<H1>COVID READINESS DASHBOARD ADMIN - PPE CONFIGURATION</H1>
+{% block content %}
+
+<H1 class="title">COVID READINESS DASHBOARD ADMIN - PPE CONFIGURATION</H1>
 
 <TABLE width="800px">
     <TR>
@@ -17,10 +12,10 @@
                     <TD>
                         <TABLE width="400px">
                             <TR>
-                                <TH>District Name</TH><TD class="config">{{ ddc.district.name }}</TD>
+                                <TH>District Name</TH><TD class="config">{{ data.district.name }}</TD>
                             </TR>
                             <TR>
-                                <TH>PPE Snapshots Enabled</TH><TD class="config">{{ ddc.configuration.config()["ppe"]["enabled"] }}</TD>
+                                <TH>PPE Snapshots Enabled</TH><TD class="config">{{ data.configuration.config()["ppe"]["enabled"] }}</TD>
                             </TR>
                         </TABLE>
 
@@ -35,6 +30,4 @@
         </TH>
     </TR>
 </TABLE>
-
-</BODY>
-</HTML>
+{% endblock %}

@@ -6,3 +6,5 @@ staff_bp = Blueprint(
     template_folder='templates',
     static_folder='static'
 )
+
+from .manager import status

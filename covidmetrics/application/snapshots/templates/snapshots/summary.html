@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<H1 class="title">COVID READINESS DASHBOARD - {{ data.district_name }}</H1>
+
+<div class="tile is-ancestor">
+    <div class="tile is-parent">
+        <article class="tile is-child is-info">
+
+            {% if data.configuration.config()["enabled"] %}
+            <TABLE class="table">
+                <TR>
+                    <TH class="status">Overall Status</TH><TD class="status {{ 'is-success' if data.status else 'is-danger' }}">&nbsp;</TD>
+                </TR>
+                {% if data.configuration.config()["geo"]["enabled"] %}
+                <TR>
+                    <TH class="status">Regional Conditions Status</TH><TD class="status {{ 'is-success' if data.snapshots.geo.status else 'is-danger' }}"><A class="navbar-item" HREF="/snapshot/geo/{{ data.district_id }}">DETAILS</A></TD>
+                </TR>
+                {% endif %}
+                {% if data.configuration.config()["ppe"]["enabled"] %}
+                <TR>
+                    <TH class="status">PPE Supply Status</TH><TD class="status {{ 'is-success' if data.snapshots.ppe.status else 'is-danger' }}"><A class="navbar-item" HREF="/snapshot/ppe/{{ data.district_id }}">DETAILS</A></TD>
+                </TR>
+                {% endif %}
+                {% if data.configuration.config()["staff"]["enabled"] %}
+                <TR>
+                    <TH class="status">Facility Staffing Status</TH><TD class="status {{ 'is-success' if data.snapshots.staff.status else 'is-danger' }}"><A class="navbar-item" HREF="/snapshot/staff/{{ data.district_id }}">DETAILS</A></TD>
+                </TR>
+                {% endif %}
+                {% if data.configuration.config()["space"]["enabled"] %}
+                <TR>
+                    <TH class="status">Facility Space Status</TH><TD class="status {{ 'is-success' if data.snapshots.space.status else 'is-danger' }}"><A class="navbar-item" HREF="/snapshot/space/{{ data.district_id }}">DETAILS</A></TD>
+                </TR>
+                {% endif %}
+                {% if data.configuration.config()["trans"]["enabled"] %}
+                <TR>
+                    <TH class="status">Transportation Status</TH><TD class="status {{ 'is-success' if data.snapshots.trans.status else 'is-danger' }}"><A class="navbar-item" HREF="/snapshot/trans/{{ data.district_id }}">DETAILS</A></TD>
+                </TR>
+                {% endif %}
+            </TABLE>
+            {% else %}
+                <H2 class="subtitle">{{ data.district_name }} currently has snapshots disabled.</H2>
+            {% endif %}
+
+        </article>
+    </div>
+
+    <div class="tile is-parent">
+        <article class="tile is-child is-info">
+            <div class="content">
+                <p class="subtitle">Purpose and Rationale</p>
+                <div class="content">District Administration is often asked about the specific elements that factor into our decision-making regarding movement between different levels of our COVID-19 response in our schools. That is, other than through guidance from the state, how do we determine when to move between fully-remote, hybrid, and in-person learning?</div>
+                <div class="content">In an effort to inform our community with greater specificity, we have created The Dashboard featuring a set of metrics to help us determine when it is appropriate to move to a more restrictive  -- or less restrictive -- position with respect to COVID-19 response and management in our schools.</div>
+                <div class="content">While the decision to open/close schools rests with the administration, these dashboards alone should not be considered an indicator of schools being open/closed. The ultimate decision to open/close schools will be made by reviewing these metrics with respect to prevailing conditions and with guidance from federal, state and local authorities including the Illinois State Board of Education (ISBE), the Illinois Department of Public Health, the Lake County Health Department and the Centers for Disease Control. As always, we also rely on consultation with peer school administrators in our region, educator union representatives, parent representatives and other experts and professionals.</div>
+            </div>
+        </article>
+    </div>
+</div>
+
+
+{% endblock %}

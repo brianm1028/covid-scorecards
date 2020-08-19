@@ -1,4 +1,5 @@
 from .. import db
+from datetime import datetime
 
 class RoomDemand(db.Model):
     __tablename__ = 'room_demand'
@@ -9,8 +10,8 @@ class RoomDemand(db.Model):
     update_date = db.Column(db.DateTime)
     recorder_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    def __init__(self, id, room_type_id, facility_id, demand, update_date, recorder_id):
-        self.id = id
+    def __init__(self, room_type_id, facility_id, demand, recorder_id, update_date=datetime.now()):
+        #self.id = id
         self.room_type_id = room_type_id
         self.facility_id = facility_id
         self.demand = demand

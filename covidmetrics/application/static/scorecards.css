@@ -3,6 +3,29 @@ th, td {
   text-align: left;
   vertical-align:top;
 }
+.title {
+  text-align:left;
+}
+
+.subtitle {
+  text-align: left;
+}
+
+.content {
+  text-align: left;
+}
+
+li.district {
+  text-align: left;
+}
+
+td.status {
+  width: 100px;
+}
+
+th.status {
+  vertical-align: center;
+}
 
 td.True {
   text-align: center;
@@ -12,6 +35,7 @@ td.True {
   bgcolor: lightgreen;
   border-radius: 5px;
   width: 200px;
+  padding: 5px;
 }
 
 td.False {
@@ -22,6 +46,7 @@ td.False {
   bgcolor: lightcoral;
   border-radius: 5px;
   width: 200px;
+  padding: 5px;
 }
 
 td.Clear {

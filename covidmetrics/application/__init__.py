@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_caching import Cache
+from datetime import datetime
 
 login_manager = LoginManager()
 db = SQLAlchemy()
@@ -13,6 +14,10 @@ def create_app():
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_object('config.Config')
     app.config['TEMPLATES_AUTO_RELOAD'] = True
+
+    @app.context_processor
+    def inject_datetime():
+        return dict(dnow=datetime.now())
 
     # Initialize Plugins
     db.init_app(app)

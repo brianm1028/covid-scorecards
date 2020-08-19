@@ -1,4 +1,5 @@
 from .. import db
+from datetime import datetime
 
 class PPETransaction(db.Model):
     __tablename__ = 'ppe_transactions'
@@ -8,12 +9,10 @@ class PPETransaction(db.Model):
     facility_id = db.Column(db.String, db.ForeignKey('facilities.id'))
     quantity = db.Column(db.Integer)
     recorder_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    ppe_item = db.relationship("PPEItem", backref=db.backref("ppe_items", uselist=False))
-    facility = db.relationship("Facility", backref=db.backref("facilities", uselist=False))
-    recorder = db.relationship("User", backref=db.backref("users", uselist=False))
 
-    def __init__(self, id, date, ppe_item_id, facility_id, quantity, recorder_id):
-        self.id = id
+    def __init__(self, ppe_item_id, facility_id, quantity, recorder_id, date=datetime.now()):
+        #self.id = id
+        self.date = date
         self.ppe_item_id = ppe_item_id
         self.facility_id = facility_id
         self.quantity = quantity

@@ -9,9 +9,11 @@ class SpaceSnapshot(Snapshot):
     def status(self):
         data = {
             'district_id': self.dc.district.id,
+            'district_name': self.dc.district.name,
             'update_date': datetime.today(),
             'status': True,
-            'facilities': []
+            'facilities': [],
+            'configuration': self.dc.configuration
         }
 
         for f in self.dc.facilities.values():
@@ -21,12 +23,12 @@ class SpaceSnapshot(Snapshot):
                 'status': True,
                 'rooms': []
             }
-            for i in [i for i in self.dc.statusdata if i.facility_name == f.id]:
+            for i in [i for i in self.dc.statusdata if i.facility_id == f.id]:
                 t = {
                     'room_type': i.description,
                     'capacity': i.available,
                     'demand': i.required,
-                    'fill_pct': i.required / i.available,
+                    'fill_pct': 0 if i.available==0 else i.required / i.available,
                     'status': (i.required < i.available)
                 }
                 r['rooms'].append(t)

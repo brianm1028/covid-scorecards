@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="title">PPE Transaction History</h1>
+
+    <TABLE class="table">
+        <thead>
+            <TR>
+                <TH>Date</TH>
+                <TH>Facility</TH>
+                <TH>Item</TH>
+                <TH>Quantity</TH>
+                <TH>Recorder</TH>
+            </TR>
+        </thead>
+        <tbody>
+            {% for t in transactions %}
+            <TR>
+                <TD>{{ t.date }}</TD>
+                <TD>{{ t.facility_name }}</TD>
+                <TD>{{ t.item_description }}</TD>
+                <TD>{{ t.quantity }}</TD>
+                <TD>{{ t.recorder_name }}</TD>
+            </TR>
+            {% endfor %}
+        </tbody>
+    </TABLE>
+
+{% endblock %}

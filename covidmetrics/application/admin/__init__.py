@@ -18,7 +18,7 @@ def admin_index(district_id='3404906700000'):
 #        ddc = DistrictDataCache(district_id)
 #        cache.set('district' + str(district_id), ddc)
 
-    return render_template('admin/index.html', ddc=DistrictDataCache(district_id))
+    return render_template('admin/index.html', data=DistrictDataCache(district_id))
 
 @admin_bp.route('/admin/<section>/<district_id>')
 @login_required
@@ -28,4 +28,4 @@ def district_config(section='district', district_id='3404906700000'):
 #        ddc = DistrictDataCache(district_id)
 #        cache.set('district' + str(district_id), ddc)
 
-    return render_template('admin/'+section+'_config.html', ddc=DistrictDataCache(district_id))
+    return render_template('admin/'+section+'_config.html', data=DistrictDataCache(district_id))

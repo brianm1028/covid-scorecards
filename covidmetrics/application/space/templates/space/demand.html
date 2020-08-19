@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="title">Add Room Demand</h1>
+    <div class="tile is-ancestor">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form method="POST" action="/space/demand">
+            <div class="field">
+                {{ form.facility_id.label }}
+                <div class="control">{{ form.facility_id(class='select') }}</div>
+            </div>
+
+            <div class="field">
+                {{ form.room_type_id.label }}
+                <div class="control">{{ form.room_type_id(class='select') }}</div>
+            </div>
+            <div class="field">
+                {{ form.demand.label }}
+                <div class="control">{{ form.demand(class='input') }}</div>
+            </div>
+            {{  form.add_button() }}
+        </form>
+    </div>
+{% endblock %}

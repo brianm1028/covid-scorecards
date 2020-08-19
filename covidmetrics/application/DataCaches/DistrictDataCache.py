@@ -9,6 +9,8 @@ class DistrictDataCache():
 
     def __init__(self,district_id='3404906700000', dc=None):
         if dc is not None:
+            self.district_id = dc.district.id
+            self.district_name = dc.district.name
             self.district = dc.district
             self.configuration = dc.configuration
             self.facilities = dc.facilities
@@ -17,6 +19,8 @@ class DistrictDataCache():
             self.COVIDRegion = dc.COVIDRegion
         else:
             self.district = District.query.get([district_id])
+            self.district_id = self.district.id
+            self.district_name= self.district.name
             self.configuration = Configuration.query.get([district_id])
             self.facilities={}
             self.counties={}

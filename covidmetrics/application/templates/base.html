@@ -5,34 +5,150 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" media="all" href="http://lakeforestschools.org/uploaded/themes/default_16/css/main.css?1541690790">
+    <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/flatly/bulmaswatch.min.css">
+<!--    <link rel="stylesheet" href="/static/bulma.css?v={{ dnow }}">-->
+    <link rel="stylesheet" href="/static/scorecards.css?v={{ dnow }}">
     <title>COVID READINESS DASHBOARDS</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
 </head>
 
 <body>
-    <section class="hero is-primary is-fullheight">
+    <section class="hero">
 
         <div class="hero-head">
             <nav class="navbar">
                 <div class="container">
 
                     <div id="navbarMenuHeroA" class="navbar-menu">
-                        <div class="navbar-end">
+                        <div class="navbar-start">
+                            {% if data and data.configuration %}
                             <a href="{{ url_for('main_bp.index') }}" class="navbar-item">
-                                Home
+                                [{{ data.district_name }}]
                             </a>
-                            <a href="{{ url_for('main_bp.profile') }}" class="navbar-item">
-                                Profile
-                            </a>
-                            <a href="{{ url_for('auth_bp.login_form') }}" class="navbar-item">
-                                Login
-                            </a>
-                            <a href="{{ url_for('auth_bp.signup_form') }}" class="navbar-item">
-                                Sign Up
-                            </a>
-                            <a href="{{ url_for('auth_bp.logout') }}" class="navbar-item">
-                                Logout
-                            </a>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">Snapshots</a>
+
+                                <div class="navbar-dropdown">
+                                        <A href="{{ url_for('snap_bp.get_snapshot',snap_type='summary',district_id=data.district_id) }}" class="navbar-item">
+                                            Summary
+                                        </A>
+                                    {% if data and data.configuration.config()["geo"]["enabled"] %}
+                                    <A href="{{ url_for('snap_bp.get_snapshot',snap_type='geo',district_id=data.district_id) }}" class="navbar-item">
+                                        Regional Conditions
+                                    </A>
+                                    {% endif %}
+                                    {% if data and data.configuration.config()["ppe"]["enabled"] %}
+                                    <A href="{{ url_for('snap_bp.get_snapshot',snap_type='ppe',district_id=data.district_id) }}" class="navbar-item">
+                                        PPE Supply
+                                    </A>
+                                    {% endif %}
+                                    {% if data and data.configuration.config()["staff"]["enabled"] %}
+                                    <A href="{{ url_for('snap_bp.get_snapshot',snap_type='staff',district_id=data.district_id) }}" class="navbar-item">
+                                        Facility Staffing
+                                    </A>
+                                    {% endif %}
+                                    {% if data and data.configuration.config()["space"]["enabled"] %}
+                                    <A href="{{ url_for('snap_bp.get_snapshot',snap_type='space',district_id=data.district_id) }}" class="navbar-item">
+                                        Facility Space
+                                    </A>
+                                    {% endif %}
+                                    {% if data and data.configuration.config()["trans"]["enabled"] %}
+                                    <A href="{{ url_for('snap_bp.get_snapshot',snap_type='trans',district_id=data.district_id) }}" class="navbar-item">
+                                        Transportation Status
+                                    </A>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">Manage</a>
+
+                                <div class="navbar-dropdown">
+                                    {% if data and data.configuration.config()["ppe"]["enabled"] %}
+                                        <A href="{{ url_for('ppe_bp.status',district_id=data.district_id) }}" class="navbar-item">
+                                            PPE Supply
+                                        </A>
+                                    {% endif %}
+                                    {% if data and data.configuration.config()["staff"]["enabled"] %}
+                                        <A href="{{ url_for('staff_bp.status',district_id=data.district_id) }}" class="navbar-item">
+                                            Facility Staffing
+                                        </A>
+                                    {% endif %}
+                                    {% if data and data.configuration.config()["space"]["enabled"] %}
+                                        <A href="{{ url_for('space_bp.status',district_id=data.district_id) }}" class="navbar-item">
+                                            Facility Space
+                                        </A>
+                                    {% endif %}
+                                    {% if data and data.configuration.config()["trans"]["enabled"] %}
+                                        <A href="{{ url_for('trans_bp.status',district_id=data.district_id) }}" class="navbar-item">
+                                            Transportation
+                                        </A>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">Configure</a>
+
+                                <div class="navbar-dropdown">
+                                        <A href="{{ url_for('admin_bp.district_config',section='district',district_id=data.district_id) }}" class="navbar-item">
+                                            District
+                                        </A>
+                                    {% if data and data.configuration.config()["geo"]["enabled"] %}
+                                        <A href="{{ url_for('admin_bp.district_config',section='geo',district_id=data.district_id) }}" class="navbar-item">
+                                            Regional Conditions
+                                        </A>
+                                    {% endif %}
+                                    {% if data and data.configuration.config()["ppe"]["enabled"] %}
+                                        <A href="{{ url_for('admin_bp.district_config',section='ppe',district_id=data.district_id) }}" class="navbar-item">
+                                            PPE Supply
+                                        </A>
+                                    {% endif %}
+                                    {% if data and data.configuration.config()["staff"]["enabled"] %}
+                                        <A href="{{ url_for('admin_bp.district_config',section='staff',district_id=data.district_id) }}" class="navbar-item">
+                                            Facility Staffing
+                                        </A>
+                                    {% endif %}
+                                    {% if data and data.configuration.config()["space"]["enabled"] %}
+                                        <A href="{{ url_for('admin_bp.district_config',section='space',district_id=data.district_id) }}" class="navbar-item">
+                                            Facility Space
+                                        </A>
+                                    {% endif %}
+                                    {% if data and data.configuration.config()["trans"]["enabled"] %}
+                                        <A href="{{ url_for('admin_bp.district_config',section='trans',district_id=data.district_id) }}" class="navbar-item">
+                                            Transportation Status
+                                        </A>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                        <div class="navbar-end">
+
+                            {% if current_user.is_authenticated %}
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">{{ current_user.name }}</a>
+
+                                <div class="navbar-dropdown">
+                                    <a href="{{ url_for('main_bp.profile') }}" class="navbar-item">
+                                        Profile
+                                    </a>
+                                    <a href="{{ url_for('auth_bp.logout') }}" class="navbar-item">
+                                        Logout
+                                    </a>
+                                </div>
+                            </div>
+                            {% else %}
+                                <a href="{{ url_for('auth_bp.login_form') }}" class="navbar-item">
+                                    Login
+                                </a>
+                                <a href="{{ url_for('auth_bp.signup_form') }}" class="navbar-item">
+                                    Sign Up
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -40,7 +156,7 @@
         </div>
 
         <div class="hero-body">
-            <div class="container has-text-centered">
+            <div class="container">
                {% block content %}
                {% endblock %}
             </div>

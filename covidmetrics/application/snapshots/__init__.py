@@ -15,32 +15,32 @@ snap_templates={
     'summary':{
         'class': SummarySnapshot,
         'dc': SummaryDataCache,
-        'template':'summary.html'
+        'template':'snapshots/summary.html'
     },
     'ppe': {
         'class': PPESnapshot,
         'dc': PPEDataCache,
-        'template': 'ppe.html'
+        'template': 'snapshots/ppe.html'
     },
     'space': {
         'class': SpaceSnapshot,
         'dc': SpaceDataCache,
-        'template': 'space.html'
+        'template': 'snapshots/space.html'
     },
     'staff': {
         'class': StaffSnapshot,
         'dc': StaffDataCache,
-        'template': 'staff.html'
+        'template': 'snapshots/staff.html'
     },
     'trans': {
         'class': TransSnapshot,
         'dc': TransDataCache,
-        'template': 'trans.html'
+        'template': 'snapshots/trans.html'
     },
     'geo': {
         'class': GeoSnapshot,
         'dc': GeoDataCache,
-        'template': 'geo.html'
+        'template': 'snapshots/geo.html'
     },
 
 }
@@ -57,4 +57,4 @@ def get_snapshot(snap_type='summary',district_id='3404906700000'):
         dc = snap_templates[snap_type]['dc'](dc=ddc)
         cache.set(snap_type + str(district_id),dc)
     snap = snap_templates[snap_type]['class'](dc)
-    return render_template(snap_templates[snap_type]['template'], snap=snap.status())
+    return render_template(snap_templates[snap_type]['template'], data=snap.status())

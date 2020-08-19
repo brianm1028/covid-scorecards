@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<HTML lang="en">
-<HEAD>
-    <META charset="UTF-8">
-    <TITLE>COVID READINESS DASHBOARD ADMIN - GEOGRAPHIC CONFIGURATION</TITLE>
-    <link rel="stylesheet" href="/static/scorecards.css">
-</HEAD>
-<BODY>
+{% extends "base.html" %}
 
-<H1>COVID READINESS DASHBOARD ADMIN - GEOGRAPHIC CONFIGURATION</H1>
+{% block content %}
+
+<H1 class="title">COVID READINESS DASHBOARD ADMIN - GEOGRAPHIC CONFIGURATION</H1>
 
 <TABLE width="800px">
     <TR>
@@ -17,10 +12,10 @@
                     <TD>
                         <TABLE width="400px">
                             <TR>
-                                <TH>District Name</TH><TD class="config">{{ ddc.district.name }}</TD>
+                                <TH>District Name</TH><TD class="config">{{ data.district.name }}</TD>
                             </TR>
                             <TR>
-                                <TH>Geographic Snapshots Enabled</TH><TD class="config">{{ ddc.configuration.config()["geo"]["enabled"] }}</TD>
+                                <TH>Geographic Snapshots Enabled</TH><TD class="config">{{ data.configuration.config()["geo"]["enabled"] }}</TD>
                             </TR>
                         </TABLE>
 
@@ -29,16 +24,16 @@
                                 <TH colspan="2">COVID Region Configuration</TH>
                             </TR>
                             <TR>
-                                <TH>COVID Region ID</TH><TD class="config">{{ ddc.COVIDRegion.id }}</TD>
+                                <TH>COVID Region ID</TH><TD class="config">{{ data.COVIDRegion.id }}</TD>
                             </TR>
                             <TR>
-                                <TH>Days to Display</TH><TD class="config">{{ ddc.configuration.config()["geo"]["region_duration"] }}</TD>
+                                <TH>Days to Display</TH><TD class="config">{{ data.configuration.config()["geo"]["region_duration"] }}</TD>
                             </TR>
                             <TR>
-                                <TH>Threshold Value</TH><TD class="config">{{ ddc.configuration.config()["geo"]["region_threshold"] }}</TD>
+                                <TH>Threshold Value</TH><TD class="config">{{ data.configuration.config()["geo"]["region_threshold"] }}</TD>
                             </TR>
                             <TR>
-                                <TH>Display Region?</TH><TD class="config">{{ ddc.configuration.config()["geo"]["disp_region"] }}</TD>
+                                <TH>Display Region?</TH><TD class="config">{{ data.configuration.config()["geo"]["disp_region"] }}</TD>
                             </TR>
                         </TABLE>
 
@@ -48,19 +43,19 @@
                             </TR>
                             <TR>
                                 <TH>Counties</TH><TD class="config">
-                                {%  for c in ddc.counties.values() %}
+                                {%  for c in data.counties.values() %}
                                     {{ c.name }}<BR>
                                 {% endfor %}
                             </TD>
                             </TR>
                             <TR>
-                                <TH>Days to Display</TH><TD class="config">{{ ddc.configuration.config()["geo"]["county_duration"] }}</TD>
+                                <TH>Days to Display</TH><TD class="config">{{ data.configuration.config()["geo"]["county_duration"] }}</TD>
                             </TR>
                             <TR>
-                                <TH>Threshold Value</TH><TD class="config">{{ ddc.configuration.config()["geo"]["county_threshold"] }}</TD>
+                                <TH>Threshold Value</TH><TD class="config">{{ data.configuration.config()["geo"]["county_threshold"] }}</TD>
                             </TR>
                             <TR>
-                                <TH>Display Counties?</TH><TD class="config">{{ ddc.configuration.config()["geo"]["disp_county"] }}</TD>
+                                <TH>Display Counties?</TH><TD class="config">{{ data.configuration.config()["geo"]["disp_county"] }}</TD>
                             </TR>
                         </TABLE>
 
@@ -70,19 +65,19 @@
                             </TR>
                             <TR>
                                 <TH>Zip Codes</TH><TD class="config">
-                                {%  for z in ddc.zip_codes.values() %}
+                                {%  for z in data.zip_codes.values() %}
                                     {{ z.zip_code }}<BR>
                                 {% endfor %}
                             </TD>
                             </TR>
                             <TR>
-                                <TH>Days to Display</TH><TD class="config">{{ ddc.configuration.config()["geo"]["zip_duration"] }}</TD>
+                                <TH>Days to Display</TH><TD class="config">{{ data.configuration.config()["geo"]["zip_duration"] }}</TD>
                             </TR>
                             <TR>
-                                <TH>Threshold Value</TH><TD class="config">{{ ddc.configuration.config()["geo"]["zip_threshold"] }}</TD>
+                                <TH>Threshold Value</TH><TD class="config">{{ data.configuration.config()["geo"]["zip_threshold"] }}</TD>
                             </TR>
                             <TR>
-                                <TH>Display Zip Codes?</TH><TD class="config">{{ ddc.configuration.config()["geo"]["disp_zip"] }}</TD>
+                                <TH>Display Zip Codes?</TH><TD class="config">{{ data.configuration.config()["geo"]["disp_zip"] }}</TD>
                             </TR>
                         </TABLE>
 
@@ -95,6 +90,4 @@
         </TH>
     </TR>
 </TABLE>
-
-</BODY>
-</HTML>
+{% endblock %}

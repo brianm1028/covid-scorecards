@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<H1 class="title" xmlns="http://www.w3.org/1999/html">PPE Supply Metrics</H1>
+
+    <div class="tile is-ancestor">
+        <div class="tile is-vertical">
+            <article class="tile is-child is-info">
+
+                <TABLE class="table">
+                    <TR>
+                        <TH class="status">PPE Supply Status</TH><TD class="status {{ 'is-success' if data.status else 'is-danger' }}">&nbsp;</TD>
+                    </TR>
+                    {% for r in data.facilities %}
+                    <TR>
+                        <TH class="status">&nbsp;&nbsp;{{ r.facility }} Supply Status</TH><TD class="status {{ 'is-success' if r.status else 'is-danger' }}">&nbsp;</TD>
+                    </TR>
+                    {% endfor %}
+                </TABLE>
+            </article>
+
+
+            {% for r in data.facilities %}
+            <article class="tile is-child is-info">
+            <p class="subtitle">{{ r.facility }} Supply Status</p>
+                <TABLE>
+                    <TR>
+                        <TH>Description</TH><TD>For the facility, a seven to fourteen day supply of PPE items must be maintained to support in-person learning.  Inventory supply is tracked by Shared Services Building and Grounds staff, consumption will be tracked by the supply facilitator at each facility.  The seven and fourteen day supply levels will be recalculated daily based on daily consumption trends over the previous seven and fourteen day periods.</TD>
+                    </TR>
+                    <TR>
+                        <TH>Updates</TH><TD>Updated daily, last update on {{ r.update_date }}</TD>
+                    </TR>
+                    <TR>
+                        <TD colspan="2">
+                            <TABLE class="table">
+                                <TR>
+                                    <TH>PPE Type</TH><TH>Facility Inventory</TH><TH>7-Day Demand</TH><TH>14-Day Demand</TH><TH>Fully Stocked</TH><TH>Status</TH>
+                                </TR>
+                                {% for s in r.ppe_types %}
+                                <TR>
+                                    <TD>{{ s.ppe_type }}</TD><TD>{{ s.inventory }}</TD><TD>{{ s.demand7 }}</TD><TD>{{ s.demand14 }}</TD><TD class="status {{ 'is-success' if s.fullstock else 'is-warning' }}">&nbsp;</TD><TD class="status {{ 'is-success' if s.status else 'is-danger' }}">&nbsp;</TD>
+                                </TR>
+                                {% endfor %}
+                            </TABLE>
+                        </TD>
+                    </TR>
+                </TABLE>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

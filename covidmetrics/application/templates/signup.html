@@ -4,26 +4,45 @@
 <div class="column is-4 is-offset-4">
     <h3 class="title">Sign Up</h3>
     <div class="box">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
         <form method="POST" action="/signup">
             <div class="field">
                 <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
+                    {{ form.email.label }} {{ form.email(class='input is-large') }}
                 </div>
             </div>
 
             <div class="field">
                 <div class="control">
-                    <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="">
+                    {{ form.name.label }} {{ form.name(class='input is-large') }}
                 </div>
             </div>
 
             <div class="field">
                 <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Password">
+                    {{ form.password.label }} {{ form.password(class='input is-large') }}
                 </div>
             </div>
 
-            <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
+            <div class="field">
+                <div class="control">
+                    {{ form.confirm.label }} {{ form.confirm(class='input is-large') }}
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    {{ form.district_id.label }} {{ form.district_id(class='is-large') }}
+                </div>
+            </div>
+
+            {{ form.submit() }}
         </form>
     </div>
 </div>

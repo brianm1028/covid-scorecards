@@ -6,3 +6,5 @@ space_bp = Blueprint(
     template_folder='templates',
     static_folder='static'
 )
+
+from .manager import status, room_form, room_post, demand_form, demand_post

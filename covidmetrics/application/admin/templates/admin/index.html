@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<HTML lang="en">
-<HEAD>
-    <META charset="UTF-8">
-    <TITLE>COVID READINESS DASHBOARD ADMIN - {{ ddc.district.name }}</TITLE>
-    <link rel="stylesheet" href="/static/scorecards.css">
-</HEAD>
-<BODY>
+{% extends "base.html" %}
 
-<H1>COVID READINESS DASHBOARD ADMIN - {{ ddc.district.name }}</H1>
+{% block content %}
+
+<H1 class="title">COVID READINESS DASHBOARD ADMIN - {{ data.district.name }}</H1>
 
 <TABLE width="800px">
     <TR>
@@ -17,22 +12,22 @@
                     <TD>
                         <TABLE width="400px">
                             <TR>
-                                <TH>District Configuration</TH><TD class="config"><A HREF="/admin/district/{{ ddc.district.id }}">CONFIGURE</A></TD>
+                                <TH>District Configuration</TH><TD class="config"><A HREF="{{ url_for('admin_bp.district_config',section='district',district_id=data.district_id) }}">CONFIGURE</A></TD>
                             </TR>
                             <TR>
-                                <TH>Regional Conditions Configuration</TH><TD class="config"><A HREF="/admin/geo/{{ ddc.district.id }}">CONFIGURE</A></TD>
+                                <TH>Regional Conditions Configuration</TH><TD class="config"><A HREF="{{ url_for('admin_bp.district_config',section='geo',district_id=data.district_id) }}">CONFIGURE</A></TD>
                             </TR>
                             <TR>
-                                <TH>PPE Supply Status</TH><TD class="config"><A HREF="/admin/ppe/{{ ddc.district.id }}">CONFIGURE</A></TD>
+                                <TH>PPE Supply Status</TH><TD class="config"><A HREF="{{ url_for('admin_bp.district_config',section='ppe',district_id=data.district_id) }}">CONFIGURE</A></TD>
                             </TR>
                             <TR>
-                                <TH>Facility Staffing Status</TH><TD class="config"><A HREF="/admin/staff/{{ ddc.district.id }}">CONFIGURE</A></TD>
+                                <TH>Facility Staffing Status</TH><TD class="config"><A HREF="{{ url_for('admin_bp.district_config',section='staff',district_id=data.district_id) }}">CONFIGURE</A></TD>
                             </TR>
                             <TR>
-                                <TH>Facility Space Status</TH><TD class="config"><A HREF="/admin/space/{{ ddc.district.id }}">CONFIGURE</A></TD>
+                                <TH>Facility Space Status</TH><TD class="config"><A HREF="{{ url_for('admin_bp.district_config',section='space',district_id=data.district_id) }}">CONFIGURE</A></TD>
                             </TR>
                             <TR>
-                                <TH>Transportation Status</TH><TD class="config"><A HREF="/admin/trans/{{ ddc.district.id }}">CONFIGURE</A></TD>
+                                <TH>Transportation Status</TH><TD class="config"><A HREF="{{ url_for('admin_bp.district_config',section='trans',district_id=data.district_id) }}">CONFIGURE</A></TD>
                             </TR>
                         </TABLE>
                     </TD>
@@ -44,6 +39,4 @@
         </TH>
     </TR>
 </TABLE>
-
-</BODY>
-</HTML>
+{% endblock %}

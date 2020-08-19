@@ -3,6 +3,7 @@ from flask import Blueprint, render_template
 from flask_login import login_required, current_user
 from . import cache
 from covidmetrics.application.DataCaches.IndexDataCache import IndexDataCache
+from datetime import datetime
 
 # Blueprint Configuration
 main_bp = Blueprint(

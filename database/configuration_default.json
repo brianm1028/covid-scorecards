@@ -1,0 +1,28 @@
+{
+  "geo": {
+    "enabled": true,
+    "disp_zip": true,
+    "disp_county": true,
+    "disp_region": true,
+    "zip_duration": 3,
+    "zip_threshold": 8.0,
+    "addl_zip_codes": [],
+    "county_duration": 3,
+    "region_duration": 3,
+    "county_threshold": 0.08,
+    "region_threshold": 0.08
+  },
+  "ppe": {
+    "enabled": false
+  },
+  "space": {
+    "enabled": false
+  },
+  "staff": {
+    "enabled": false
+  },
+  "trans": {
+    "enabled": false
+  },
+  "enabled": true
+}

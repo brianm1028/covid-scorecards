@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">Space Status</h1>
+
+    <TABLE class="table">
+        <thead>
+            <TR>
+                <TH>Facility</TH>
+                <TH>Room Type</TH>
+                <TH>Available</TH>
+                <TH>Required</TH>
+            </TR>
+        </thead>
+        <tbody>
+            {% for t in status %}
+            <TR>
+                <TD>{{ t.facility_name }}</TD>
+                <TD>{{ t.description }}</TD>
+                <TD>{{ t.available }}</TD>
+                <TD>{{ t.required }}</TD>
+            </TR>
+            {% endfor %}
+        </tbody>
+    </TABLE>
+
+
+
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- {{ data }} -->
+<H1 class="title">Regional Condition Metrics</H1>
+
+    <div class="tile is-ancestor">
+        <div class="tile is-vertical">
+            <article class="tile is-child is-info">
+
+                <TABLE class="table">
+                    <TR>
+                        <TH class="status">Regional Condition Status</TH><TD class="status {{ 'is-success' if data.status else 'is-danger' }}">&nbsp;</TD>
+                    </TR>
+                    {% if data.configuration.config()["geo"]["disp_region"] %}
+                    <TR>
+                        <TH class="status">&nbsp;&nbsp;Region Status</TH><TD class="status {{ 'is-success' if data.region_data.status else 'is-danger' }}">&nbsp;</TD>
+                    </TR>
+                    {% endif %}
+                    {% if data.configuration.config()["geo"]["disp_county"] %}
+                    <TR>
+                        <TH class="status">&nbsp;&nbsp;County Status</TH><TD class="status {{ 'is-success' if data.county_data.status else 'is-danger' }}">&nbsp;</TD>
+                    </TR>
+                    {% endif %}
+                    {% if data.configuration.config()["geo"]["disp_zip"] %}
+                    <TR>
+                        <TH class="status">&nbsp;&nbsp;Zip Code Status</TH><TD class="status {{ 'is-success' if data.zip_data.status else 'is-danger' }}">&nbsp;</TD>
+                    </TR>
+                    {% endif %}
+                </TABLE>
+            </article>
+
+        {% if data.configuration.config()["geo"]["disp_region"] %}
+            <article class="tile is-child is-info">
+                <p class="subtitle">Positivity Rate in Region</p>
+                <TABLE>
+                    <TR>
+                        <TH>Description</TH><TD>For COVID regions, the positivity testing rate should be less than or equal to {{ data.configuration.config()["geo"]["region_threshold"]*100 }}% each day for {{ data.configuration.config()["geo"]["region_duration"] }} consecutive days according to data provided by <A HREF="https://www.dph.illinois.gov/regionmetrics?regionID=9">IDPH</A>.</TD>
+                    </TR>
+                    <TR>
+                        <TH>Updates</TH><TD>Updated continuously, last update on {{ data.region_data.update_date }}</TD>
+                    </TR>
+                    <TR>
+                        <TD colspan="2">
+                            <TABLE class="table">
+                                <TR>
+                                    <TH>Region</TH>
+                                    {% for d in range(data.configuration.config()["geo"]["region_duration"]) %}
+                                    <TH>{{ data.region_data['day'+d|string+'date'] }}</TH>
+                                    {% endfor %}
+                                    <TH>Status</TH>
+                                </TR>
+                                {% for r in data.region_data.regions %}
+                                <TR>
+                                    <TD>{{ r.region }}</TD>
+                                    {% for d in range(data.configuration.config()["geo"]["region_duration"]) %}
+                                    <TD>{{ '%0.2f'| format(r['day'+d|string]*100) }}%</TD>
+                                    {% endfor %}
+                                    <TD class="status {{ 'is-success' if r.status else 'is-danger' }}">&nbsp;</TD>
+                                </TR>
+                                {% endfor %}
+                            </TABLE>
+                        </TD>
+                    </TR>
+                </TABLE>
+
+            </article>
+        {% endif %}
+
+
+        {% if data.configuration.config()["geo"]["disp_county"] %}
+            <article class="tile is-child is-info">
+            <p class="subtitle">Positivity Rate in County</p>
+                <TABLE>
+                    <TR>
+                        <TH>Description</TH><TD>For counties, the positivity testing rate should be less than or equal to {{ data.configuration.config()["geo"]["county_threshold"]*100 }}% per day for {{ data.configuration.config()["geo"]["county_duration"] }} consecutive days according to data provided by <A HREF="https://www.dph.illinois.gov/countymetrics">IDPH</A>.</TD>
+                    </TR>
+                    <TR>
+                        <TH>Updates</TH><TD>Updated continuously, last update on {{ data.county_data.update_date }}</TD>
+                    </TR>
+                    <TR>
+                        <TD colspan="2">
+                            <TABLE class="table">
+                                <TR>
+                                    <TH>County</TH>
+                                    {% for d in range(data.configuration.config()["geo"]["county_duration"]) %}
+                                    <TH>{{ data.county_data['day'+d|string+'date'] }}</TH>
+                                    {% endfor %}
+                                    <TH>Status</TH>
+                                </TR>
+                                {% for r in data.county_data.counties %}
+                                <TR>
+                                    <TD>{{ r.county }}</TD>
+                                    {% for d in range(data.configuration.config()["geo"]["county_duration"]) %}
+                                    <TD>{{ '%0.2f'| format(r['day'+d|string]*100) }}%</TD>
+                                    {% endfor %}
+                                    <TD class="status {{ 'is-success' if r.status else 'is-danger' }}">&nbsp;</TD>
+                                </TR>
+                                {% endfor %}
+                            </TABLE>
+                        </TD>
+                    </TR>
+                </TABLE>
+            </article>
+        {% endif %}
+
+
+        {% if data.configuration.config()["geo"]["disp_zip"] %}
+            <article class="tile is-child is-info">
+            <p class="subtitle">New Cases in Zip Code</p>
+                <TABLE>
+                    <TR>
+                        <TH>Description</TH><TD>For a zip codes areas, the new case count should be less than {{ data.configuration.config()["geo"]["zip_threshold"] }}% per 10,000 residents each day for {{ data.configuration.config()["geo"]["zip_duration"] }} consecutive days according to data provided by <A HREF="https://www.dph.illinois.gov/countymetrics">IDPH</A>.</TD>
+                    </TR>
+                    <TR>
+                        <TH>Updates</TH><TD>Updated daily, last update on {{ data.zip_data.update_date }}</TD>
+                    </TR>
+                    <TR>
+                        <TD colspan="2">
+                            <TABLE class="table">
+                                <TR>
+                                    <TH>Zip Code</TH>
+                                    {% for d in range(data.configuration.config()["geo"]["zip_duration"]) %}
+                                    <TH>{{ data.zip_data['day'+d|string+'date'] }}</TH>
+                                    {% endfor %}
+                                    <TH>Status</TH>
+                                </TR>
+                                {% for r in data.zip_data.zip_codes %}
+                                <TR>
+                                    <TD>{{ r.zip_code }}</TD>
+                                    {% for d in range(data.configuration.config()["geo"]["zip_duration"]) %}
+                                    <TD>{{ '%0.2f'| format(r['day'+d|string]) }}%</TD>
+                                    {% endfor %}
+                                    <TD class="status {{ 'is-success' if r.status else 'is-warning' }}">&nbsp;</TD>
+                                </TR>
+                                {% endfor %}
+                            </TABLE>
+                        </TD>
+                    </TR>
+                </TABLE>
+            </article>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

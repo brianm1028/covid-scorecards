@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<H1 class="title">Transportation Metrics</H1>
+
+    <div class="tile is-ancestor">
+        <div class="tile is-vertical">
+            <article class="tile is-child is-info">
+
+                <TABLE class="table">
+                    <TR>
+                        <TH class="status">Transportation Status</TH><TD class="status {{ 'is-success' if data.status else 'is-danger' }}">&nbsp;</TD>
+                    </TR>
+                    <TR>
+                        <TH class="status">&nbsp;&nbsp;Bus Capacity</TH><TD class="status {{ 'is-success' if data.buses.status else 'is-danger' }}">&nbsp;</TD>
+                    </TR>
+                </TABLE>
+            </article>
+
+            <article class="tile is-child is-info">
+                <TABLE>
+                    <TR>
+                        <TH colspan="2">Bus Capacity</TH>
+                    </TR>
+                    <TR>
+                        <TH>Description</TH><TD>A sufficient number of buses and seats on buses must be available to support the demand for transportation while maintaining safety standards and protections.</TD>
+                    </TR>
+                    <TR>
+                        <TH>Updates</TH><TD>Updated weekly, last update on {{ data.buses.update_date }}</TD>
+                    </TR>
+                    <TR>
+                        <TD colspan="2">
+                            <TABLE class="table">
+                                <TR>
+                                    <TH>Bus Group</TH><TH>Available Seats</TH><TH>Required Seats</TH><TH>Percent Available</TH><TH>Status</TH>
+                                </TR>
+                                {% for r in data.buses.bus_groups %}
+                                <TR>
+                                    <TD>{{ r.bus_group }}</TD><TD>{{ r.available }}</TD><TD>{{ r.required }}</TD><TD>{{ '%0.2f'| format(r.pct_avail*100.0) }}%</TD><TD class="status {{ 'is-success' if r.status else 'is-danger' }}">&nbsp;</TD>
+                                </TR>
+                                {% endfor %}
+                            </TABLE>
+                        </TD>
+                    </TR>
+                </TABLE>
+
+            </article>
+
+        </div>
+    </div>
+
+{% endblock %}

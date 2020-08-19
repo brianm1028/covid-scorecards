@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<H1 class="title">Facility Space Metrics</H1>
+
+    <div class="tile is-ancestor">
+        <div class="tile is-vertical">
+            <article class="tile is-child is-info">
+
+                <TABLE class="table">
+                    <TR>
+                        <TH class="status">Overall Facility Space Status</TH><TD class="status {{ 'is-success' if data.status else 'is-danger' }}">&nbsp;</TD>
+                    </TR>
+                    {% for r in data.facilities %}
+                    <TR>
+                        <TH class="status">&nbsp;&nbsp;{{ r.facility }} Space Status</TH><TD class="status {{ 'is-success' if r.status else 'is-danger' }}">&nbsp;</TD>
+                    </TR>
+                    {% endfor %}
+                </TABLE>
+            </article>
+
+            {% for r in data.facilities %}
+            <article class="tile is-child is-info">
+            <p class="subtitle">{{ r.facility }} Space Status</p>
+                <TABLE>
+                    <TR>
+                        <TH>Description</TH><TD>For the facility, the number of students requesting in-person learning must be less than the number of student spaces available in classrooms.</TD>
+                    </TR>
+                    <TR>
+                        <TH>Updates</TH><TD>Updated as necessary, last update on {{ r.update_date }}</TD>
+                    </TR>
+                    <TR>
+                        <TD colspan="2">
+                            <TABLE class="table">
+                                <TR>
+                                    <TH>Room Type</TH><TH>Projected Capacity</TH><TH>Projected Demand</TH><TH>Fill Percentage</TH><TH>Status</TH>
+                                </TR>
+                                {% for s in r.rooms %}
+                                <TR>
+                                    <TD>{{ s.room_type }}</TD><TD>{{ s.capacity }}</TD><TD>{{ s.demand }}</TD><TD>{{ '%0.2f'| format(s.fill_pct*100) }}%</TD><TD class="status {{ 'is-success' if s.status else 'is-danger' }}">&nbsp;</TD>
+                                </TR>
+                                {% endfor %}
+                            </TABLE>
+                        </TD>
+                    </TR>
+                </TABLE>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

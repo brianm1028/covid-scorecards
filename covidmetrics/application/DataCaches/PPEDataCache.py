@@ -1,5 +1,5 @@
 from .DistrictDataCache import DistrictDataCache
-from covidmetrics.application.models import PPEInventoryView
+from covidmetrics.application.models import PPEInventoryDemandView
 
 class PPEDataCache(DistrictDataCache):
 
@@ -15,4 +15,4 @@ class PPEDataCache(DistrictDataCache):
         #print(self.zip_codes)
         #print(self.COVIDRegion)
 
-        self.inventory = PPEInventoryView.query.all()
+        self.inventory = PPEInventoryDemandView.query.all()
