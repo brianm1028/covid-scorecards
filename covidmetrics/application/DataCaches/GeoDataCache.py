@@ -1,11 +1,13 @@
 from . import DistrictDataCache
 import requests
 from datetime import datetime, timedelta
+import pprint
 
 from ..models import ZipCode
 from ..models import County
 from ..models import COVIDRegion
 
+pp = pprint.PrettyPrinter(indent=4)
 
 def date_str(d=0):
     td = timedelta(days=d)
@@ -34,6 +36,10 @@ class GeoDataCache(DistrictDataCache):
         self.zip_positivity = self.calculate_zip_positivity(days=self.configuration.config()["geo"]["zip_duration"])
         self.county_positivity = self.calculate_county_positivity(days=self.configuration.config()["geo"]["county_duration"])
         self.region_positivity = self.calculate_region_positivity(days=self.configuration.config()["geo"]["region_duration"])
+
+        self.county_incidence = self.calculate_county_incidence(
+            avg_days=self.configuration.config()["geo"]["county_inc_duration"],
+            dur_days=self.configuration.config()["geo"]["county_inc_average"])
 
     @staticmethod
     def load_county_list():
@@ -79,6 +85,61 @@ class GeoDataCache(DistrictDataCache):
             data['historical_zip']['values'].append(rec)
 
         return data
+
+
+
+    def calculate_county_incidence(self, avg_days=7, dur_days=7):
+        # number of new confirmed cases per 100k county population
+        # 7 day rolling average, rounded whole for 7 consecutive days
+        # remote is >14, hybrid is 7-14, in-person is <7
+        data = {}
+        for d in range(dur_days + avg_days + 1):
+            data[d] = {}
+            for dv in [r for r in self.covid_historical_test_results['historical_county']['values']
+                if r['testDate'] == date_str(d + 3)]:
+                    for cv in [c for c in dv['values'] if c['County'] in self.counties.keys()]:
+                        data[d][cv['County']] = {
+                            'confirmed_cases': cv['confirmed_cases'],
+                            'total_tested': cv['total_tested'],
+                            'testDate': dv['testDate']
+                        }
+        p = {}
+        pp.pprint(data)
+        population = {}
+        for d in range(dur_days + avg_days):
+            p[d] = {}
+            for c in self.counties.keys():
+                p[d][c] = {
+                    'confirmed_cases': (data[d][c]['confirmed_cases'] - data[d + 1][c]['confirmed_cases']),
+                    'incidence': (data[d][c]['confirmed_cases'] - data[d + 1][c]['confirmed_cases'])/self.counties[c].population*100000,
+                    'total_tested': (data[d][c]['total_tested'] - data[d + 1][c]['total_tested']),
+                    'testDate': data[d][c]['testDate']
+                }
+                p[d][c]['positivity_rate'] = p[d][c]['confirmed_cases'] / p[d][c]['total_tested']
+                p[d]['testDate'] = p[d][c]['testDate']
+                population[c]=self.county_list['countyValues']
+        for d in range(dur_days):
+            print('d:',str(d))
+            for c in self.counties.keys():
+                print('c: ',str(c))
+                pp.pprint(p[d][c])
+                p[d][c]['dur_roll_avg_incidence']=sum([p[d+ad][c]['incidence'] for ad in range(avg_days)])/avg_days
+                print(p[d][c])
+
+        print(p)
+        return p
+
+    def calculate_health_system_capacity(self):
+        # number of covid like admissions across all ages from NSSP
+        # number of days of non-increasing value out of the past 10 days
+        # remote is <7, hybrid and in-person is 7 or more
+        pass
+
+    def calculate_testing_turnaround_time(self):
+        # average number of days from sample collection to result entry in ELRS
+        # 7 day rolling average, rounded whole, three day lag
+        # remote is >10 days, hybrid is 3-10 days, in-person is <3 days
+        pass
 
     def calculate_zip_positivity(self, days=3):
         data = {}

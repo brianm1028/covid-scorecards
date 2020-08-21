@@ -45,11 +45,11 @@ def login_post():
     user = User.query.filter_by(email=form.email.data).first()
     if user and user.check_password(password=form.password.data):
         login_user(user, remember=remember)
+        session['username']=current_user.name
         next_page = request.args.get('next')
         return redirect(next_page or url_for('main_bp.index'))
     flash('Invalid username/password combination')
     return redirect(url_for('auth_bp.login_form',form=form))
-
 
 @auth_bp.route('/signup', methods=['GET'])
 def signup_form():
@@ -83,4 +83,5 @@ def signup_post():
 def logout():
     """User log-out logic."""
     logout_user()
+    session['username']=''
     return redirect(url_for('main_bp.index'))

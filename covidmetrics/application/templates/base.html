@@ -23,7 +23,7 @@
                         <div class="navbar-start">
                             {% if data and data.configuration %}
                             <a href="{{ url_for('main_bp.index') }}" class="navbar-item">
-                                [{{ data.district_name }}]
+                                [{{ session['district_name'] }}]
                             </a>
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link">Snapshots</a>

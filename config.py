@@ -55,3 +55,7 @@ class Config:
     # Flask Caching
     CACHE_TYPE = 'simple'
     CACHE_DEFAULT_TIMEOUT = 300
+
+    # Flask-Session
+    SESSION_TYPE = 'filesystem'
+    #SESSION_REDIS = 'redis://covidmetrics-redis.zlpdik.0001.use1.cache.amazonaws.com:6379'

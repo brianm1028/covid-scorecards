@@ -9,3 +9,5 @@ mysql-connector-python~=8.0.21
 Flask-WTF~=0.14.3
 dnspython~=2.0.0
 email-validator~=1.1.1
+Flask-Session~=0.3.2
+redis~=3.5.3

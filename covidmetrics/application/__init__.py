@@ -2,12 +2,13 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_caching import Cache
+from flask_session import Session
 from datetime import datetime
 
 login_manager = LoginManager()
 db = SQLAlchemy()
 cache = Cache()
-
+sess = Session()
 
 def create_app():
     """Initialize the core application."""
@@ -25,6 +26,7 @@ def create_app():
     login_manager.init_app(app)
 
     cache.init_app(app)
+    sess.init_app(app)
 
     with app.app_context():
         # Include our Routes

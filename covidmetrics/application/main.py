@@ -1,5 +1,5 @@
 """Logged-in page routes."""
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, session
 from flask_login import login_required, current_user
 from . import cache
 from covidmetrics.application.DataCaches.IndexDataCache import IndexDataCache
@@ -18,6 +18,9 @@ def index():
     if dc is None:
         dc = IndexDataCache()
         cache.set('index',dc)
+    if 'district_id' not in session:
+        session['district_id'] = ''
+        session['district_name'] = ''
     return render_template('index.html', data=dc.districts)
 
 @main_bp.route('/status')
@@ -27,5 +30,5 @@ def status():
 @main_bp.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.name)
+    return render_template('profile.html', name=session.get('username'))
 
