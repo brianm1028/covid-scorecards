@@ -72,7 +72,7 @@
             <p class="subtitle">Incidence Rate in County</p>
                 <TABLE>
                     <TR>
-                        <TH>Description</TH><TD>For counties, the {{ data.configuration.config()["geo"]["county_inc_average"] }} day rolling average incidence rate, calculated as number of confirmed cases per day per 100,000 population of the county, should be less than {{ data.configuration.config()["geo"]["county_inc_threshold"] }} for {{ data.configuration.config()["geo"]["county_inc_duration"] }} consecutive days according to data provided by <A HREF="https://www.dph.illinois.gov/countymetrics">IDPH</A>.</TD>
+                        <TH>Description</TH><TD>For counties, the {{ data.configuration.config()["geo"]["county_inc_average"] }} day rolling average incidence rate, calculated as number of confirmed cases per day per 100,000 population of the county, should be less than {{ data.configuration.config()["geo"]["county_hyb_threshold"] }} (Hybrid) and less than {{ data.configuration.config()["geo"]["county_inp_threshold"] }} (In-Person) for {{ data.configuration.config()["geo"]["county_inc_duration"] }} consecutive days according to data provided by <A HREF="https://www.dph.illinois.gov/countymetrics">IDPH</A>.</TD>
                     </TR>
                     <TR>
                         <TH>Updates</TH><TD>Updated continuously, last update on {{ data.county_data.update_date }}</TD>
@@ -92,7 +92,7 @@
                                 <TR>
                                     <TD>{{ r.county }}</TD>
                                     {% for d in range(data.configuration.config()["geo"]["county_inc_duration"]) %}
-                                    <TD>{{ '%0.2f'| format(r['day'+d|string+'inc']) }}%</TD>
+                                    <TD>{{ '%0.2f'| format(r['day'+d|string+'inc']) }}</TD>
                                     {% endfor %}
                                     <TD class="status {{ 'is-success' if r.inpstatus else 'is-danger' }}">&nbsp;</TD>
                                     <TD class="status {{ 'is-success' if r.hybstatus else 'is-danger' }}">&nbsp;</TD>
