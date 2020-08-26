@@ -1,2 +1,0 @@
-PATH=/home/ec2-user/covid-scorecards/venv/bin
-SQLALCHEMY_DATABASE_URI=mysql+mysqlconnector://lfschools:Apr58132134!@lfschools-db.cwbkskvjzpsl.us-east-1.rds.amazonaws.com:3306/lfschools

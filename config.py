@@ -6,10 +6,8 @@ class Config:
     # General Config
     FLASK_APP = 'wsgi.py'
     FLASK_ENV = environ.get('FLASK_ENV')
-    #AWS_ACCESS_KEY = environ.get('AWS_ACCESS_KEY')
-    #AWS_SECRET_KEY = environ.get('AWS_SECRET_KEY')
     DEBUG = True
-    SECRET_KEY = 'Apr5813213455894433!'
+    SECRET_KEY = environ.get("SECRET_KEY")
 
     # Database
     SQLALCHEMY_DATABASE_URI = environ.get("SQLALCHEMY_DATABASE_URI")
@@ -22,4 +20,3 @@ class Config:
 
     # Flask-Session
     SESSION_TYPE = 'filesystem'
-    #SESSION_REDIS = 'redis://covidmetrics-redis.zlpdik.0001.use1.cache.amazonaws.com:6379'
