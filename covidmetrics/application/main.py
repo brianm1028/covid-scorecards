@@ -21,6 +21,9 @@ def index():
     if 'district_id' not in session:
         session['district_id'] = ''
         session['district_name'] = ''
+    if 'perms' not in session:
+        session['perms'] = {}
+        session['permset'] = 0
     return render_template('index.html', data=dc.districts, session=session)
 
 @main_bp.route('/status')
