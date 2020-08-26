@@ -21,7 +21,7 @@ def index():
     if 'district_id' not in session:
         session['district_id'] = ''
         session['district_name'] = ''
-    return render_template('index.html', data=dc.districts)
+    return render_template('index.html', data=dc.districts, session=session)
 
 @main_bp.route('/status')
 def status():
@@ -30,5 +30,5 @@ def status():
 @main_bp.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', name=session.get('username'))
+    return render_template('profile.html', name=session.get('username'), session=session)
 

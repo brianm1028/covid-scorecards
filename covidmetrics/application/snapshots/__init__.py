@@ -54,11 +54,11 @@ def get_snapshot(snap_type='summary',district_id='3404906700000'):
 
     session['district_id']=ddc.district_id
     session['district_name']=ddc.district_name
-
+    print(session)
 
     dc = cache.get(snap_type + str(district_id))
     if dc is None:
         dc = snap_templates[snap_type]['dc'](dc=ddc)
         cache.set(snap_type + str(district_id),dc)
     snap = snap_templates[snap_type]['class'](dc)
-    return render_template(snap_templates[snap_type]['template'], data=snap.status())
+    return render_template(snap_templates[snap_type]['template'], data=snap.status(), session=session)

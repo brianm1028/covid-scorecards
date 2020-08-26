@@ -2,7 +2,7 @@
 from flask import Blueprint, redirect, render_template, flash, request, session, url_for
 from flask_login import login_required, logout_user, current_user, login_user
 from .forms import LoginForm, SignupForm
-from .models import User, District
+from .models import User, District, UserRoleTargetsView
 from . import login_manager
 from . import db
 
@@ -31,7 +31,7 @@ def unauthorized():
 
 @auth_bp.route('/login', methods=['GET'])
 def login_form():
-    return render_template('login.html')
+    return render_template('login.html',session=session)
 
 @auth_bp.route('/login', methods=['POST'])
 def login_post():
@@ -46,6 +46,12 @@ def login_post():
     if user and user.check_password(password=form.password.data):
         login_user(user, remember=remember)
         session['username']=current_user.name
+        urtv = UserRoleTargetsView.query.filter_by(user_id=user.id)
+        session['perms']={}
+        session['permset']=0
+        for r in urtv:
+            session['permset']=session['permset'] | r.permset
+            session['perms'][r.target_id]=r.permset
         next_page = request.args.get('next')
         return redirect(next_page or url_for('main_bp.index'))
     flash('Invalid username/password combination')
@@ -56,27 +62,23 @@ def signup_form():
     form = SignupForm()
     districts = District.query.all()
     form.district_id.choices = [(i.id, i.name) for i in districts]
-    return render_template('signup.html', form=form)
+    return render_template('signup.html', form=form, session=session)
 
 @auth_bp.route('/signup', methods=['POST'])
 def signup_post():
     form = SignupForm()
-    if form.validate_on_submit():
-        existing_user = User.query.filter_by(email=form.email.data).first()
-        if existing_user is None:
-            user = User(
-                name=form.name.data,
-                email=form.email.data
-            )
-            user.set_password(form.password.data)
-            db.session.add(user)
-            db.session.commit()  # Create new user
-            login_user(user)  # Log in as newly created user
-            return redirect(url_for('main_bp.index'))
-        flash('A user already exists with that email address.')
-    else:
-        flash('Invalid entry')
-        return redirect(url_for('auth_bp.signup_form'))
+    existing_user = User.query.filter_by(email=form.email.data).first()
+    if existing_user is None:
+        user = User(
+            name=form.name.data,
+            email=form.email.data
+        )
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()  # Create new user
+        login_user(user)  # Log in as newly created user
+        return redirect(url_for('main_bp.index'))
+    flash('A user already exists with that email address.')
 
 @auth_bp.route("/logout")
 @login_required

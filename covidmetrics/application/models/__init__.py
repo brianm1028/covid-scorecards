@@ -19,3 +19,4 @@ from .PPETransactionsView import PPETransactionsView
 from .RoomType import RoomType
 from .Room import Room
 from .RoomDemand import RoomDemand
+from .UserRoleTargetsView import UserRoleTargetsView

@@ -10,13 +10,13 @@ from . import ppe_bp
 @login_required
 def history(district_id):
     transactions = PPETransactionsView.query.all()
-    return render_template('ppe/history.html', data=DistrictDataCache(district_id), ppe_transactions=transactions)
+    return render_template('ppe/history.html', data=DistrictDataCache(district_id), ppe_transactions=transactions,session=session)
 
 @ppe_bp.route('/ppe/status/<district_id>', methods=['GET'])
 @login_required
 def status(district_id):
     ppe_inventory = PPEInventoryView.query.all()
-    return render_template('ppe/status.html', data=DistrictDataCache(district_id), ppe_inventory=ppe_inventory)
+    return render_template('ppe/status.html', data=DistrictDataCache(district_id), ppe_inventory=ppe_inventory,session=session)
 
 
 
@@ -30,7 +30,7 @@ def transaction_form(district_id):
         facilities = Facility.query.all()
         form.ppe_item_id.choices = [(i.id,i.description) for i in ppe_items]
         form.facility_id.choices = [(i.id,i.facility_name) for i in facilities]
-    return render_template('ppe/transaction.html', data=DistrictDataCache(district_id), form=form)
+    return render_template('ppe/transaction.html', data=DistrictDataCache(district_id), form=form,session=session)
 
 @ppe_bp.route('/ppe/transaction/<district_id>', methods=['POST'])
 @login_required

@@ -10,7 +10,7 @@ from . import space_bp
 @login_required
 def status(district_id):
     status = SpaceStatusView.query.all()
-    return render_template('space/status.html', data=DistrictDataCache(district_id), status=status)
+    return render_template('space/status.html', data=DistrictDataCache(district_id), status=status,session=session)
 
 @space_bp.route('/space/rooms/<district_id>', methods=['GET'])
 @login_required
@@ -22,7 +22,7 @@ def room_form(district_id):
         facilities = Facility.query.all()
         form.room_type_id.choices = [(i.id,i.description) for i in room_types]
         form.facility_id.choices = [(i.id,i.facility_name) for i in facilities]
-    return render_template('space/room.html', data=DistrictDataCache(district_id), form=form)
+    return render_template('space/room.html', data=DistrictDataCache(district_id), form=form,session=session)
 
 @space_bp.route('/space/rooms/<district_id>', methods=['POST'])
 @login_required
@@ -49,7 +49,7 @@ def demand_form(district_id):
         facilities = Facility.query.all()
         form.room_type_id.choices = [(i.id,i.description) for i in room_types]
         form.facility_id.choices = [(i.id,i.facility_name) for i in facilities]
-    return render_template('space/demand.html', data=DistrictDataCache(district_id), form=form)
+    return render_template('space/demand.html', data=DistrictDataCache(district_id), form=form,session=session)
 
 @space_bp.route('/space/demand/<district_id>', methods=['POST'])
 @login_required

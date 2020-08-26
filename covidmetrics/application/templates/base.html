@@ -10,21 +10,23 @@
 <!--    <link rel="stylesheet" href="/static/bulma.css?v={{ dnow }}">-->
     <link rel="stylesheet" href="/static/scorecards.css?v={{ dnow }}">
     <title>COVID READINESS DASHBOARDS</title>
+<!-- {{ session.perms }} -->
 </head>
 
-<body>
+<body class="has-navbar-fixed-top">
     <section class="hero">
 
         <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div id="navbarMenuHeroA" class="navbar-menu">
+                    <div class="navbar-start">
 
-                    <div id="navbarMenuHeroA" class="navbar-menu">
-                        <div class="navbar-start">
-                            {% if data and data.configuration %}
+                        {% if data and data.configuration %}
                             <a href="{{ url_for('main_bp.index') }}" class="navbar-item">
-                                [{{ session['district_name'] }}]
+                                [{{ session.district_name }}]
                             </a>
+
+
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link">Snapshots</a>
 
@@ -60,35 +62,36 @@
                                 </div>
                             </div>
 
-
+                            {% if check_perms(permissions['MANAGER'],session.permset) %}
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link">Manage</a>
 
                                 <div class="navbar-dropdown">
-                                    {% if data and data.configuration.config()["ppe"]["enabled"] %}
+                                    {% if data and data.configuration.config()["ppe"]["enabled"] and check_perms(permissions['PPE'],session.permset) %}
                                         <A href="{{ url_for('ppe_bp.status',district_id=data.district_id) }}" class="navbar-item">
                                             PPE Supply
                                         </A>
                                     {% endif %}
-                                    {% if data and data.configuration.config()["staff"]["enabled"] %}
+                                    {% if data and data.configuration.config()["staff"]["enabled"] and check_perms(permissions['STAFF'],session.permset) %}
                                         <A href="{{ url_for('staff_bp.status',district_id=data.district_id) }}" class="navbar-item">
                                             Facility Staffing
                                         </A>
                                     {% endif %}
-                                    {% if data and data.configuration.config()["space"]["enabled"] %}
+                                    {% if data and data.configuration.config()["space"]["enabled"] and check_perms(permissions['SPACE'],session.permset) %}
                                         <A href="{{ url_for('space_bp.status',district_id=data.district_id) }}" class="navbar-item">
                                             Facility Space
                                         </A>
                                     {% endif %}
-                                    {% if data and data.configuration.config()["trans"]["enabled"] %}
+                                    {% if data and data.configuration.config()["trans"]["enabled"] and check_perms(permissions['TRANS'],session.permset) %}
                                         <A href="{{ url_for('trans_bp.status',district_id=data.district_id) }}" class="navbar-item">
                                             Transportation
                                         </A>
                                     {% endif %}
                                 </div>
                             </div>
+                            {% endif %}
 
-
+                            {% if check_perms(permissions['ADMIN'],session.permset) %}
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link">Configure</a>
 
@@ -125,31 +128,32 @@
                             </div>
                             {% endif %}
 
-                        </div>
-                        <div class="navbar-end">
+                        {% endif %}
 
-                            {% if current_user.is_authenticated %}
-                            <div class="navbar-item has-dropdown is-hoverable">
-                                <a class="navbar-link">{{ current_user.name }}</a>
+                    </div>
+                    <div class="navbar-end">
 
-                                <div class="navbar-dropdown">
-                                    <a href="{{ url_for('main_bp.profile') }}" class="navbar-item">
-                                        Profile
-                                    </a>
-                                    <a href="{{ url_for('auth_bp.logout') }}" class="navbar-item">
-                                        Logout
-                                    </a>
-                                </div>
+                        {% if current_user.is_authenticated %}
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">{{ session.username }}</a>
+
+                            <div class="navbar-dropdown">
+                                <a href="{{ url_for('main_bp.profile') }}" class="navbar-item">
+                                    Profile
+                                </a>
+                                <a href="{{ url_for('auth_bp.logout') }}" class="navbar-item">
+                                    Logout
+                                </a>
                             </div>
-                            {% else %}
-                                <a href="{{ url_for('auth_bp.login_form') }}" class="navbar-item">
-                                    Login
-                                </a>
-                                <a href="{{ url_for('auth_bp.signup_form') }}" class="navbar-item">
-                                    Sign Up
-                                </a>
-                            {% endif %}
                         </div>
+                        {% else %}
+                            <a href="{{ url_for('auth_bp.login_form') }}" class="navbar-item">
+                                Login
+                            </a>
+                            <a href="{{ url_for('auth_bp.signup_form') }}" class="navbar-item">
+                                Sign Up
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </nav>
