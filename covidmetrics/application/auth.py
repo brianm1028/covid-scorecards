@@ -6,7 +6,6 @@ from .models import User, District, UserRoleTargetsView
 from . import login_manager
 from . import db
 
-
 # Blueprint Configuration
 auth_bp = Blueprint(
     'auth_bp', __name__,
@@ -36,7 +35,7 @@ def login_form():
 @auth_bp.route('/login', methods=['POST'])
 def login_post():
     if current_user.is_authenticated:
-        return redirect(url_for('main_bp.index'))
+        return redirect("/")
 
     form = LoginForm()
 
@@ -57,7 +56,7 @@ def login_post():
                 session['perms'][r.district_id]=session['perms'][r.district_id]|r.permset
             session['permset']=session['permset'] | r.permset
         next_page = request.args.get('next')
-        return redirect(next_page or url_for('main_bp.index'))
+        return redirect(next_page or "/")
     flash('Invalid username/password combination')
     return redirect(url_for('auth_bp.login_form',form=form))
 
@@ -81,7 +80,7 @@ def signup_post():
         db.session.add(user)
         db.session.commit()  # Create new user
         login_user(user)  # Log in as newly created user
-        return redirect(url_for('main_bp.index'))
+        return redirect("/")
     flash('A user already exists with that email address.')
 
 @auth_bp.route("/logout")
@@ -92,4 +91,4 @@ def logout():
     session['username']=''
     session['perms']={}
     session['permset']=0
-    return redirect(url_for('main_bp.index'))
+    return redirect("/")
