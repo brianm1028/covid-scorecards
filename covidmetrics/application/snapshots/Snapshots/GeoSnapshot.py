@@ -48,7 +48,9 @@ class GeoSnapshot(Snapshot):
         for c in self.dc.counties:
             r = {
                 'county': c,
-                'status': True
+                'status': True,
+                'hybstatus': True,
+                'inpstatus': True
                 }
             for d in range(self.dc.configuration.config()["geo"]["county_duration"]):
                 r['day'+str(d)] = self.dc.county_positivity[d][c]['positivity_rate']
@@ -59,11 +61,14 @@ class GeoSnapshot(Snapshot):
             for d in range(self.dc.configuration.config()["geo"]["county_inc_duration"]):
                 r['day'+str(d)+'inc'] = self.dc.county_incidence[d][c]['dur_roll_avg_incidence']
                 #TODO: add threshold to configuration for incidence rate
-                r['hybstatus'] = (self.dc.county_incidence[d][c]['dur_roll_avg_incidence'] < self.dc.configuration.config()["geo"]["county_hyb_threshold"])
-                r['inpstatus'] = (self.dc.county_incidence[d][c]['dur_roll_avg_incidence'] < self.dc.configuration.config()["geo"]["county_inp_threshold"])
+                if not (self.dc.county_incidence[d][c]['dur_roll_avg_incidence'] < self.dc.configuration.config()["geo"]["county_hyb_threshold"]):
+                    r['hybstatus'] = False
+                if not (self.dc.county_incidence[d][c]['dur_roll_avg_incidence'] < self.dc.configuration.config()["geo"]["county_inp_threshold"]):
+                    r['inpstatus'] = False
                 data['county_data']['day'+str(d)+'incdate'] = self.dc.county_incidence[d]['testDate']
-                if not r['hybstatus']:
-                    data['county_data']['status'] = False
+                print(r)
+            if not r['hybstatus']:
+                data['county_data']['status'] = False
             data['county_data']['counties'].append(r)
 
         if not data['county_data']['status']:

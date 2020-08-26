@@ -1,4 +1,5 @@
 from .. import db
+from datetime import datetime
 
 class StaffUpdate(db.Model):
     __tablename__ = 'staff_updates'
@@ -11,8 +12,8 @@ class StaffUpdate(db.Model):
     available = db.Column(db.Integer)
 
 
-    def __init__(self, id, update_date, staff_role_id, facility_id, required, available, recorder_id):
-        self.id = id
+    def __init__(self, staff_role_id, facility_id, required, available, recorder_id,update_date=datetime.now()):
+        #self.id = id
         self.update_date = update_date
         self.staff_role_id = staff_role_id
         self.facility_id = facility_id

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="title">Add Room Demand</h1>
+    <h1 class="title">Add Staff Update</h1>
     <div class="tile is-ancestor">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -10,21 +10,27 @@
             </div>
         {% endif %}
         {% endwith %}
-        <form method="POST" action="/space/demand/{{ session['district_id'] }}">
+        <form method="POST" action="/staff/updates/{{ session['district_id'] }}">
+
+            <div class="field">
+                {{ form.staff_role_id.label }}
+                <div class="control">{{ form.staff_role_id(class='select') }}</div>
+            </div>
+
             <div class="field">
                 {{ form.facility_id.label }}
                 <div class="control">{{ form.facility_id(class='select') }}</div>
             </div>
 
             <div class="field">
-                {{ form.room_type_id.label }}
-                <div class="control">{{ form.room_type_id(class='select') }}</div>
+                {{ form.required.label }}
+                <div class="control">{{ form.required(class='input') }}</div>
             </div>
             <div class="field">
-                {{ form.demand.label }}
-                <div class="control">{{ form.demand(class='input') }}</div>
+                {{ form.available.label }}
+                <div class="control">{{ form.available(class='input') }}</div>
             </div>
-            {{  form.add_button() }}
+            {{  form.submit() }}
         </form>
     </div>
 {% endblock %}

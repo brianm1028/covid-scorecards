@@ -62,7 +62,7 @@
                                 </div>
                             </div>
 
-                            {% if check_perms(permissions['MANAGER'],session.permset) %}
+                            {% if check_perms(permissions['MANAGER'],session.perms[session.district_id]) %}
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link">Manage</a>
 
@@ -91,7 +91,7 @@
                             </div>
                             {% endif %}
 
-                            {% if check_perms(permissions['ADMIN'],session.permset) %}
+                            {% if check_perms(permissions['ADMIN'],session.perms[session.district_id]) %}
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link">Configure</a>
 

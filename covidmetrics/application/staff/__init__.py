@@ -7,4 +7,4 @@ staff_bp = Blueprint(
     static_folder='static'
 )
 
-from .manager import status
+from .manager import status, staff_form, staff_post

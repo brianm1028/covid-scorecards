@@ -10,7 +10,7 @@
             </div>
         {% endif %}
         {% endwith %}
-        <form method="POST" action="/space/rooms">
+        <form method="POST" action="/space/rooms/{{ session['district_id'] }}">
             <div class="field">
                 {{ form.facility_id.label }}
                 <div class="control">{{ form.facility_id(class='select') }}</div>

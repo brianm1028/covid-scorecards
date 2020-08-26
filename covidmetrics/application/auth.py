@@ -50,8 +50,12 @@ def login_post():
         session['perms']={}
         session['permset']=0
         for r in urtv:
-            session['permset']=session['permset'] | r.permset
             session['perms'][r.target_id]=r.permset
+            if r.district_id not in session['perms']:
+                session['perms'][r.district_id]=r.permset
+            else:
+                session['perms'][r.district_id]=session['perms'][r.district_id]|r.permset
+            session['permset']=session['permset'] | r.permset
         next_page = request.args.get('next')
         return redirect(next_page or url_for('main_bp.index'))
     flash('Invalid username/password combination')
@@ -86,4 +90,6 @@ def logout():
     """User log-out logic."""
     logout_user()
     session['username']=''
+    session['perms']={}
+    session['permset']=0
     return redirect(url_for('main_bp.index'))

@@ -1,19 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="title">Facility Staffing</h1>
+<h1 class="title">Staffing Status</h1>
+
     <TABLE class="table">
-        <THEAD>
+        <thead>
             <TR>
                 <TH>Facility</TH>
-                <TH>Item</TH>
-                <TH>Quantity</TH>
-                <TH>Last Updated</TH>
+                <TH>Role</TH>
+                <TH>Available</TH>
+                <TH>Required</TH>
+                <TH>Last Update</TH>
             </TR>
-        </THEAD>
-        <TBODY>
-
-        </TBODY>
+        </thead>
+        <tbody>
+            {% for t in staff_status %}
+            <TR>
+                <TD>{{ t.facility_name }}</TD>
+                <TD>{{ t.role_type }}</TD>
+                <TD>{{ t.available }}</TD>
+                <TD>{{ t.required }}</TD>
+                <TD>{{ t.update_date }}</TD>
+            </TR>
+            {% endfor %}
+        </tbody>
     </TABLE>
+
+
 
 {% endblock %}
