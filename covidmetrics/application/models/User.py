@@ -27,6 +27,7 @@ class User(UserMixin, db.Model):
         unique=False,
         nullable=False
 	)
+    district_id = db.Column(db.String,db.ForeignKey('districts.id'))
     created_on = db.Column(
         db.DateTime,
         index=False,

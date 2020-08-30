@@ -10,17 +10,25 @@ class RoomForm(FlaskForm):
     facility_id = SelectField(u'Facility', validators=[DataRequired()])
     room_number = StringField(u'Room Number', validators=[DataRequired()])
     capacity = IntegerField(u'Capacity', validators=[DataRequired()])
-    del_button = SubmitField('Delete Room')
-    upd_button = SubmitField('Update Room')
-    add_button = SubmitField('Add Room')
+    delete = SubmitField('Del')
+    update = SubmitField('Save')
+    add = SubmitField('Add')
 
 class RoomDemandForm(FlaskForm):
 
     room_type_id = SelectField(u'Room Type', coerce=int, validators=[DataRequired()])
     facility_id = SelectField(u'Facility', validators=[DataRequired()])
     demand = IntegerField(u'Seats Required',validators=[DataRequired()])
-    del_button = SubmitField('Delete Demand')
-    upd_button = SubmitField('Update Demand')
-    add_button = SubmitField('Add Demand')
+    delete = SubmitField('Del')
+    update = SubmitField('Save')
+    add = SubmitField('Add')
 
+
+class RoomUpdateForm(RoomForm):
+    room_id = HiddenField()
+
+class RoomDemandUpdateForm(RoomDemandForm):
+    room_type_id = HiddenField()
+    facility_id = HiddenField()
+    room_demand_id = HiddenField()
 

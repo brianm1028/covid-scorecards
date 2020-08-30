@@ -2,9 +2,11 @@ from .. import db
 
 class StaffStatusView(db.Model):
     __tablename__ = 'staff_status_vw'
+    update_id = db.Column(db.Integer,primary_key=True)
     update_date = db.Column(db.DateTime)
-    role_type = db.Column(db.String, primary_key=True)
-    facility_id = db.Column(db.String, primary_key=True)
+    role_type_id = db.Column(db.Integer)
+    role_type = db.Column(db.String)
+    facility_id = db.Column(db.String)
     facility_name = db.Column(db.String)
     required = db.Column(db.Integer)
     available = db.Column(db.Integer)

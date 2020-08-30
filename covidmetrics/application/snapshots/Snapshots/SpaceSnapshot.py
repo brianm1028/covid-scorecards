@@ -16,7 +16,7 @@ class SpaceSnapshot(Snapshot):
             'configuration': self.dc.configuration
         }
 
-        for f in self.dc.facilities.values():
+        for f in sorted(self.dc.facilities.values(), key=lambda x: x.facility_name):
             r={
                 'facility': f.facility_name,
                 'update_date': datetime.today(),

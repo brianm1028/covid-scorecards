@@ -10,19 +10,59 @@
                 <TH>Role</TH>
                 <TH>Available</TH>
                 <TH>Required</TH>
-                <TH>Last Update</TH>
+                <TH>Last Updated</TH>
+                <TH>Actions</TH>
             </TR>
         </thead>
         <tbody>
-            {% for t in staff_status %}
-            <TR>
-                <TD>{{ t.facility_name }}</TD>
-                <TD>{{ t.role_type }}</TD>
-                <TD>{{ t.available }}</TD>
-                <TD>{{ t.required }}</TD>
-                <TD>{{ t.update_date }}</TD>
-            </TR>
+            {% for i in upd_forms %}
+            <form method="post" action="/staff/updates/{{ session['district_id'] }}">
+                {{ i.form.facility_id() }}
+                {{ i.form.role_type_id() }}
+                <TR>
+                    <TD>{{ i.facility_name }}</TD>
+                    <TD>{{ i.role_type }}</TD>
+                    <TD>{{ i.form.available() }}</TD>
+                    <TD>{{ i.form.required() }}</TD>
+                    <TD>{{ i.update_date }}</TD>
+                    <TD>{{ i.form.update(class='button is-success upd-data') }} {{ i.form.delete(class='button is-danger del-data') }}</TD>
+                </TR>
+            </form>
             {% endfor %}
+            <form method="post" action="/staff/updates/{{ session['district_id'] }}">
+            <TR>
+                <TD>
+                    <div class="field">
+                        <div class="control">
+                             {{ add_form.facility_id(class='select') }}
+                        </div>
+                    </div>
+                </TD>
+                <TD>
+                    <div class="field">
+                        <div class="control">
+                             {{ add_form.role_type_id(class='select') }}
+                        </div>
+                    </div>
+                </TD>
+                <TD>
+                    <div class="field">
+                        <div class="control">
+                             {{ add_form.available(class='input') }}
+                        </div>
+                    </div>
+                </TD>
+                <TD>
+                    <div class="field">
+                        <div class="control">
+                             {{ add_form.required(class='input') }}
+                        </div>
+                    </div>
+                </TD>
+                <TD></TD>
+                <TD>{{  add_form.add(class='button is-success upd-data') }}</TD>
+            </TR>
+            </form>
         </tbody>
     </TABLE>
 

@@ -5,17 +5,17 @@ class StaffUpdate(db.Model):
     __tablename__ = 'staff_updates'
     id = db.Column(db.Integer, primary_key=True)
     update_date = db.Column(db.DateTime)
-    staff_role_id = db.Column(db.Integer, db.ForeignKey('staff_roles.id'))
+    role_type_id = db.Column(db.Integer, db.ForeignKey('staff_roles.role_type_id'))
     facility_id = db.Column(db.String, db.ForeignKey('facilities.id'))
     recorder_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     required = db.Column(db.Integer)
     available = db.Column(db.Integer)
 
 
-    def __init__(self, staff_role_id, facility_id, required, available, recorder_id,update_date=datetime.now()):
+    def __init__(self, role_type_id, facility_id, required, available, recorder_id,update_date=datetime.now()):
         #self.id = id
         self.update_date = update_date
-        self.staff_role_id = staff_role_id
+        self.role_type_id = role_type_id
         self.facility_id = facility_id
         self.required = required
         self.available = available

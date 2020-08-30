@@ -8,23 +8,94 @@
             <TR>
                 <TH>Facility</TH>
                 <TH>Room Type</TH>
+                <TH>
+                    <TABLE>
+                        <THEAD>
+                        <TR>
+                            <TH class="room_number">Room Number</TH>
+                            <TH class="capacity">Capacity</TH>
+                            <TH class="actions">&nbsp;</TH>
+                        </TR>
+                        </THEAD>
+                    </TABLE>
+                </TH>
                 <TH>Available</TH>
-                <TH>Required</TH>
+                <TH class="demand">Required</TH>
+                <TH>&nbsp;</TH>
             </TR>
         </thead>
         <tbody>
-            {% for t in status %}
+            {% for f in status.facilities.keys() %}
+            {% for rtk in status.facilities[f].room_types.keys() %}
             <TR>
-                <TD>{{ t.facility_name }}</TD>
-                <TD>{{ t.description }}</TD>
-                <TD>{{ t.available }}</TD>
-                <TD>{{ t.required }}</TD>
+                <TD>{{ status.facilities[f].facility_name }}</TD>
+                <TD>{{ status.facilities[f].room_types[rtk].description }}</TD>
+                <TD>
+                    <TABLE>
+                    <TBODY>
+                    {% for r in status.facilities[f].room_types[rtk].rooms %}
+                        <form method="post" action="/space/rooms/update/{{ session['district_id'] }}">
+                        {{ r.form.room_id() }}
+                        <TR>
+                            <TD class="room_number">
+                                {{ r.room_number }}
+                            </TD>
+                            <TD class="capacity">
+                                    {{ r.form.capacity(class='input capacity') }}
+                            </TD>
+                            <TD class="actions">
+                                {{ r.form.update(class='button is-success upd-data') }}
+                                {{ r.form.delete(class='button is-danger del-data') }}
+                            </TD>
+                        </TR>
+                        </form>
+                    {% endfor %}
+                    </TBODY>
+                    </TABLE>
+                </TD>
+                <TD>{{ status.facilities[f].room_types[rtk].available }}</TD>
+                <form method="post" action="/space/demand/update/{{ session['district_id'] }}">
+                    {{ status.facilities[f].room_types[rtk]['demand_form'].room_demand_id() }}
+                    <TD class="demand">{{ status.facilities[f].room_types[rtk]['demand_form'].demand(class='input demand') }}</TD>
+                    <TD class="actions">
+                        {{ status.facilities[f].room_types[rtk]['demand_form'].update(class='button is-success upd-data') }}
+                        {{ status.facilities[f].room_types[rtk]['demand_form'].delete(class='button is-danger del-data') }}
+                    </TD>
+                </form>
             </TR>
             {% endfor %}
+            {% endfor %}
+        <TR>
+        <form method="POST" action="/space/rooms/{{ session['district_id'] }}">
+            <TD>{{ status.room_form.facility_id(class='select') }}</TD>
+            <TD>{{ status.room_form.room_type_id(class='select') }}</TD>
+            <TD>
+                <TABLE>
+                    <TBODY>
+                    <TR>
+                        <TD class="room_number">{{ status.room_form.room_number(class='input room_number') }}</TD>
+                        <TD class="capacity">{{ status.room_form.capacity(class='input capacity') }}</TD>
+                        <TD class="actions">{{ status.room_form.add(class='button is-success add-data') }}</TD>
+                    </TR>
+                    </TBODY>
+                </TABLE>
+            </TD>
+            <TD class="demand"></TD>
+            <TD class="actions"></TD>
+        </form>
+        </TR>
+        <TR>
+        <form method="POST" action="/space/demand/{{ session['district_id'] }}">
+            <TD>{{ status.demand_form.facility_id(class='select') }}</TD>
+            <TD>{{ status.demand_form.room_type_id(class='select') }}</TD>
+            <TD></TD>
+            <TD></TD>
+            <TD class="demand">{{ status.demand_form.demand(class='input demand') }}</TD>
+            <TD class="actions">{{ status.demand_form.add(class='button is-success add-data') }}</TD>
+        </form>
+        </TR>
         </tbody>
     </TABLE>
-
-    <A HREF="/space/rooms/{{ session['district_id'] }}">Add Room</A>  <A HREF="/space/demand/{{ session['district_id'] }}">Add Demand</A>
 
 
 {% endblock %}

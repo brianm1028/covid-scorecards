@@ -104,7 +104,6 @@ class GeoDataCache(DistrictDataCache):
                             'testDate': dv['testDate']
                         }
         p = {}
-        pp.pprint(data)
         population = {}
         for d in range(dur_days + avg_days):
             p[d] = {}
@@ -119,14 +118,9 @@ class GeoDataCache(DistrictDataCache):
                 p[d]['testDate'] = p[d][c]['testDate']
                 population[c]=self.county_list['countyValues']
         for d in range(dur_days):
-            print('d:',str(d))
             for c in self.counties.keys():
-                print('c: ',str(c))
-                pp.pprint(p[d][c])
                 p[d][c]['dur_roll_avg_incidence']=sum([p[d+ad][c]['incidence'] for ad in range(avg_days)])/avg_days
-                print(p[d][c])
 
-        print(p)
         return p
 
     def calculate_health_system_capacity(self):
@@ -166,7 +160,6 @@ class GeoDataCache(DistrictDataCache):
                 else:
                     p[d][z]['positivity_rate'] = 0
                 p[d]['testDate'] = p[d][z]['testDate']
-        print(p)
         return p
 
     def calculate_county_positivity(self, days=3):
@@ -193,7 +186,6 @@ class GeoDataCache(DistrictDataCache):
                 }
                 p[d][c]['positivity_rate'] = p[d][c]['confirmed_cases'] / p[d][c]['total_tested']
                 p[d]['testDate'] = p[d][c]['testDate']
-        print(p)
         return p
 
     def calculate_region_positivity(self, days=3):
@@ -212,5 +204,4 @@ class GeoDataCache(DistrictDataCache):
             p[d][self.COVIDRegion.id]['positivity_rate'] = p[d][self.COVIDRegion.id]['confirmed_cases'] / \
                                                                  p[d][self.COVIDRegion.id]['total_tested']
             p[d]['testDate'] = p[d][self.COVIDRegion.id]['testDate']
-        print(p)
         return p

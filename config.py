@@ -3,10 +3,11 @@ from os import environ, path
 class Config:
     """Set Flask configuration from environment variables."""
 
+    SERVER_NAME = environ.get('SERVER_NAME')
+    #SERVER_PORT = environ.get('SERVER_PORT')
     # General Config
     FLASK_APP = 'wsgi.py'
     FLASK_ENV = environ.get('FLASK_ENV')
-    DEBUG = True
     SECRET_KEY = environ.get("SECRET_KEY")
 
     # Database

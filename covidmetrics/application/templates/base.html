@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/flatly/bulmaswatch.min.css">
 <!--    <link rel="stylesheet" href="/static/bulma.css?v={{ dnow }}">-->
     <link rel="stylesheet" href="/static/scorecards.css?v={{ dnow }}">
+    <script src="https://kit.fontawesome.com/dfe2982406.js" crossorigin="anonymous"></script>
     <title>COVID READINESS DASHBOARDS</title>
 <!-- {{ session.perms }} -->
 </head>
@@ -18,7 +19,27 @@
 
         <div class="hero-head">
             <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div id="navbarMenuHeroA" class="navbar-menu">
+                <div class="navbar-brand">
+                    <div id="covidmetrics-burger"
+                         class="navbar-burger"
+                         data-target="covidmetrics-main-menu"
+                         onClick=>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                </div>
+                <SCRIPT>
+                    function handle_burger() {
+                        var burger = document.getElementById('covidmetrics-burger')
+                        var nav = document.getElementById('covidmetrics-main-menu')
+                        burger.classList.toggle('is-active')
+                        nav.classList.toggle('is-active')
+                    }
+                    document.getElementById('covidmetrics-burger').addEventListener("onclick",handle_burger)
+                </SCRIPT>
+
+                <div id="covidmetrics-main-menu" class="navbar-menu">
                     <div class="navbar-start">
 
                         {% if data and data.configuration %}

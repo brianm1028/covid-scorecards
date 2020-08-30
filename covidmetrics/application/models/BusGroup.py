@@ -2,17 +2,16 @@ from .. import db
 
 class BusGroup(db.Model):
     __tablename__ = 'bus_groups'
-    id = db.Column(db.Integer, primary_key=True)
+    bus_group_id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String)
-    district_id = db.Column(db.String)
+    district_id = db.Column(db.String, db.ForeignKey('districts.id'))
     available = db.Column(db.Integer)
     required = db.Column(db.Integer)
     update_date = db.Column(db.DateTime)
     recorder_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 
 
-    def __init__(self, id, description, district_id, available, required, update_date, recorder_id):
-        self.id = id
+    def __init__(self, description, district_id, available, required, update_date, recorder_id):
         self.description = description
         self.district_id = district_id
         self.available = available

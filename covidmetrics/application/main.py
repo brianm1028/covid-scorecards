@@ -1,9 +1,10 @@
 """Logged-in page routes."""
 from flask import Blueprint, render_template, session
-from flask_login import login_required, current_user
+from flask_login import login_required, current_user, AnonymousUserMixin
 from . import cache
 from covidmetrics.application.DataCaches.IndexDataCache import IndexDataCache
 from datetime import datetime
+
 
 # Blueprint Configuration
 main_bp = Blueprint(
@@ -18,6 +19,10 @@ def index():
     if dc is None:
         dc = IndexDataCache()
         cache.set('index',dc)
+    if current_user.is_anonymous:
+        session['username']=''
+    else:
+        session['username']=current_user.name
     if 'district_id' not in session:
         session['district_id'] = ''
         session['district_name'] = ''

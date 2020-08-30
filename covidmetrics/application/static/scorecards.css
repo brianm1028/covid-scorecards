@@ -15,8 +15,59 @@ th, td {
   text-align: left;
 }
 
+input.add-data {
+  width: 50px;
+}
+input.del-data {
+  width: 50px;
+}
+input.upd-data {
+  width: 50px;
+}
+
+
 li.district {
   text-align: left;
+}
+
+td.actions {
+  width: 150px;
+}
+th.actions {
+  width: 150px;
+}
+
+td.room_number {
+  width: 100px;
+}
+th.room_number {
+  width: 100px;
+}
+
+input.room_number {
+  width: 50px;
+}
+
+td.capacity {
+  width: 100px;
+}
+th.capacity {
+  width: 100px;
+}
+
+input.capacity {
+  width: 50px;
+}
+
+td.demand {
+  width: 100px;
+}
+th.demand {
+  width: 100px;
+}
+
+input.demand {
+  width: 50px;
 }
 
 td.status {

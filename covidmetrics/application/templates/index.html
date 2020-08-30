@@ -5,10 +5,24 @@
 
             <TABLE class="table">
                 <TR>
-                    <TH>Districts</TH><TD>
+                    <TH>Enabled Districts</TH><TD>
                     <UL>
                         {% for d in data %}
+                            {% if d.enabled %}
                         <LI class="district"><A HREF="/snapshot/summary/{{ d.id }}">{{ d.name }}</A></LI>
+                            {% endif %}
+                        {%  endfor %}
+                    </UL>
+
+                    </TD>
+                </TR>
+                <TR>
+                    <TH>Available Districts</TH><TD>
+                    <UL>
+                        {% for d in data %}
+                            {% if not d.enabled %}
+                        <LI class="district"><A HREF="/snapshot/summary/{{ d.id }}">{{ d.name }}</A></LI>
+                            {% endif %}
                         {%  endfor %}
                     </UL>
 

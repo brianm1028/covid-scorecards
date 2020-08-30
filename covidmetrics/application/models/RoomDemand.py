@@ -19,4 +19,4 @@ class RoomDemand(db.Model):
         self.recorder_id = recorder_id
 
     def __repr__(self):
-        return '<RoomDemand %r>' % (self.id + '@' + self.update_date)
+        return '<RoomDemand %r>' % (str(self.id) + '@' + str(self.update_date))

@@ -17,7 +17,7 @@ class PPESnapshot(Snapshot):
         }
         print(self.dc.facilities)
 
-        for f in self.dc.facilities.values():
+        for f in sorted(self.dc.facilities.values(), key=lambda x: x.facility_name):
             print(f)
             r = {
                 'facility': f.facility_name,

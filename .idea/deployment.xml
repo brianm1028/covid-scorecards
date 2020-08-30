@@ -5,13 +5,21 @@
       <paths name="3.93.247.43">
         <serverdata>
           <mappings>
-            <mapping deploy="/covid-scorecards" local="$PROJECT_DIR$" web="/covid-scorecards" />
+            <mapping deploy="/covidmetrics" local="$PROJECT_DIR$" web="/" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/.idea" />
             <excludedPath local="true" path="$PROJECT_DIR$/venv" />
             <excludedPath path="/covid-scorecards/logs" />
+            <excludedPath local="true" path="$PROJECT_DIR$/flask_session" />
           </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="ulcdl-2ua9031jps">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
         </serverdata>
       </paths>
     </serverData>

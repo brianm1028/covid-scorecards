@@ -9,18 +9,53 @@
                 <TH>Item</TH>
                 <TH>Quantity</TH>
                 <TH>Last Updated</TH>
+                <TH>Actions</TH>
             </TR>
         </THEAD>
         <TBODY>
-            {% for i in ppe_inventory %}
-            <TR>
-                <TD>{{ i.facility_name }}</TD>
-                <TD>{{ i.description }}</TD>
-                <TD>{{ i.quantity }}</TD>
-                <TD>{{ i.update_date }}</TD>
-            </TR>
+            {% for i in upd_forms %}
+            <form method="post" action="/ppe/transaction/{{ session['district_id'] }}">
+                {{ i.form.ppe_item_id() }}
+                {{ i.form.facility_id() }}
+                {{ i.form.prior_quantity() }}
+                <TR>
+                    <TD>{{ i.facility_name }}</TD>
+                    <TD>{{ i.description }}</TD>
+                    <TD>{{ i.form.quantity() }}</TD>
+                    <TD>{{ i.update_date }}</TD>
+                    <TD>{{ i.form.update(class='button is-success upd-data') }} {{ i.form.delete(class='button is-danger del-data') }}</TD>
+                </TR>
+            </form>
             {% endfor %}
+            <form method="post" action="/ppe/transaction/{{ session['district_id'] }}">
+            <TR>
+                <TD>
+                    <div class="field">
+                        <div class="control">
+                             {{ add_form.facility_id(class='select') }}
+                        </div>
+                    </div>
+                </TD>
+                <TD>
+                    <div class="field">
+                        <div class="control">
+                             {{ add_form.ppe_item_id(class='select') }}
+                        </div>
+                    </div>
+                </TD>
+                <TD>
+                    <div class="field">
+                        <div class="control">
+                             {{ add_form.quantity(class='input') }}
+                        </div>
+                    </div>
+                </TD>
+                <TD></TD>
+                <TD>{{  add_form.add(class='button is-success add-data') }}{{ add_form.subtract(class='button is-danger del-data') }}</TD>
+            </TR>
+            </form>
         </TBODY>
     </TABLE>
+
 
 {% endblock %}

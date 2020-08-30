@@ -5,6 +5,7 @@ from .forms import LoginForm, SignupForm
 from .models import User, District, UserRoleTargetsView
 from . import login_manager
 from . import db
+from datetime import datetime
 
 # Blueprint Configuration
 auth_bp = Blueprint(
@@ -35,7 +36,7 @@ def login_form():
 @auth_bp.route('/login', methods=['POST'])
 def login_post():
     if current_user.is_authenticated:
-        return redirect("/")
+        return redirect(url_for('main_bp.index'))
 
     form = LoginForm()
 
@@ -44,6 +45,8 @@ def login_post():
     user = User.query.filter_by(email=form.email.data).first()
     if user and user.check_password(password=form.password.data):
         login_user(user, remember=remember)
+        user.last_login=datetime.now()
+        db.session.commit()
         session['username']=current_user.name
         urtv = UserRoleTargetsView.query.filter_by(user_id=user.id)
         session['perms']={}
@@ -56,7 +59,7 @@ def login_post():
                 session['perms'][r.district_id]=session['perms'][r.district_id]|r.permset
             session['permset']=session['permset'] | r.permset
         next_page = request.args.get('next')
-        return redirect(next_page or "/")
+        return redirect(next_page or url_for('main_bp.index'))
     flash('Invalid username/password combination')
     return redirect(url_for('auth_bp.login_form',form=form))
 
@@ -74,13 +77,16 @@ def signup_post():
     if existing_user is None:
         user = User(
             name=form.name.data,
-            email=form.email.data
+            email=form.email.data,
+            district_id=form.district_id.data,
+            last_login=datetime.now(),
+            created_on=datetime.now()
         )
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()  # Create new user
         login_user(user)  # Log in as newly created user
-        return redirect("/")
+        return redirect(url_for('main_bp.index'))
     flash('A user already exists with that email address.')
 
 @auth_bp.route("/logout")
@@ -91,4 +97,4 @@ def logout():
     session['username']=''
     session['perms']={}
     session['permset']=0
-    return redirect("/")
+    return redirect(url_for('main_bp.index'))
