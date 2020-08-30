@@ -21,23 +21,14 @@
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                     <div id="covidmetrics-burger"
-                         class="navbar-burger"
+                         class="navbar-burger burger"
                          data-target="covidmetrics-main-menu"
-                         onClick=>
+                         onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
                       <span></span>
                       <span></span>
                       <span></span>
                     </div>
                 </div>
-                <SCRIPT>
-                    function handle_burger() {
-                        var burger = document.getElementById('covidmetrics-burger')
-                        var nav = document.getElementById('covidmetrics-main-menu')
-                        burger.classList.toggle('is-active')
-                        nav.classList.toggle('is-active')
-                    }
-                    document.getElementById('covidmetrics-burger').addEventListener("onclick",handle_burger)
-                </SCRIPT>
 
                 <div id="covidmetrics-main-menu" class="navbar-menu">
                     <div class="navbar-start">
