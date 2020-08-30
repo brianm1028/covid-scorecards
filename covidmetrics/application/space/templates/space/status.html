@@ -56,6 +56,8 @@
                 <TD>{{ status.facilities[f].room_types[rtk].available }}</TD>
                 <form method="post" action="/space/demand/update/{{ session['district_id'] }}">
                     {{ status.facilities[f].room_types[rtk]['demand_form'].room_demand_id() }}
+                    {{ status.facilities[f].room_types[rtk]['demand_form'].room_type_id() }}
+                    {{ status.facilities[f].room_types[rtk]['demand_form'].facility_id() }}
                     <TD class="demand">{{ status.facilities[f].room_types[rtk]['demand_form'].demand(class='input demand') }}</TD>
                     <TD class="actions">
                         {{ status.facilities[f].room_types[rtk]['demand_form'].update(class='button is-success upd-data') }}

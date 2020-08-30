@@ -170,10 +170,18 @@ def demand_update(district_id):
     else:
         rd = RoomDemand.query.filter(RoomDemand.id == form.room_demand_id.data).first()
         if form.update.data:
-            rd.demand=form.demand.data
-            rd.update_date=datetime.now()
-            rd.recorder_id=current_user.id
-            #db.session.update(rd)
+            if rd==None:
+                rd = RoomDemand(room_type_id=form.room_type_id.data,
+                                facility_id=form.facility_id.data,
+                                demand=form.demand.data,
+                                recorder_id=current_user.id,
+                                update_date=datetime.now())
+                db.session.add(rd)
+            else:
+                rd.demand=form.demand.data
+                rd.update_date=datetime.now()
+                rd.recorder_id=current_user.id
+                #db.session.update(rd)
         if form.delete.data:
             db.session.delete(rd)
     db.session.commit()
