@@ -20,3 +20,6 @@ from .RoomType import RoomType
 from .Room import Room
 from .RoomDemand import RoomDemand
 from .UserRoleTargetsView import UserRoleTargetsView
+from .INCMetrics import INCMetrics
+from .CLIMetrics import CLIMetrics
+from .TATMetrics import TATMetrics

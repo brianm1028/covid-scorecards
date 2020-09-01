@@ -67,7 +67,7 @@
             </article>
         {% endif %}
 
-            {% if data.configuration.config()["geo"]["disp_county_inc"] %}
+        {% if data.configuration.config()["geo"]["disp_county_inc"] %}
             <article class="tile is-child is-info">
             <p class="subtitle">Incidence Rate in County</p>
                 <TABLE>
@@ -94,8 +94,8 @@
                                     {% for d in range(data.configuration.config()["geo"]["county_inc_duration"]) %}
                                     <TD>{{ '%0.2f'| format(r['day'+d|string+'inc']) }}</TD>
                                     {% endfor %}
-                                    <TD class="status {{ 'is-success' if r.inpstatus else 'is-danger' }}">&nbsp;</TD>
-                                    <TD class="status {{ 'is-success' if r.hybstatus else 'is-danger' }}">&nbsp;</TD>
+                                    <TD class="status {{ 'is-success' if r.incinpstatus else 'is-danger' }}">&nbsp;</TD>
+                                    <TD class="status {{ 'is-success' if r.inchybstatus else 'is-danger' }}">&nbsp;</TD>
                                 </TR>
                                 {% endfor %}
                             </TABLE>
@@ -104,6 +104,83 @@
                 </TABLE>
             </article>
         {% endif %}
+
+        {% if data.configuration.config()["geo"]["disp_county_cli"] %}
+            <article class="tile is-child is-info">
+            <p class="subtitle">COVID Like Illness Admissions in County</p>
+                <TABLE>
+                    <TR>
+                        <TH>Description</TH><TD>For counties, the number of days out of the last 10 with a non-increasing rate of CLI admissions should be less than {{ data.configuration.config()["geo"]["county_cli_hyb_threshold"] }} (Hybrid) and less than {{ data.configuration.config()["geo"]["county_cli_inp_threshold"] }} (In-Person) according to data from Illinois National Disease Surveillance System (INEDSS) published by <A HREF="https://covid19response-lakecountyil.hub.arcgis.com/pages/schools-dashboard">LCHD</A>.</TD>
+                    </TR>
+                    <TR>
+                        <TH>Updates</TH><TD>Updated continuously, last update on {{ data.county_data.update_date }}</TD>
+                    </TR>
+                    <TR>
+                        <TD colspan="2">
+                            <TABLE class="table">
+                                <TR>
+                                    <TH>County</TH>
+                                    {% for d in range(data.configuration.config()["geo"]["county_cli_duration"]) %}
+                                    <TH>{{ data.county_data['day'+d|string+'clidate'] }}</TH>
+                                    {% endfor %}
+                                    <TH>In-Person Status</TH>
+                                    <TH>Hybrid Status</TH>
+                                </TR>
+                                {% for r in data.county_data.counties %}
+                                <TR>
+                                    <TD>{{ r.county }}</TD>
+                                    {% for d in range(data.configuration.config()["geo"]["county_cli_duration"]) %}
+                                    <TD>{{ '%0.2f'| format(r['day'+d|string+'cli']) }}</TD>
+                                    {% endfor %}
+                                    <TD class="status {{ 'is-success' if r.cliinpstatus else 'is-danger' }}">&nbsp;</TD>
+                                    <TD class="status {{ 'is-success' if r.clihybstatus else 'is-danger' }}">&nbsp;</TD>
+                                </TR>
+                                {% endfor %}
+                            </TABLE>
+                        </TD>
+                    </TR>
+                </TABLE>
+            </article>
+        {% endif %}
+
+        {% if data.configuration.config()["geo"]["disp_county_tat"] %}
+            <article class="tile is-child is-info">
+            <p class="subtitle">Testing Turn Around Time in County</p>
+                <TABLE>
+                    <TR>
+                        <TH>Description</TH><TD>For counties, the 7 day rolling average testing turnaround time, reported with a three day lag in accordance with IDPH, should be less than {{ data.configuration.config()["geo"]["county_tat_hyb_threshold"] }} (Hybrid) and less than {{ data.configuration.config()["geo"]["county_tat_inp_threshold"] }} (In-Person) according to data from the Electronic Lab Reporting System as published by <A HREF="https://covid19response-lakecountyil.hub.arcgis.com/pages/schools-dashboard">LCHD</A>.</TD>
+                    </TR>
+                    <TR>
+                        <TH>Updates</TH><TD>Updated continuously, last update on {{ data.county_data.update_date }}</TD>
+                    </TR>
+                    <TR>
+                        <TD colspan="2">
+                            <TABLE class="table">
+                                <TR>
+                                    <TH>County</TH>
+                                    {% for d in range(data.configuration.config()["geo"]["county_tat_duration"]) %}
+                                    <TH>{{ data.county_data['day'+d|string+'tatdate'] }}</TH>
+                                    {% endfor %}
+                                    <TH>In-Person Status</TH>
+                                    <TH>Hybrid Status</TH>
+                                </TR>
+                                {% for r in data.county_data.counties %}
+                                <TR>
+                                    <TD>{{ r.county }}</TD>
+                                    {% for d in range(data.configuration.config()["geo"]["county_tat_duration"]) %}
+                                    <TD>{{ '%0.2f'| format(r['day'+d|string+'tat']) }}</TD>
+                                    {% endfor %}
+                                    <TD class="status {{ 'is-success' if r.tatinpstatus else 'is-danger' }}">&nbsp;</TD>
+                                    <TD class="status {{ 'is-success' if r.tathybstatus else 'is-danger' }}">&nbsp;</TD>
+                                </TR>
+                                {% endfor %}
+                            </TABLE>
+                        </TD>
+                    </TR>
+                </TABLE>
+            </article>
+        {% endif %}
+
 
         {% if data.configuration.config()["geo"]["disp_county"] %}
             <article class="tile is-child is-info">

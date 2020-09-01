@@ -2,10 +2,10 @@ from . import DistrictDataCache
 import requests
 from datetime import datetime, timedelta
 import pprint
-
-from ..models import ZipCode
-from ..models import County
-from ..models import COVIDRegion
+from sqlalchemy import and_
+from ..models import TATMetrics
+from ..models import CLIMetrics
+from ..models import INCMetrics
 
 pp = pprint.PrettyPrinter(indent=4)
 
@@ -38,8 +38,13 @@ class GeoDataCache(DistrictDataCache):
         self.region_positivity = self.calculate_region_positivity(days=self.configuration.config()["geo"]["region_duration"])
 
         self.county_incidence = self.calculate_county_incidence(
-            avg_days=self.configuration.config()["geo"]["county_inc_duration"],
-            dur_days=self.configuration.config()["geo"]["county_inc_average"])
+            dur_days=self.configuration.config()["geo"]["county_inc_duration"],
+            avg_days=self.configuration.config()["geo"]["county_inc_average"])
+
+        self.cli_metrics = self.calculate_health_system_capacity(
+            dur_days=self.configuration.config()["geo"]["county_cli_duration"])
+        self.tat_metrics = self.calculate_testing_turnaround_time(
+            dur_days=self.configuration.config()["geo"]["county_tat_duration"])
 
     @staticmethod
     def load_county_list():
@@ -86,12 +91,12 @@ class GeoDataCache(DistrictDataCache):
 
         return data
 
-
-
     def calculate_county_incidence(self, avg_days=7, dur_days=7):
         # number of new confirmed cases per 100k county population
         # 7 day rolling average, rounded whole for 7 consecutive days
         # remote is >14, hybrid is 7-14, in-person is <7
+
+
         data = {}
         for d in range(dur_days + avg_days + 1):
             data[d] = {}
@@ -123,17 +128,47 @@ class GeoDataCache(DistrictDataCache):
 
         return p
 
-    def calculate_health_system_capacity(self):
+    def calculate_health_system_capacity(self,dur_days=7):
         # number of covid like admissions across all ages from NSSP
         # number of days of non-increasing value out of the past 10 days
         # remote is <7, hybrid and in-person is 7 or more
-        pass
+        cli_data_lag = 5
+        cli_data = CLIMetrics.query.filter(and_(
+            CLIMetrics.update_date>=datetime.today()-timedelta(days=dur_days+cli_data_lag),
+            CLIMetrics.update_date<datetime.today()-timedelta(days=cli_data_lag)
+        )).all()
 
-    def calculate_testing_turnaround_time(self):
+        p={}
+        for cli_dp in cli_data:
+            d=(datetime.today() - cli_dp.update_date).days-cli_data_lag
+            p[d]={
+                cli_dp.county_name:{
+                    'cli_admissions':cli_dp.value
+                },
+                'testDate':cli_dp.update_date.strftime("%#m/%d/%Y")
+            }
+        return p
+
+    def calculate_testing_turnaround_time(self,dur_days=7):
         # average number of days from sample collection to result entry in ELRS
         # 7 day rolling average, rounded whole, three day lag
         # remote is >10 days, hybrid is 3-10 days, in-person is <3 days
-        pass
+        tat_data_lag = 3
+        tat_data = TATMetrics.query.filter(and_(
+            TATMetrics.update_date>=datetime.today()-timedelta(days=dur_days+tat_data_lag),
+            TATMetrics.update_date<datetime.today()-timedelta(days=tat_data_lag)
+        )).all()
+
+        p={}
+        for tat_dp in tat_data:
+            d=(datetime.today() - tat_dp.update_date).days-tat_data_lag
+            p[d]={
+                tat_dp.county_name:{
+                    'tat_days':tat_dp.value
+                },
+                'testDate':tat_dp.update_date.strftime("%#m/%d/%Y")
+            }
+        return p
 
     def calculate_zip_positivity(self, days=3):
         data = {}
