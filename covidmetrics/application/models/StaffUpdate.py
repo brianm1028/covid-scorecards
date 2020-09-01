@@ -8,8 +8,8 @@ class StaffUpdate(db.Model):
     role_type_id = db.Column(db.Integer, db.ForeignKey('staff_roles.role_type_id'))
     facility_id = db.Column(db.String, db.ForeignKey('facilities.id'))
     recorder_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    required = db.Column(db.Integer)
-    available = db.Column(db.Integer)
+    required = db.Column(db.Numeric)
+    available = db.Column(db.Numeric)
 
 
     def __init__(self, role_type_id, facility_id, required, available, recorder_id,update_date=datetime.now()):

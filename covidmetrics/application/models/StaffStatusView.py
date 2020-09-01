@@ -8,8 +8,8 @@ class StaffStatusView(db.Model):
     role_type = db.Column(db.String)
     facility_id = db.Column(db.String)
     facility_name = db.Column(db.String)
-    required = db.Column(db.Integer)
-    available = db.Column(db.Integer)
+    required = db.Column(db.Numeric)
+    available = db.Column(db.Numeric)
     recorder_name = db.Column(db.String)
 
     def __init__(self, update_date, role_type, facility_id, facility_name, required, available, recorder_name):
