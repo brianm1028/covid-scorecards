@@ -59,7 +59,7 @@ class GeoSnapshot(Snapshot):
 
             for d in range(self.dc.configuration.config()["geo"]["county_duration"]):
                 r['day'+str(d)] = self.dc.county_positivity[d][c]['positivity_rate']
-                if self.dc.county_positivity[d][c]['positivity_rate'] < self.dc.configuration.config()["geo"]["county_threshold"]:
+                if self.dc.county_positivity[d][c]['positivity_rate'] > self.dc.configuration.config()["geo"]["county_threshold"]:
                     r['status']=False
                 data['county_data']['day'+str(d)+'date'] = self.dc.county_positivity[d]['testDate']
                 if not r['status']:
@@ -74,16 +74,20 @@ class GeoSnapshot(Snapshot):
                     r['incinpstatus'] = False
                 data['county_data']['day'+str(d)+'incdate'] = self.dc.county_incidence[d]['testDate']
 
+            non_increasing=0
             for d in range(self.dc.configuration.config()["geo"]["county_cli_duration"]):
                 if c in self.dc.cli_metrics[d].keys():
+                    if self.dc.cli_metrics[d+1][c]['cli_admissions']<=self.dc.cli_metrics[d][c]['cli_admissions']:
+                        non_increasing+=1
                     r['day'+str(d)+'cli'] = self.dc.cli_metrics[d][c]['cli_admissions']
-                    if not (self.dc.cli_metrics[d][c]['cli_admissions'] < self.dc.configuration.config()["geo"]["county_cli_hyb_threshold"]):
-                        r['clihybstatus'] = False
-                    if not (self.dc.cli_metrics[d][c]['cli_admissions'] < self.dc.configuration.config()["geo"]["county_cli_inp_threshold"]):
-                        r['cliinpstatus'] = False
                 else:
+                    non_increasing+=1
                     r['day'+str(d)+'cli'] = 0
                 data['county_data']['day'+str(d)+'clidate'] = self.dc.cli_metrics[d]['testDate']
+            if non_increasing <= self.dc.configuration.config()["geo"]["county_cli_hyb_threshold"]:
+                r['clihybstatus'] = False
+            if non_increasing <= self.dc.configuration.config()["geo"]["county_cli_inp_threshold"]:
+                r['cliinpstatus'] = False
 
             for d in range(self.dc.configuration.config()["geo"]["county_tat_duration"]):
                 if c in self.dc.tat_metrics[d].keys():
@@ -115,7 +119,7 @@ class GeoSnapshot(Snapshot):
             }
         for d in range(self.dc.configuration.config()["geo"]["region_duration"]):
             r['day' + str(d)] = self.dc.region_positivity[d][self.dc.COVIDRegion.id]['positivity_rate']
-            if self.dc.region_positivity[d][self.dc.COVIDRegion.id]['positivity_rate'] < self.dc.configuration.config()["geo"]["region_threshold"]:
+            if self.dc.region_positivity[d][self.dc.COVIDRegion.id]['positivity_rate'] > self.dc.configuration.config()["geo"]["region_threshold"]:
                 r['status']=False
             data['region_data']['day'+str(d)+'date'] = self.dc.region_positivity[d][self.dc.COVIDRegion.id]['testDate']
             if not r['status']:

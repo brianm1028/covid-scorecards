@@ -134,7 +134,7 @@ class GeoDataCache(DistrictDataCache):
         # remote is <7, hybrid and in-person is 7 or more
         cli_data_lag = 5
         cli_data = CLIMetrics.query.filter(and_(
-            CLIMetrics.update_date>=datetime.today()-timedelta(days=dur_days+cli_data_lag),
+            CLIMetrics.update_date>=datetime.today()-timedelta(days=dur_days+1+cli_data_lag),
             CLIMetrics.update_date<datetime.today()-timedelta(days=cli_data_lag)
         )).all()
 
