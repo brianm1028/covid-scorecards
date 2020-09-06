@@ -68,9 +68,9 @@ class GeoSnapshot(Snapshot):
             for d in range(self.dc.configuration.config()["geo"]["county_inc_duration"]):
                 r['day'+str(d)+'inc'] = self.dc.county_incidence[d][c]['dur_roll_avg_incidence']
                 #TODO: add threshold to configuration for incidence rate
-                if not (self.dc.county_incidence[d][c]['dur_roll_avg_incidence'] < self.dc.configuration.config()["geo"]["county_hyb_threshold"]):
+                if not (self.dc.county_incidence[d][c]['dur_roll_avg_incidence'] < self.dc.configuration.config()["geo"]["county_inc_hyb_threshold"]):
                     r['inchybstatus'] = False
-                if not (self.dc.county_incidence[d][c]['dur_roll_avg_incidence'] < self.dc.configuration.config()["geo"]["county_inp_threshold"]):
+                if not (self.dc.county_incidence[d][c]['dur_roll_avg_incidence'] < self.dc.configuration.config()["geo"]["county_inc_inp_threshold"]):
                     r['incinpstatus'] = False
                 data['county_data']['day'+str(d)+'incdate'] = self.dc.county_incidence[d]['testDate']
 

@@ -2,7 +2,7 @@
 from flask import Blueprint, redirect, render_template, flash, request, session, url_for
 from flask_login import login_required, logout_user, current_user, login_user
 from .forms import LoginForm, SignupForm
-from .models import User, District, UserRoleTargetsView
+from .models import User, District, UserRoleTargetsView, UserDistrict
 from . import login_manager
 from . import db
 from datetime import datetime
@@ -66,8 +66,8 @@ def login_post():
 @auth_bp.route('/signup', methods=['GET'])
 def signup_form():
     form = SignupForm()
-    districts = District.query.all()
-    form.district_id.choices = [(i.id, i.name) for i in districts]
+    districts = sorted(District.query.all(), key=lambda x: x.district_code)
+    form.district_id.choices = [(i.id, '('+str(i.district_code)+') '+i.name) for i in districts]
     return render_template('signup.html', form=form, session=session)
 
 @auth_bp.route('/signup', methods=['POST'])
@@ -86,6 +86,12 @@ def signup_post():
         db.session.add(user)
         db.session.commit()  # Create new user
         login_user(user)  # Log in as newly created user
+        user_district = UserDistrict(
+            user_id=current_user.id,
+            district_id=form.district_id.data
+        )
+        db.session.add(user_district)
+        db.session.commit()
         return redirect(url_for('main_bp.index'))
     flash('A user already exists with that email address.')
 

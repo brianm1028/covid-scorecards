@@ -5,9 +5,10 @@ from flask_caching import Cache
 from flask_session import Session
 from .Permissions import Permissions
 from datetime import datetime
+from flask.json import dumps
 
 login_manager = LoginManager()
-db = SQLAlchemy()
+db = SQLAlchemy(engine_options={'json_serializer':dumps})
 cache = Cache()
 sess = Session()
 

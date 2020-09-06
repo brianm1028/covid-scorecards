@@ -1,0 +1,43 @@
+{
+  "geo": {
+    "enabled": true,
+    "disp_region": true,
+    "region_duration": 3,
+    "region_threshold": 0.08,
+    "disp_county": true,
+    "county_duration": 3,
+    "county_threshold": 0.08,
+    "disp_zip": true,
+    "zip_duration": 3,
+    "zip_threshold": 8.0,
+    "addl_zip_codes": [],
+    "disp_county_inc": true,
+    "county_inc_average": 7,
+    "county_inc_duration": 7,
+    "county_hyb_threshold": 14,
+    "county_inp_threshold": 7,
+    "county_inc_hyb_threshold": 14,
+    "county_inc_inp_threshold": 7,
+    "disp_county_cli": true,
+    "county_cli_duration": 10,
+    "county_cli_hyb_threshold": 7,
+    "county_cli_inp_threshold": 7,
+    "disp_county_tat": true,
+    "county_tat_duration": 7,
+    "county_tat_hyb_threshold": 10,
+    "county_tat_inp_threshold": 3
+  },
+  "ppe": {
+    "enabled": true
+  },
+  "space": {
+    "enabled": true
+  },
+  "staff": {
+    "enabled": true
+  },
+  "trans": {
+    "enabled": true
+  },
+  "enabled": true
+}

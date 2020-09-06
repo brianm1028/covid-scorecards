@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <H2 class="title">District Snapshot Administrators</H2>
+<TABLE class="table">
+    <THEAD>
+    <TR>
+        <TH>User</TH>
+        <TH>Role</TH>
+        <TH>Action</TH>
+    </TR>
+    </THEAD>
+    <TBODY>
+    {% for f in forms.district_user_forms %}
+        <form method="post" action="/admin/users/{{ session['district_id'] }}">
+            <TR>
+                {{ f.id(class="hidden") }}
+                {{ f.scope(class="hidden") }}
+                <TD>{{ f.user_id(class="select") }}</TD>
+                <TD>{{ f.role_id(class="select") }}</TD>
+                <TD>{{ f.update(class="button is-success") }}{{ f.delete(class="button is-danger") }}</TD>
+            </TR>
+        </form>
+    {% endfor %}
+        <form method="post" action="/admin/users/{{ session['district_id'] }}">
+            {{ forms.new_district_user_form.scope(class="hidden") }}
+            <TR>
+                <TD>{{ forms.new_district_user_form.user_id(class="select") }}</TD>
+                <TD>{{ forms.new_district_user_form.role_id(class="select") }}</TD>
+                <TD>{{ forms.new_district_user_form.add(class="button is-success") }}</TD>
+            </TR>
+        </form>
+    </TBODY>
+</TABLE>
+
+<H2 class="title">Facility Snapshot Administrators</H2>
+<TABLE class="table">
+    <THEAD>
+    <TR>
+        <TH>User</TH>
+        <TH>Facility</TH>
+        <TH>Role</TH>
+        <TH>Action</TH>
+    </TR>
+    </THEAD>
+    <TBODY>
+    {% for f in forms.facility_user_forms %}
+        <form method="post" action="/admin/users/{{ session['district_id'] }}">
+            <TR>
+                {{ f.id(class="hidden") }}
+                {{ f.scope(class="hidden") }}
+                <TD>{{ f.user_id(class="select") }}</TD>
+                <TD>{{ f.facility_id(class="select") }}</TD>
+                <TD>{{ f.role_id(class="select") }}</TD>
+                <TD>{{ f.update(class="button is-success") }}{{ f.delete(class="button is-danger") }}</TD>
+            </TR>
+        </form>
+    {% endfor %}
+        <form method="post" action="/admin/users/{{ session['district_id'] }}">
+            {{ forms.new_facility_user_form.scope(class="hidden") }}
+            <TR>
+                <TD>{{ forms.new_facility_user_form.user_id(class="select") }}</TD>
+                <TD>{{ forms.new_facility_user_form.facility_id(class="select") }}</TD>
+                <TD>{{ forms.new_facility_user_form.role_id(class="select") }}</TD>
+                <TD>{{ forms.new_facility_user_form.add(class="button is-success") }}</TD>
+            </TR>
+        </form>
+    </TBODY>
+</TABLE>
+
+{% endblock %}

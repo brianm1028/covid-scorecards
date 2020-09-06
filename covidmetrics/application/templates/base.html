@@ -108,34 +108,27 @@
                                 <a class="navbar-link">Configure</a>
 
                                 <div class="navbar-dropdown">
-                                        <A href="{{ url_for('admin_bp.district_config',section='district',district_id=data.district_id) }}" class="navbar-item">
+                                        <A href="{{ url_for('admin_bp.district_admin_form',district_id=data.district_id) }}" class="navbar-item">
                                             District
                                         </A>
-                                    {% if data and data.configuration.config()["geo"]["enabled"] %}
-                                        <A href="{{ url_for('admin_bp.district_config',section='geo',district_id=data.district_id) }}" class="navbar-item">
+                                        <A href="{{ url_for('admin_bp.section_admin_form',section='geo',district_id=data.district_id) }}" class="navbar-item">
                                             Regional Conditions
                                         </A>
-                                    {% endif %}
-                                    {% if data and data.configuration.config()["ppe"]["enabled"] %}
-                                        <A href="{{ url_for('admin_bp.district_config',section='ppe',district_id=data.district_id) }}" class="navbar-item">
+                                        <A href="{{ url_for('admin_bp.section_admin_form',section='ppe',district_id=data.district_id) }}" class="navbar-item">
                                             PPE Supply
                                         </A>
-                                    {% endif %}
-                                    {% if data and data.configuration.config()["staff"]["enabled"] %}
-                                        <A href="{{ url_for('admin_bp.district_config',section='staff',district_id=data.district_id) }}" class="navbar-item">
+                                        <A href="{{ url_for('admin_bp.section_admin_form',section='staff',district_id=data.district_id) }}" class="navbar-item">
                                             Facility Staffing
                                         </A>
-                                    {% endif %}
-                                    {% if data and data.configuration.config()["space"]["enabled"] %}
-                                        <A href="{{ url_for('admin_bp.district_config',section='space',district_id=data.district_id) }}" class="navbar-item">
+                                        <A href="{{ url_for('admin_bp.section_admin_form',section='space',district_id=data.district_id) }}" class="navbar-item">
                                             Facility Space
                                         </A>
-                                    {% endif %}
-                                    {% if data and data.configuration.config()["trans"]["enabled"] %}
-                                        <A href="{{ url_for('admin_bp.district_config',section='trans',district_id=data.district_id) }}" class="navbar-item">
+                                        <A href="{{ url_for('admin_bp.section_admin_form',section='trans',district_id=data.district_id) }}" class="navbar-item">
                                             Transportation Status
                                         </A>
-                                    {% endif %}
+                                        <A href="{{ url_for('admin_bp.section_admin_form',section='users',district_id=data.district_id) }}" class="navbar-item">
+                                            User Management
+                                        </A>
                                 </div>
                             </div>
                             {% endif %}

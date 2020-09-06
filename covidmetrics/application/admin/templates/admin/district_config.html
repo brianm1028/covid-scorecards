@@ -4,13 +4,15 @@
 
 <H1 class="title">COVID READINESS DASHBOARD ADMIN - DISTRICT CONFIGURATION</H1>
 
-<TABLE width="800px">
+<form method="post" action="/admin/{{ session['district_id'] }}">
+
+<TABLE class="table">
     <TR>
-        <TD width="400px">
+        <TD>
             <TABLE>
                 <TR>
                     <TD>
-                        <TABLE width="400px">
+                        <TABLE>
                             <TR>
                                 <TH>District ID</TH><TD class="config">{{ data.district.id }}</TD>
                             </TR>
@@ -24,16 +26,20 @@
                                 <TH>Base Zip Code</TH><TD class="config">{{ data.district.base_zip_code }}</TD>
                             </TR>
                             <TR>
-                                <TH>Enabled</TH><TD class="config">{{ data.district.enabled }}</TD>
+                                <TH>Enabled</TH><TD class="config">{{ form.enabled(class="toggle") }}</TD>
                             </TR>
                         </TABLE>
                     </TD>
                 </TR>
             </TABLE>
         </TD>
-        <TH width="400px">
-            <BR><BR>
-        </TH>
+    </TR>
+    <TR>
+        <TD>
+            {{ form.update(class="button is-success") }}
+        </TD>
     </TR>
 </TABLE>
+</form>
+
 {% endblock %}

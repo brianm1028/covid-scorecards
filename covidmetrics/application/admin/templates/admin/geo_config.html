@@ -4,90 +4,182 @@
 
 <H1 class="title">COVID READINESS DASHBOARD ADMIN - GEOGRAPHIC CONFIGURATION</H1>
 
-<TABLE width="800px">
+<form method="post" action="/admin/geo/{{ session['district_id'] }}">
+
+<TABLE class="table">
     <TR>
-        <TD width="400px">
+        <TD>
             <TABLE>
                 <TR>
                     <TD>
-                        <TABLE width="400px">
+                        <TABLE>
+                            <TR>
+                                <TH>District ID</TH><TD class="config">{{ data.district.id }}</TD>
+                            </TR>
                             <TR>
                                 <TH>District Name</TH><TD class="config">{{ data.district.name }}</TD>
                             </TR>
                             <TR>
-                                <TH>Geographic Snapshots Enabled</TH><TD class="config">{{ data.configuration.config()["geo"]["enabled"] }}</TD>
+                                <TH>Geographic Snapshots Enabled</TH><TD class="config">{{ form.enabled(class="toggle") }}</TD>
                             </TR>
                         </TABLE>
-
-                        <TABLE width="400px">
-                            <TR>
-                                <TH colspan="2">COVID Region Configuration</TH>
-                            </TR>
-                            <TR>
-                                <TH>COVID Region ID</TH><TD class="config">{{ data.COVIDRegion.id }}</TD>
-                            </TR>
-                            <TR>
-                                <TH>Days to Display</TH><TD class="config">{{ data.configuration.config()["geo"]["region_duration"] }}</TD>
-                            </TR>
-                            <TR>
-                                <TH>Threshold Value</TH><TD class="config">{{ data.configuration.config()["geo"]["region_threshold"] }}</TD>
-                            </TR>
-                            <TR>
-                                <TH>Display Region?</TH><TD class="config">{{ data.configuration.config()["geo"]["disp_region"] }}</TD>
-                            </TR>
-                        </TABLE>
-
-                        <TABLE width="400px">
-                            <TR>
-                                <TH colspan="2">County Configuration</TH>
-                            </TR>
-                            <TR>
-                                <TH>Counties</TH><TD class="config">
-                                {%  for c in data.counties.values() %}
-                                    {{ c.name }}<BR>
-                                {% endfor %}
-                            </TD>
-                            </TR>
-                            <TR>
-                                <TH>Days to Display</TH><TD class="config">{{ data.configuration.config()["geo"]["county_duration"] }}</TD>
-                            </TR>
-                            <TR>
-                                <TH>Threshold Value</TH><TD class="config">{{ data.configuration.config()["geo"]["county_threshold"] }}</TD>
-                            </TR>
-                            <TR>
-                                <TH>Display Counties?</TH><TD class="config">{{ data.configuration.config()["geo"]["disp_county"] }}</TD>
-                            </TR>
-                        </TABLE>
-
-                        <TABLE width="400px">
-                            <TR>
-                                <TH colspan="2">Zip Code Configuration</TH>
-                            </TR>
-                            <TR>
-                                <TH>Zip Codes</TH><TD class="config">
-                                {%  for z in data.zip_codes.values() %}
-                                    {{ z.zip_code }}<BR>
-                                {% endfor %}
-                            </TD>
-                            </TR>
-                            <TR>
-                                <TH>Days to Display</TH><TD class="config">{{ data.configuration.config()["geo"]["zip_duration"] }}</TD>
-                            </TR>
-                            <TR>
-                                <TH>Threshold Value</TH><TD class="config">{{ data.configuration.config()["geo"]["zip_threshold"] }}</TD>
-                            </TR>
-                            <TR>
-                                <TH>Display Zip Codes?</TH><TD class="config">{{ data.configuration.config()["geo"]["disp_zip"] }}</TD>
-                            </TR>
-                        </TABLE>
-
                     </TD>
                 </TR>
             </TABLE>
         </TD>
-        <TH width="400px">
-            <BR><BR>
-        </TH>
+    </TR>
+
+    <TR>
+        <TD>
+            <TABLE>
+                <TR>
+                    <TD>
+                        <TABLE>
+                            <TR>
+                                <TH>Display Region Positivity Metric</TH><TD class="config">{{ form.disp_region(class="toggle") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Region Duration</TH><TD class="config">{{ form.region_duration(class="input") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Region Threshold</TH><TD class="config">{{ form.region_threshold(class="input") }}</TD>
+                            </TR>
+                        </TABLE>
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+    </TR>
+
+
+    <TR>
+        <TD>
+            <TABLE>
+                <TR>
+                    <TD>
+                        <TABLE>
+                            <TR>
+                                <TH>Display County Positivity Metric</TH><TD class="config">{{ form.disp_county(class="toggle") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>County Duration</TH><TD class="config">{{ form.county_duration(class="input") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>County Threshold</TH><TD class="config">{{ form.county_threshold(class="input") }}</TD>
+                            </TR>
+                        </TABLE>
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+    </TR>
+
+    <TR>
+        <TD>
+            <TABLE>
+                <TR>
+                    <TD>
+                        <TABLE>
+                            <TR>
+                                <TH>Display Zip Positivity Metric</TH><TD class="config">{{ form.disp_zip(class="toggle") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Zip Duration</TH><TD class="config">{{ form.zip_duration(class="input") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>Zip Threshold</TH><TD class="config">{{ form.zip_threshold(class="input") }}</TD>
+                            </TR>
+                        </TABLE>
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+    </TR>
+
+    <TR>
+        <TD>
+            <TABLE>
+                <TR>
+                    <TD>
+                        <TABLE>
+                            <TR>
+                                <TH>Display County Incidence (INC) Rate Metric</TH><TD class="config">{{ form.disp_county_inc(class="toggle") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>INC Rolling Average Duration</TH><TD class="config">{{ form.county_inc_average(class="input") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>INC Duration</TH><TD class="config">{{ form.county_inc_duration(class="input") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>INC Hybrid Learning Threshold</TH><TD class="config">{{ form.county_inc_hyb_threshold(class="input") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>INC In-Person Learning Threshold</TH><TD class="config">{{ form.county_inc_inp_threshold(class="input") }}</TD>
+                            </TR>
+                        </TABLE>
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+    </TR>
+
+    <TR>
+        <TD>
+            <TABLE>
+                <TR>
+                    <TD>
+                        <TABLE>
+                            <TR>
+                                <TH>Display County COVID Like Illness (CLI) Metric</TH><TD class="config">{{ form.disp_county_cli(class="toggle") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>CLI Duration</TH><TD class="config">{{ form.county_cli_duration(class="input") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>CLI Hybrid Learning Threshold</TH><TD class="config">{{ form.county_cli_hyb_threshold(class="input") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>CLI In-Person Learning Threshold</TH><TD class="config">{{ form.county_cli_inp_threshold(class="input") }}</TD>
+                            </TR>
+                        </TABLE>
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+    </TR>
+
+    <TR>
+        <TD>
+            <TABLE>
+                <TR>
+                    <TD>
+                        <TABLE>
+                            <TR>
+                                <TH>Display County Time-After-Testing (TAT) Metric</TH><TD class="config">{{ form.disp_county_tat(class="toggle") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>TAT Duration</TH><TD class="config">{{ form.county_tat_duration(class="input") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>TAT Hybrid Learning Threshold</TH><TD class="config">{{ form.county_tat_hyb_threshold(class="input") }}</TD>
+                            </TR>
+                            <TR>
+                                <TH>TAT In-Person Learning Threshold</TH><TD class="config">{{ form.county_tat_inp_threshold(class="input") }}</TD>
+                            </TR>
+                        </TABLE>
+                    </TD>
+                </TR>
+            </TABLE>
+        </TD>
+    </TR>
+
+    <TR>
+        <TD>
+            {{ form.update(class="button is-success") }}
+        </TD>
     </TR>
 </TABLE>
+</form>
+
 {% endblock %}

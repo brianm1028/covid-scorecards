@@ -23,3 +23,8 @@ from .UserRoleTargetsView import UserRoleTargetsView
 from .INCMetrics import INCMetrics
 from .CLIMetrics import CLIMetrics
 from .TATMetrics import TATMetrics
+from .UserDistrict import UserDistrict
+from .UserDistrictView import UserDistrictView
+from .UserRole import UserRole
+from .UserFacilityRole import UserFacilityRole
+from .UserDistrictRole import UserDistrictRole

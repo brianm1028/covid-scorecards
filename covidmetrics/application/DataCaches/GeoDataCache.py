@@ -46,6 +46,10 @@ class GeoDataCache(DistrictDataCache):
         self.tat_metrics = self.calculate_testing_turnaround_time(
             dur_days=self.configuration.config()["geo"]["county_tat_duration"])
 
+        print(self.county_incidence)
+        print(self.cli_metrics)
+        print(self.tat_metrics)
+
     @staticmethod
     def load_county_list():
         r = requests.get('https://www.dph.illinois.gov/sitefiles/CountyList.json?nocache=1')
