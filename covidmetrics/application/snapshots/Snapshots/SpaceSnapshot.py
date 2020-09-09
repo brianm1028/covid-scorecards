@@ -29,7 +29,7 @@ class SpaceSnapshot(Snapshot):
                     'capacity': i.available,
                     'demand': i.required,
                     'fill_pct': 0 if i.available==0 else i.required / i.available,
-                    'status': (i.required < i.available)
+                    'status': (i.required <= i.available)
                 }
                 r['rooms'].append(t)
                 if not t['status']:
