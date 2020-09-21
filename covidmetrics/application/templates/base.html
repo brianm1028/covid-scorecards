@@ -77,22 +77,22 @@
                                 <a class="navbar-link">Manage</a>
 
                                 <div class="navbar-dropdown">
-                                    {% if data and data.configuration.config()["ppe"]["enabled"] and check_perms(permissions['PPE'],session.permset) %}
+                                    {% if data and check_perms(permissions['PPE'],session.permset) %}
                                         <A href="{{ url_for('ppe_bp.status',district_id=data.district_id) }}" class="navbar-item">
                                             PPE Supply
                                         </A>
                                     {% endif %}
-                                    {% if data and data.configuration.config()["staff"]["enabled"] and check_perms(permissions['STAFF'],session.permset) %}
+                                    {% if data and check_perms(permissions['STAFF'],session.permset) %}
                                         <A href="{{ url_for('staff_bp.status',district_id=data.district_id) }}" class="navbar-item">
                                             Facility Staffing
                                         </A>
                                     {% endif %}
-                                    {% if data and data.configuration.config()["space"]["enabled"] and check_perms(permissions['SPACE'],session.permset) %}
+                                    {% if data and check_perms(permissions['SPACE'],session.permset) %}
                                         <A href="{{ url_for('space_bp.status',district_id=data.district_id) }}" class="navbar-item">
                                             Facility Space
                                         </A>
                                     {% endif %}
-                                    {% if data and data.configuration.config()["trans"]["enabled"] and check_perms(permissions['TRANS'],session.permset) %}
+                                    {% if data and check_perms(permissions['TRANS'],session.permset) %}
                                         <A href="{{ url_for('trans_bp.status',district_id=data.district_id) }}" class="navbar-item">
                                             Transportation
                                         </A>

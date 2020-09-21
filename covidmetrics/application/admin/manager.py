@@ -39,7 +39,7 @@ def section_admin_form(section,district_id):
     if section=="users":
         facility_list = [f.id for f in Facility.query.filter_by(district_id=district_id)]
         facilities = sorted(Facility.query.filter_by(district_id=district_id), key=lambda x: x.facility_name)
-        district_users = UserDistrictView.query.filter_by(district_id=district_id)
+        district_users = UserDistrictView.query.filter_by(district_id=district_id).all()
 
         user_roles = UserRole.query.filter(UserRole.permset < Permissions.SITE_ADMIN)
         district_user_roles = [ur for ur in user_roles if Permissions.check(Permissions.DISTRICT,ur.permset)]

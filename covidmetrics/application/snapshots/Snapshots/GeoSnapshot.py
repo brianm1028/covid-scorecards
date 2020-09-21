@@ -89,8 +89,12 @@ class GeoSnapshot(Snapshot):
             if non_increasing <= self.dc.configuration.config()["geo"]["county_cli_inp_threshold"]:
                 r['cliinpstatus'] = False
 
+            print(self.dc.configuration.config())
             for d in range(self.dc.configuration.config()["geo"]["county_tat_duration"]):
+                print(d)
+                print(self.dc.tat_metrics)
                 if c in self.dc.tat_metrics[d].keys():
+                    print(c)
                     r['day'+str(d)+'tat'] = self.dc.tat_metrics[d][c]['tat_days']
                     if not (self.dc.tat_metrics[d][c]['tat_days'] < self.dc.configuration.config()["geo"]["county_tat_hyb_threshold"]):
                         r['tathybstatus'] = False

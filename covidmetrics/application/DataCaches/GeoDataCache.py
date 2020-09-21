@@ -123,7 +123,10 @@ class GeoDataCache(DistrictDataCache):
                     'total_tested': (data[d][c]['total_tested'] - data[d + 1][c]['total_tested']),
                     'testDate': data[d][c]['testDate']
                 }
-                p[d][c]['positivity_rate'] = p[d][c]['confirmed_cases'] / p[d][c]['total_tested']
+                if p[d][c]['total_tested']>0:
+                    p[d][c]['positivity_rate'] = p[d][c]['confirmed_cases'] / p[d][c]['total_tested']
+                else:
+                    p[d][c]['positivity_rate'] = 0
                 p[d]['testDate'] = p[d][c]['testDate']
                 population[c]=self.county_list['countyValues']
         for d in range(dur_days):
@@ -223,7 +226,10 @@ class GeoDataCache(DistrictDataCache):
                     'total_tested': (data[d][c]['total_tested']-data[d+1][c]['total_tested']),
                     'testDate': data[d][c]['testDate']
                 }
-                p[d][c]['positivity_rate'] = p[d][c]['confirmed_cases'] / p[d][c]['total_tested']
+                if p[d][c]['total_tested']>0:
+                    p[d][c]['positivity_rate'] = p[d][c]['confirmed_cases'] / p[d][c]['total_tested']
+                else:
+                    p[d][c]['positivity_rate'] = 0
                 p[d]['testDate'] = p[d][c]['testDate']
         return p
 
