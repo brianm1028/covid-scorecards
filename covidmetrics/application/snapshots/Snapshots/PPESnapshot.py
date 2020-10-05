@@ -31,8 +31,8 @@ class PPESnapshot(Snapshot):
                     'inventory': i.quantity,
                     'demand7': i.demand7,
                     'demand14': i.demand14,
-                    'fullstock': (i.demand14 < i.quantity),
-                    'status': (i.demand7 < i.quantity)
+                    'fullstock': (i.demand14 <= i.quantity),
+                    'status': (i.demand7 <= i.quantity)
                 }
                 r['ppe_types'].append(t)
                 if not t['status']:
