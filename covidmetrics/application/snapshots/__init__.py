@@ -1,5 +1,6 @@
 
 from flask import Blueprint, render_template, session
+from flask_login import current_user
 from .. import cache
 from covidmetrics.application.DataCaches.DistrictDataCache import DistrictDataCache
 from .Snapshots import *
@@ -51,6 +52,15 @@ def get_snapshot(snap_type='summary',district_id='3404906700000'):
     if ddc is None:
         ddc = DistrictDataCache(district_id)
         cache.set('district' + str(district_id), ddc)
+
+    if current_user.is_anonymous:
+        session['username']=''
+    else:
+        session['username']=current_user.name
+    if 'perms' not in session:
+        session['perms'] = {}
+        session['permset'] = 0
+
 
     session['district_id']=ddc.district_id
     session['district_name']=ddc.district_name
