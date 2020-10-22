@@ -31,6 +31,9 @@ class GeoDataCache(DistrictDataCache):
 
         self.county_list = self.load_county_list()
         self.covid_historical_test_results = self.load_covid_hist_test_data()
+        for i in range(len(self.covid_historical_test_results['historical_county']['values'])):
+            if 'testdate' in self.covid_historical_test_results['historical_county']['values'][i]:
+                self.covid_historical_test_results['historical_county']['values'][i]['testDate']=self.covid_historical_test_results['historical_county']['values'][i]['testdate']
         self.covid_zip = self.load_covid_zip_data(days=self.configuration.config()["geo"]["zip_duration"])
 
         self.zip_positivity = self.calculate_zip_positivity(days=self.configuration.config()["geo"]["zip_duration"])
